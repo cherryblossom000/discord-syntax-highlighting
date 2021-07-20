@@ -188,7 +188,6 @@ main > div {
 code {
   overflow-x: auto;
   padding: 0.5em;
-  scrollbar-width: thin;
   -moz-tab-size: 4;
   tab-size: 4;
 }
@@ -210,8 +209,6 @@ code {
   margin: 0;
   text-indent: 0;
   white-space: pre-wrap;
-  scrollbar-width: thin;
-  scrollbar-color: var(--background-tertiary) var(--background-secondary);
 }
 
 .hljs {
