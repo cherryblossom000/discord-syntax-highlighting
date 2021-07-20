@@ -165,7 +165,7 @@ aside li.current {
 }
 
 aside li.current:before {
-  content: '▶';
+  content: '▶\FE0E';
   font-size: smaller;
   position: absolute;
   left: 0;
