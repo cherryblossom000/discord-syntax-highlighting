@@ -1,7 +1,7 @@
 hljs.debugMode()
 hljs.highlightAll()
 
-document.querySelectorAll('.categories > li').forEach(category => {
+for (const category of document.querySelectorAll('.categories > li')) {
   category.addEventListener('click', event => {
     const current = document.querySelector('.categories .current')
     const currentCategory = current.dataset.category
@@ -21,7 +21,7 @@ document.querySelectorAll('.categories > li').forEach(category => {
       window.scrollTo(0, 0)
     }
   })
-})
+}
 
 document.getElementById('light-theme').addEventListener('input', () => {
   document.documentElement.classList.toggle('theme-dark')
