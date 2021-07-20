@@ -1,0 +1,245 @@
+/* Fonts */
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 400;
+  src: url('fonts/whitney-400.woff');
+}
+
+@font-face {
+  font-family: Ginto;
+  font-weight: 600;
+  src: url('fonts/ginto-600.woff');
+}
+
+/* Variables */
+
+.theme-dark {
+  --background-primary: #36393f;
+  --background-secondary: #2f3136;
+  --background-tertiary: #202225;
+  --background-modifier-hover: rgba(79, 84, 92, 0.16);
+  --background-modifier-selected: rgba(79, 84, 92, 0.32);
+  --header-secondary: #b9bbbe;
+  --interactive-muted: #4f545c;
+  --text-normal: #dcddde;
+  --scrollbar-thin-thumb: #202225;
+  --scrollbar-thin-track: transparent;
+}
+
+.theme-light {
+  --background-primary: #fff;
+  --background-secondary: #f2f3f5;
+  --background-tertiary: #e3e5e8;
+  --background-modifier-hover: rgba(116, 127, 141, 0.08);
+  --background-modifier-selected: rgba(97, 117, 145, 0.24);
+  --header-secondary: #4f5660;
+  --interactive-muted: #c7ccd1;
+  --text-normal: #2e3338;
+  --scrollbar-thin-thumb: rgba(79, 84, 92, 0.3);
+  --scrollbar-thin-track: transparent;
+}
+
+/* Main */
+
+body {
+  color: var(--text-normal);
+  background: var(--background-primary);
+  font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, label {
+  font-family: Ginto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 150%;
+  margin: 0;
+  padding: 1em 0 0.5em;
+}
+
+h2, aside > div {
+  font-size: 120%;
+  margin: 1.5em 0 0.5em 0;
+}
+
+aside {
+  background: var(--background-secondary);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 0 1.5em 1em;
+  position: fixed;
+  top: 0;
+  width: 16em;
+}
+
+aside ul,
+aside li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+aside ul {
+  position: relative;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+aside ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+aside ul::-webkit-scrollbar-track {
+  background: var(--scrollbar-thin-track);
+  border-radius: 5px;
+}
+
+aside ul::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thin-thumb);
+  border-radius: 5px;
+}
+
+aside li {
+  padding: 1px 1em;
+  cursor: pointer;
+}
+
+aside li:hover {
+  background: var(--background-modifier-hover);
+}
+
+aside li.current {
+  background: var(--background-modifier-selected)
+}
+
+aside li.current:before {
+  content: '▶';
+  font-size: smaller;
+  position: absolute;
+  left: 0;
+}
+
+main {
+  margin-left: 18em;
+  min-width: 36em;
+  padding: 1px 4em;
+}
+
+main > div {
+  margin: 2.5em 0 3em;
+}
+
+.hidden {
+  display: none;
+}
+
+code {
+  overflow-x: auto;
+  padding: 0.5em;
+  scrollbar-width: thin;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+/* Stuff from Discord */
+
+pre {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-tertiary);
+  margin-top: 6px;
+}
+
+code {
+  font-family: Consolas, Andale Mono WT, Andale Mono, Lucida Console,
+    Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+    Liberation Mono, Nimbus Mono L, Monaco, Courier New, Courier, monospace;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  margin: 0;
+  text-indent: 0;
+  white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-tertiary) var(--background-secondary);
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  border-radius: 4px;
+  color: var(--header-secondary);
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--interactive-muted);
+}
+
+.hljs-addition,
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #859900;
+}
+
+.hljs-doctag,
+.hljs-literal,
+.hljs-meta .hljs-meta-string,
+.hljs-number,
+.hljs-regexp,
+.hljs-string {
+  color: #2aa198;
+}
+
+.hljs-name,
+.hljs-section,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-title {
+  color: #268bd2;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-class .hljs-title,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #b58900;
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-subst,
+.hljs-symbol {
+  color: #cb4b16;
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: #dc322f;
+}
+
+.hljs-formula {
+  background: #073642;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}

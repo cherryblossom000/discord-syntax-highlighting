@@ -1,0 +1,6719 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Discord Syntax Highlighting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="highlight.min.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <aside>
+      <header>
+        <h1>Discord Syntax Highlighting</h1>
+      </header>
+
+      <div>
+        <label for="light-theme">Light Theme</label>
+        <input id="light-theme" type="checkbox">
+      </div>
+
+      <h2>Language Categories</h2>
+      <ul class="categories">
+        <li class="current" data-category="common">common (32)</li>
+        <li data-category="assembler">assembler (5)</li>
+        <li data-category="config">config (16)</li>
+        <li data-category="css">css (4)</li>
+        <li data-category="database">database (1)</li>
+        <li data-category="enterprise">enterprise (9)</li>
+        <li data-category="functional">functional (14)</li>
+        <li data-category="graphics">graphics (5)</li>
+        <li data-category="lisp">lisp (5)</li>
+        <li data-category="logs">logs (1)</li>
+        <li data-category="markup">markup (3)</li>
+        <li data-category="protocols">protocols (5)</li>
+        <li data-category="scientific">scientific (13)</li>
+        <li data-category="scripting">scripting (24)</li>
+        <li data-category="system">system (5)</li>
+        <li data-category="template">template (8)</li>
+        <li data-category="web">web (12)</li>
+        <li data-category="misc">misc (58)</li>
+        <li data-category="all">all (189)</li>
+      </ul>
+    </aside>
+
+    <main>
+      <div class="hidden enterprise all">
+        <h2>1C:Enterprise <code>1c</code></h2>
+        <pre><code class="language-1c">#ЗагрузитьИзФайла ext_module.txt // директива 7.7
+#Если Клиент ИЛИ НаКлиенте Тогда // инструкции препроцессора
+	&amp;НаКлиентеНаСервереБезКонтекста // директивы компиляции
+	Функция ТолстыйКлиентОбычноеПриложение(Знач Параметр1 = Неопределено, // комментарий
+		Параметр2 = &quot;&quot;, ПараметрN = 123.45, ПарамNN) Экспорт // еще комментарий
+		Попытка
+			Результат_Булевы_Значения = Новый Структура(&quot;П1, П2&quot;, Истина, Ложь, NULL, Неопределено);
+			Перейти ~МеткаGOTO; // комментарий
+			РезультатТаблицаДат = Новый ТаблицаЗначений;
+			РезультатТаблицаДат.Колонки.Добавить(&quot;Колонка1&quot;,
+			Новый ОписаниеТипов(&quot;Дата&quot;, , ,
+			Новый КвалификаторыДаты(ЧастиДаты.ДатаВремя));
+			НС = РезультатТаблицаДат.Добавить(); НС[&quot;Колонка1&quot;] = &#39;20170101120000&#39;);
+		Исключение
+			ОписаниеОшибки = ОписаниеОшибки(); // встроенная функция
+			Масс = Новый Массив; // встроенный тип
+			Для Каждого Значение Из Масс Цикл
+				Сообщить(Значение + Символы.ПС + &quot;
+				|продолжение строки&quot;); // продолжение многострочной строки
+				Продолжить; Прервать;
+			КонецЦикла;
+			СправочникСсылка   = Справочники.Языки.НайтиПоНаименованию(&quot;ru&quot;); // встроенные типы
+			СправочникОбъект   = СправочникСсылка.ПолучитьОбъект();
+			ПеречислениеСсылка = Перечисления.ВидыМодификацииДанных.Изменен;
+			ВызватьИсключение ОписаниеОшибки;
+		КонецПопытки;
+		~МеткаGOTO: // еще комментарий
+		ВД = ВидДвиженияБухгалтерии.Дебет;
+	КонецФункции // ТолстыйКлиентОбычноеПриложение()
+#КонецЕсли</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Augmented Backus-Naur Form</h2>
+        <pre><code class="language-abnf">; line comment
+
+ruleset     =   [optional] *(group1 / group2 / SP) CRLF ; trailing comment
+
+group1      =   alt1
+group1      =/  alt2
+
+alt1        =   %x41-4D / %d78-90
+
+alt2        =   %b00100001
+
+group2      =   *1DIGIT / 2*HEXDIG / 3*4OCTET
+
+optional    =   hex-codes
+                / literal
+                / sensitive
+                / insensitive
+
+hex-codes   =   %x68.65.6C.6C.6F
+literal     =   &quot;string literal&quot;
+sensitive   =   %s&quot;case-sensitive string&quot;
+insensitive =   %i&quot;case-insensitive string&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden web logs all">
+        <h2>Apache Access Log</h2>
+        <pre><code class="language-accesslog">20.164.151.111 - - [20/Aug/2015:22:20:18 -0400] &quot;GET /mywebpage/index.php HTTP/1.1&quot; 403 772 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.220 Safari/535.1&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>ActionScript</h2>
+        <pre><code class="language-actionscript">package org.example.dummy {
+    import org.dummy.*;
+
+    /*define package inline interface*/
+    public interface IFooBarzable {
+        public function foo(... pairs):Array;
+    }
+
+    public class FooBar implements IFooBarzable {
+        static private var cnt:uint = 0;
+        private var bar:String;
+
+        //constructor
+        public function TestBar(bar:String):void {
+            bar = bar;
+            ++cnt;
+        }
+
+        public function foo(... pairs):Array {
+            pairs.push(bar);
+            return pairs;
+        }
+    }
+}</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Ada</h2>
+        <pre><code class="language-ada">package body Sqlite.Simple is
+
+      Foo : int := int&#39;Size;
+      Bar : int := long&#39;Size;
+
+      Error_Message_C : chars_ptr := Sqlite_Errstr (Error);
+      Error_Message : String := Null_Ignore_Value (Error_Message_C);
+   begin
+
+      Named : for Index in Foo..Bar loop
+          Put (&quot;Hi[]{}&quot;);
+      end loop Named;
+
+      Foo := Bar;
+   end Message;
+
+end Sqlite.Simple;
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>AngelScript</h2>
+        <pre><code class="language-angelscript">interface IInterface
+{
+    void DoSomething();
+}
+
+namespace MyApplication
+{
+    /*
+     * This ia a test class.
+     */
+    class SomeClass : IInterface
+    {
+        array&lt;float&gt; m_arr;
+
+        array&lt;SomeClass@&gt; m_children;
+        array&lt;array&lt;SomeClass@&gt;&gt; m_subChildren; // Nested templates
+
+        int m_thing;
+
+        SomeClass()
+        {
+            // Add some integers
+            m_arr.insertLast(1.0f);
+            m_arr.insertLast(1.75f);
+            m_arr.insertLast(3.14159f);
+            uint x = 0x7fff0000;
+            int y = 9001;
+            uint z = 0b10101010;
+        }
+
+        int get_Thing() property { return m_thing; }
+        void set_Thing(int x) property { m_thing = x; }
+
+        [Hook x=1 y=2]
+        void DoSomething()
+        {
+            print(&quot;Something! &quot; + &#39;stuff.&#39;);
+            for (uint i = 0; i &lt; m_arr.length(); i++) {
+                print(&quot;  &quot; + i + &quot;: &quot; + m_arr[i]);
+            }
+        }
+
+        protected void SomeProtectedFunction()
+        {
+            try {
+                DoSomething();
+            } catch {
+                print(&quot;Exception while doing something!&quot;);
+            }
+        }
+    }
+}
+
+void Main()
+{
+    SomeClass@ c = SomeClass();
+    c.DoSomething();
+}
+
+string multilineString = &quot;&quot;&quot;
+Hello world, &quot;this is a test&quot;!
+&quot;&quot;&quot;;
+</code></pre>
+      </div>
+
+      <div class="hidden config web all">
+        <h2>Apache config</h2>
+        <pre><code class="language-apache"># rewrite`s rules for wordpress pretty url
+LoadModule rewrite_module  modules/mod_rewrite.so
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [NC,L]
+
+ExpiresActive On
+ExpiresByType application/x-javascript  &quot;access plus 1 days&quot;
+
+Order Deny,Allow
+Allow from All
+
+&lt;Location /maps/&gt;
+  RewriteMap map txt:map.txt
+  RewriteMap lower int:tolower
+  RewriteCond %{REQUEST_URI} ^/([^/.]+)\.html$ [NC]
+  RewriteCond ${map:${lower:%1}|NOT_FOUND} !NOT_FOUND
+  RewriteRule .? /index.php?q=${map:${lower:%1}} [NC,L]
+&lt;/Location&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>AppleScript</h2>
+        <pre><code class="language-applescript">repeat 5 times
+    if foo is greater than bar then
+        display dialog &quot;Hello there&quot;
+    else
+        beep
+    end if
+end repeat
+
+(* comment (*nested comment*) *)
+on do_something(s, y)
+    return {s + pi, y mod 4}
+end do_something
+
+do shell script &quot;/bin/echo &#39;hello&#39;&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>ArcGIS Arcade</h2>
+        <pre><code class="language-arcade">/* Highlight.js est for Arcade */
+function testGeometry(element, point) {
+    if (point.y != -1)
+        return point;
+    for (var i = 0 / 2; i &lt; element.length; i++) {
+        if (checkCondition($map.element[i]) === Infinity) {
+            return DistanceGeodetic(element[i]);
+        }
+    }
+    return element;
+}
+var filePath = &quot;literal &quot; + TextFormatting.BackSlash + TextFormatting.SingleQuote + &quot;.ext&quot;
+var d = Dictionary(&quot;field1&quot;, 1, &quot;field2&quot;,2);
+return FeatureSet($map, [&quot;POPULATION&quot;, &quot;ELECTION-DATA&quot;]);
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Arduino</h2>
+        <pre><code class="language-arduino">/*
+  Blink
+  Turns on an LED on for one second, then off for one second, repeatedly.
+
+  This example code is in the public domain.
+ */
+
+// Pin 13 has an LED connected on most Arduino boards.
+// give it a name:
+int led = 13;
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize the digital pin as an output.
+  pinMode(led, OUTPUT);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);               // wait for a second
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);               // wait for a second
+}</code></pre>
+      </div>
+
+      <div class="hidden assembler all">
+        <h2>ARM Assembly</h2>
+        <pre><code class="language-armasm">.text
+
+.global connect
+connect:
+    mov     r3, #2              ; s-&gt;sin_family = AF_INET
+    strh    r3, [sp]
+    ldr     r3, =server_port    ; s-&gt;sin_port = server_port
+    ldr     r3, [r3]
+    strh    r3, [sp, #2]
+    ldr     r3, =server_addr    ; s-&gt;sin_addr = server_addr
+    ldr     r3, [r3]
+    str     r3, [sp, #4]
+    mov     r3, #0              ; bzero(&amp;s-&gt;sin_zero)
+    str     r3, [sp, #8]
+    str     r3, [sp, #12]
+    mov     r1, sp      ; const struct sockaddr *addr = sp
+
+    ldr     r7, =connect_call
+    ldr     r7, [r7]
+    swi     #0
+
+    add     sp, sp, #16
+    pop     {r0}        ; pop sockfd
+
+    pop     {r7}
+    pop     {fp, ip, lr}
+    mov     sp, ip
+    bx      lr
+
+.data
+socket_call:   .long 281
+connect_call:  .long 283
+
+/* all addresses are network byte-order (big-endian) */
+server_addr:            .long 0x0100007f ; localhost
+server_port:            .hword 0x0b1a
+</code></pre>
+      </div>
+
+      <div class="common web all">
+        <h2>HTML, XML</h2>
+        <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;title&gt;Title&lt;/title&gt;
+
+&lt;style&gt;body {width: 500px;}&lt;/style&gt;
+
+&lt;script type=&quot;application/javascript&quot;&gt;
+  function $init() {return true;}
+&lt;/script&gt;
+
+&lt;body&gt;
+  &lt;p checked class=&quot;title&quot; id=&#39;title&#39;&gt;Title&lt;/p&gt;
+  &lt;!-- here goes the rest of the page --&gt;
+&lt;/body&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden markup all">
+        <h2>AsciiDoc</h2>
+        <pre><code class="language-asciidoc">Hello, World!
+============
+Author Name, &lt;author@domain.foo&gt;
+
+you can write text http://example.com[with links], optionally
+using an explicit link:http://example.com[link prefix].
+
+* single quotes around a phrase place &#39;emphasis&#39;
+** alternatively, you can put underlines around a phrase to add _emphasis_
+* astericks around a phrase make the text *bold*
+* pluses around a phrase make it +monospaced+
+* `smart&#39; quotes using a leading backtick and trailing single quote
+** use two of each for double ``smart&#39;&#39; quotes
+
+- escape characters are supported
+- you can escape a quote inside emphasized text like &#39;here\&#39;s johnny!&#39;
+
+term:: definition
+ another term:: another definition
+
+// this is just a comment
+
+Let&#39;s make a break.
+
+&#39;&#39;&#39;
+
+////
+we&#39;ll be right with you
+
+after this brief interruption.
+////
+
+== We&#39;re back!
+
+Want to see a image::images/tiger.png[Tiger]?
+
+.Nested highlighting
+++++
+&lt;this_is inline=&quot;xml&quot;&gt;&lt;/this_is&gt;
+++++
+
+____
+asciidoc is so powerful.
+____
+
+another quote:
+
+[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]
+____
+When you have eliminated all which is impossible, then whatever remains, however improbable, must be the truth.
+____
+
+Getting Literal
+---------------
+
+ want to get literal? prefix a line with a space.
+
+....
+I&#39;ll join that party, too.
+....
+
+. one thing (yeah!)
+. two thing `i can write code`, and `more` wipee!
+
+NOTE: AsciiDoc is quite cool, you should try it.</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>AspectJ</h2>
+        <pre><code class="language-aspectj">package com.aspectj.syntax;
+import org.aspectj.lang.annotation.AdviceName;
+
+privileged public aspect LoggingAspect percflowbelow(ajia.services.*){
+  private pointcut getResult() : call(* *(..) throws SQLException) &amp;&amp; args(Account, .., int);
+  @AdviceName(&quot;CheckValidEmail&quot;)
+  before (Customer hu) : getResult(hu){
+    System.out.println(&quot;Your mail address is valid!&quot;);
+  }
+  Object around() throws InsufficientBalanceException: getResult() &amp;&amp; call(Customer.new(String,String,int,int,int)){
+    return	proceed();
+  }
+  public Cache getCache() {
+    return this.cache;
+  }
+  pointcut beanPropertyChange(BeanSupport bean, Object newValue): execution(void BeanSupport+.set*(*)) &amp;&amp; args(newValue) &amp;&amp; this(bean);
+  declare parents: banking.entities.* implements BeanSupport;
+  declare warning : call(void TestSoftening.perform()): &quot;Please ensure you are not calling this from an AWT thread&quot;;
+  private String Identifiable.id;
+  public void Identifiable.setId(String id) {
+    this.id = id;
+  }
+}</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>AutoHotkey</h2>
+        <pre><code class="language-autohotkey">; hotkeys and hotstrings
+#a::WinSet, AlwaysOnTop, Toggle, A
+#Space::
+  MsgBox, Percent sign (`%) need to be escaped.
+  Run &quot;C:\Program Files\some\program.exe&quot;
+  Gosub, label1
+return
+::btw::by the way
+; volume
+#Numpad8::Send {Volume_Up}
+#Numpad5::Send {Volume_Mute}
+#Numpad2::Send {Volume_Down}
+
+label1:
+  if (Clipboard = &quot;&quot;)
+  {
+    MsgBox, , Clipboard, Empty!
+  }
+  else
+  {
+    StringReplace, temp, Clipboard, old, new, All
+    MsgBox, , Clipboard, %temp%
+  }
+return
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>AutoIt</h2>
+        <pre><code class="language-autoit">#NoTrayIcon
+#AutoIt3Wrapper_Run_Tidy=Y
+#include &lt;Misc.au3&gt;
+
+_Singleton(@ScriptName) ; Allow only one instance
+example(0, 10)
+
+Func example($min, $max)
+	For $i = $min To $max
+		If Mod($i, 2) == 0 Then
+			MsgBox(64, &quot;Message&quot;, $i &amp; &#39; is even number!&#39;)
+		Else
+			MsgBox(64, &quot;Message&quot;, $i &amp; &#39; is odd number!&#39;)
+		EndIf
+	Next
+EndFunc   ;==&gt;example</code></pre>
+      </div>
+
+      <div class="hidden assembler all">
+        <h2>AVR Assembly</h2>
+        <pre><code class="language-avrasm">;* Title:       Block Copy Routines
+;* Version:     1.1
+
+.include &quot;8515def.inc&quot;
+
+        rjmp    RESET       ;reset handle
+
+.def    flashsize=r16       ;size of block to be copied
+
+flash2ram:
+        lpm                 ;get constant
+        st      Y+,r0       ;store in SRAM and increment Y-pointer
+        adiw    ZL,1        ;increment Z-pointer
+        dec     flashsize
+        brne    flash2ram   ;if not end of table, loop more
+        ret
+
+.def    ramtemp =r1         ;temporary storage register
+.def    ramsize =r16        ;size of block to be copied
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Awk</h2>
+        <pre><code class="language-awk">BEGIN {
+  POPService  = &quot;/inet/tcp/0/emailhost/pop3&quot;
+  RS = ORS = &quot;\r\n&quot;
+  print &quot;user name&quot;            |&amp; POPService
+  POPService                    |&amp; getline
+  print &quot;pass password&quot;         |&amp; POPService
+  POPService                    |&amp; getline
+  print &quot;retr 1&quot;                |&amp; POPService
+  POPService                    |&amp; getline
+  if ($1 != &quot;+OK&quot;) exit
+  print &quot;quit&quot;                  |&amp; POPService
+  RS = &quot;\r\n\\.\r\n&quot;
+  POPService |&amp; getline
+  print $0
+  close(POPService)
+}
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise all">
+        <h2>Microsoft X++</h2>
+        <pre><code class="language-axapta">class ExchRateLoadBatch extends RunBaseBatch {
+  ExchRateLoad rbc;
+  container currencies;
+  boolean actual;
+  boolean overwrite;
+  date beg;
+  date end;
+
+  #define.CurrentVersion(5)
+
+  #localmacro.CurrentList
+    currencies,
+    actual,
+    beg,
+    end
+  #endmacro
+}
+
+public boolean unpack(container packedClass) {
+  container       base;
+  boolean         ret;
+  Integer         version    = runbase::getVersion(packedClass);
+
+  switch (version) {
+    case #CurrentVersion:
+      [version, #CurrentList] = packedClass;
+      return true;
+    default:
+      return false;
+  }
+  return ret;
+}
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Bash</h2>
+        <pre><code class="language-bash">#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS=&quot;/root/.hag_accepted.conf&quot;
+BE_VERBOSE=false
+
+if [ &quot;$UID&quot; -ne 0 ]
+then
+ echo &quot;Superuser rights required&quot;
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e &quot;# Host ${HOME_DIR}$1/$2 :&quot;
+}
+
+echo &#39;&quot;quoted&quot;&#39; | tr -d \&quot; &gt; text.txt
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>BASIC</h2>
+        <pre><code class="language-basic">10 CLS
+20 FOR I = 0 TO 15
+22 FOR J = 0 TO 7
+30 COLOR I,J
+40 PRINT &quot; ** &quot;;
+45 NEXT J
+46 COLOR I,0
+47 GOSUB 100
+48 PRINT
+50 NEXT I
+60 COLOR 15,0
+99 END
+100 FOR T = 65 TO 90
+101 PRINT CHR$(T);
+102 NEXT T
+103 RETURN
+200 REM Data types test
+201 TOTAL# = 3.30#		&#39;Double precision variable
+202 BALANCE! = 3!		&#39;Single precision variable
+203 B2! = 12e5			&#39;120000
+204 ITEMS% = 10			&#39;Integer variable
+205 HEXTEST = &amp;H12DB	&#39;Hex value
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Backus–Naur Form</h2>
+        <pre><code class="language-bnf">&lt;syntax&gt;         ::= &lt;rule&gt; | &lt;rule&gt; &lt;syntax&gt;
+&lt;rule&gt;           ::= &lt;opt-whitespace&gt; &quot;&lt;&quot; &lt;rule-name&gt; &quot;&gt;&quot; &lt;opt-whitespace&gt; &quot;::=&quot; &lt;opt-whitespace&gt; &lt;expression&gt; &lt;line-end&gt;
+&lt;opt-whitespace&gt; ::= &quot; &quot; &lt;opt-whitespace&gt; | &quot;&quot;
+&lt;expression&gt;     ::= &lt;list&gt; | &lt;list&gt; &lt;opt-whitespace&gt; &quot;|&quot; &lt;opt-whitespace&gt; &lt;expression&gt;
+&lt;line-end&gt;       ::= &lt;opt-whitespace&gt; &lt;EOL&gt; | &lt;line-end&gt; &lt;line-end&gt;
+&lt;list&gt;           ::= &lt;term&gt; | &lt;term&gt; &lt;opt-whitespace&gt; &lt;list&gt;
+&lt;term&gt;           ::= &lt;literal&gt; | &quot;&lt;&quot; &lt;rule-name&gt; &quot;&gt;&quot;
+&lt;literal&gt;        ::= &#39;&quot;&#39; &lt;text&gt; &#39;&quot;&#39; | &quot;&#39;&quot; &lt;text&gt; &quot;&#39;&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Brainfuck</h2>
+        <pre><code class="language-brainfuck">++++++++++
+[ 3*10 and 10*10
+  -&gt;+++&gt;++++++++++&lt;&lt;
+]&gt;&gt;
+[ filling cells
+  -&gt;++&gt;&gt;++&gt;++&gt;+&gt;++&gt;&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++&gt;++[&lt;/]&lt;[&lt;]&lt;[&lt;]&gt;&gt;
+]&lt;
++++++++++&lt;&lt;
+[ rough codes correction loop
+  -&gt;&gt;&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+[&lt;]&lt;
+]
+more accurate сodes correction
+&gt;&gt;&gt;++&gt;
+--&gt;+++++++&gt;------&gt;++++++&gt;++&gt;+++++++++&gt;++++++++++&gt;++++++++&gt;---&gt;++++++++++&gt;------&gt;++++++&gt;
+++&gt;+++++++++++&gt;++++++++++++&gt;------&gt;+++
+rewind and output
+[&lt;]&gt;[.&gt;]
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>C/AL</h2>
+        <pre><code class="language-cal">OBJECT Codeunit 11 Gen. Jnl.-Check Line
+{
+  OBJECT-PROPERTIES
+  {
+    Date=09-09-14;
+    Time=12:00:00;
+    Version List=NAVW18.00;
+  }
+  PROPERTIES
+  {
+    TableNo=81;
+    Permissions=TableData 252=rimd;
+    OnRun=BEGIN
+            GLSetup.GET;
+            RunCheck(Rec);
+          END;
+
+  }
+  CODE
+  {
+    VAR
+      Text000@1000 : TextConst &#39;ENU=can only be a closing date for G/L entries&#39;;
+      Text001@1001 : TextConst &#39;ENU=is not within your range of allowed posting dates&#39;;
+
+    PROCEDURE ErrorIfPositiveAmt@2(GenJnlLine@1000 : Record 81);
+    BEGIN
+      IF GenJnlLine.Amount &gt; 0 THEN
+        GenJnlLine.FIELDERROR(Amount,Text008);
+    END;
+
+    LOCAL PROCEDURE CheckGenJnlLineDocType@7(GenJnlLine@1001 : Record 81);
+  }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden protocols all">
+        <h2>Cap’n Proto</h2>
+        <pre><code class="language-capnproto">@0xdbb9ad1f14bf0b36;  # unique file ID, generated by `capnp id`
+
+struct Person {
+  name @0 :Text;
+  birthdate @3 :Date;
+
+  email @1 :Text;
+  phones @2 :List(PhoneNumber);
+
+  struct PhoneNumber {
+    number @0 :Text;
+    type @1 :Type;
+
+    enum Type {
+      mobile @0;
+      home @1;
+      work @2;
+    }
+  }
+}
+
+struct Date {
+  year @0 :Int16;
+  month @1 :UInt8;
+  day @2 :UInt8;
+  flags @3 :List(Bool) = [ true, false, false, true ];
+}
+
+interface Node {
+  isDirectory @0 () -&gt; (result :Bool);
+}
+
+interface Directory extends(Node) {
+  list @0 () -&gt; (list: List(Entry));
+  struct Entry {
+    name @0 :Text;
+    node @1 :Node;
+  }
+
+  create @1 (name :Text) -&gt; (file :File);
+  mkdir @2 (name :Text) -&gt; (directory :Directory)
+  open @3 (name :Text) -&gt; (node :Node);
+  delete @4 (name :Text);
+  link @5 (name :Text, node :Node);
+}
+
+interface File extends(Node) {
+  size @0 () -&gt; (size: UInt64);
+  read @1 (startAt :UInt64 = 0, amount :UInt64 = 0xffffffffffffffff)
+       -&gt; (data: Data);
+  # Default params = read entire file.
+
+  write @2 (startAt :UInt64, data :Data);
+  truncate @3 (size :UInt64);
+}</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Ceylon</h2>
+        <pre><code class="language-ceylon">shared void run() {
+    print(&quot;Hello, `` process.arguments.first else &quot;World&quot; ``!&quot;);
+}
+class Counter(count=0) {
+    variable Integer count;
+    shared Integer currentValue =&gt; count;
+    shared void increment() =&gt; count++;
+}
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Clean</h2>
+        <pre><code class="language-clean">module fsieve
+
+import StdClass; // RWS
+import StdInt, StdReal
+
+NrOfPrimes :== 3000
+
+primes :: [Int]
+primes = pr where pr = [5 : sieve 7 4 pr]
+
+sieve :: Int !Int [Int] -&gt; [Int]
+sieve g i prs
+| isPrime prs g (toInt (sqrt (toReal g))) = [g : sieve` g i prs]
+| otherwise                               = sieve (g + i) (6 - i) prs
+
+sieve` :: Int Int [Int] -&gt; [Int]
+sieve` g i prs = sieve (g + i) (6 - i) prs
+
+isPrime :: [Int] !Int Int -&gt; Bool
+isPrime [f:r] pr bd
+| f&gt;bd        =  True
+| pr rem f==0 =  False
+| otherwise   =  isPrime r pr bd
+
+select :: [x] Int -&gt; x
+select [f:r] 1 = f
+select [f:r] n = select r (n - 1)
+
+Start :: Int
+Start = select [2, 3 : primes] NrOfPrimes
+</code></pre>
+      </div>
+
+      <div class="hidden lisp all">
+        <h2>Clojure</h2>
+        <pre><code class="language-clojure">(def ^:dynamic chunk-size 17)
+
+(defn next-chunk [rdr]
+  (let [buf (char-array chunk-size)
+        s (.read rdr buf)]
+  (when (pos? s)
+    (java.nio.CharBuffer/wrap buf 0 s))))
+
+(defn chunk-seq [rdr]
+  (when-let [chunk (next-chunk rdr)]
+    (cons chunk (lazy-seq (chunk-seq rdr)))))
+</code></pre>
+      </div>
+
+      <div class="hidden lisp all">
+        <h2>Clojure REPL</h2>
+        <pre><code class="language-clojure-repl">user=&gt; (defn f [x y]
+  #_=&gt;   (+ x y))
+#&#39;user/f
+user=&gt; (f 5 7)
+12
+user=&gt; nil
+nil
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>CMake</h2>
+        <pre><code class="language-cmake">cmake_minimum_required(VERSION 2.8.8)
+project(cmake_example)
+
+# Show message on Linux platform
+if (${CMAKE_SYSTEM_NAME} MATCHES Linux)
+    message(&quot;Good choice, bro!&quot;)
+endif()
+
+# Tell CMake to run moc when necessary:
+set(CMAKE_AUTOMOC ON)
+# As moc files are generated in the binary dir,
+# tell CMake to always look for includes there:
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# Widgets finds its own dependencies.
+find_package(Qt5Widgets REQUIRED)
+
+add_executable(myproject main.cpp mainwindow.cpp)
+qt5_use_modules(myproject Widgets)
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>CoffeeScript</h2>
+        <pre><code class="language-coffeescript">grade = (student, period=(if b? then 7 else 6)) -&gt;
+  if student.excellentWork
+    &quot;A+&quot;
+  else if student.okayStuff
+    if student.triedHard then &quot;B&quot; else &quot;B-&quot;
+  else
+    &quot;C&quot;
+
+class Animal extends Being
+  constructor: (@name) -&gt;
+
+  move: (meters) -&gt;
+    alert @name + &quot; moved #{meters}m.&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Coq</h2>
+        <pre><code class="language-coq">Inductive seq : nat -&gt; Set :=
+| niln : seq 0
+| consn : forall n : nat, nat -&gt; seq n -&gt; seq (S n).
+
+Fixpoint length (n : nat) (s : seq n) {struct s} : nat :=
+  match s with
+  | niln =&gt; 0
+  | consn i _ s&#39; =&gt; S (length i s&#39;)
+  end.
+
+Theorem length_corr : forall (n : nat) (s : seq n), length n s = n.
+Proof.
+  intros n s.
+
+  (* reasoning by induction over s. Then, we have two new goals
+     corresponding on the case analysis about s (either it is
+     niln or some consn *)
+  induction s.
+
+    (* We are in the case where s is void. We can reduce the
+       term: length 0 niln *)
+    simpl.
+
+    (* We obtain the goal 0 = 0. *)
+    trivial.
+
+    (* now, we treat the case s = consn n e s with induction
+       hypothesis IHs *)
+    simpl.
+
+    (* The induction hypothesis has type length n s = n.
+       So we can use it to perform some rewriting in the goal: *)
+    rewrite IHs.
+
+    (* Now the goal is the trivial equality: S n = S n *)
+    trivial.
+
+  (* Now all sub cases are closed, we perform the ultimate
+     step: typing the term built using tactics and save it as
+     a witness of the theorem. *)
+Qed.
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise scripting all">
+        <h2>Caché Object Script</h2>
+        <pre><code class="language-cos">#dim test as %Library.Integer
+SET test = 123.099
+set ^global = %request.Content
+Write &quot;Current date &quot;&quot;&quot;, $ztimestamp, &quot;&quot;&quot;, result: &quot;, test + ^global = 125.099
+do ##class(Cinema.Utils).AddShow(&quot;test&quot;) // class method call
+do ##super() ; another one-line comment
+d:(^global = 2) ..thisClassMethod(1, 2, &quot;test&quot;)
+/*
+ * Sub-languages support:
+ */
+&amp;sql( SELECT * FROM Cinema.Film WHERE Length &gt; 2 )
+&amp;js&lt;for (var i = 0; i &lt; String(&quot;test&quot;).split(&quot;&quot;).length); ++i) {
+    console.log(i);
+}&gt;
+&amp;html&lt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt; &lt;meta name=&quot;test&quot;/&gt; &lt;/head&gt;
+&lt;body&gt;Test&lt;/body&gt;
+&lt;/html&gt;&gt;
+
+quit $$$OK
+</code></pre>
+      </div>
+
+      <div class="common system all">
+        <h2>C++</h2>
+        <pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int main(int argc, char *argv[]) {
+
+  /* An annoying &quot;Hello World&quot; example */
+  for (auto i = 0; i &lt; 0xFFFF; i++)
+    cout &lt;&lt; &quot;Hello, World!&quot; &lt;&lt; endl;
+
+  char c = &#39;\n&#39;;
+  unordered_map &lt;string, vector&lt;string&gt; &gt; m;
+  m[&quot;key&quot;] = &quot;\\\\&quot;; // this is an error
+
+  return -2e3 + 12l;
+}
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>crmsh</h2>
+        <pre><code class="language-crmsh">node webui
+node 168633611: node1
+rsc_template web-server apache \
+	params port=8000 \
+	op monitor interval=10s
+# Never use this STONITH agent in production!
+primitive development-stonith stonith:null \
+	params hostlist=&quot;webui node1 node2 node3&quot;
+primitive proxy systemd:haproxy \
+	op monitor interval=10s
+primitive proxy-vip IPaddr2 \
+	params ip=10.13.37.20
+primitive srv1 @web-server
+primitive srv2 @web-server
+primitive test1 Dummy
+primitive test2 IPaddr2 \
+	params ip=10.13.37.99
+primitive vip1 IPaddr2 \
+	params ip=10.13.37.21 \
+	op monitor interval=20s
+primitive vip2 IPaddr2 \
+	params ip=10.13.37.22 \
+	op monitor interval=20s
+group g-proxy proxy-vip proxy
+group g-serv1 vip1 srv1
+group g-serv2 vip2 srv2
+# Never put the two web servers on the same node
+colocation co-serv -inf: g-serv1 g-serv2
+# Never put any web server or haproxy on webui
+location l-avoid-webui { g-proxy g-serv1 g-serv2 } -inf: webui
+# Prever to spread groups across nodes
+location l-proxy g-proxy 200: node1
+location l-serv1 g-serv1 200: node2
+location l-serv2 g-serv2 200: node3
+property cib-bootstrap-options: \
+	stonith-enabled=true \
+	no-quorum-policy=ignore \
+	placement-strategy=balanced \
+	have-watchdog=false \
+	dc-version=&quot;1.1.13-1.1.13+git20150827.e8888b9&quot; \
+	cluster-infrastructure=corosync \
+	cluster-name=hacluster
+rsc_defaults rsc-options: \
+	resource-stickiness=1 \
+	migration-threshold=3
+op_defaults op-options: \
+	timeout=600 \
+	record-pending=true
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Crystal</h2>
+        <pre><code class="language-crystal">class Person
+  def initialize(@name : String)
+  end
+
+  def greet
+    puts &quot;Hi, I&#39;m #{@name}&quot;
+  end
+end
+
+class Employee &lt; Person
+end
+
+employee = Employee.new &quot;John&quot;
+employee.greet         # =&gt; &quot;Hi, I&#39;m John&quot;
+employee.is_a?(Person) # =&gt; true
+
+@[Link(&quot;m&quot;)]
+lib C
+  # In C: double cos(double x)
+  fun cos(value : Float64) : Float64
+end
+
+C.cos(1.5_f64) # =&gt; 0.0707372
+
+s = uninitialized String
+s = &lt;&lt;-&#39;STR&#39;
+\hello\world
+\hello\world
+STR
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>C#</h2>
+        <pre><code class="language-csharp">using System.IO.Compression;
+
+#pragma warning disable 414, 3021
+
+namespace MyApplication
+{
+    [Obsolete(&quot;...&quot;)]
+    class Program : IInterface
+    {
+        public static List&lt;int&gt; JustDoIt(int count)
+        {
+            Span&lt;int&gt; numbers = stackalloc int[length];
+            Console.WriteLine($&quot;Hello {Name}!&quot;);
+            return new List&lt;int&gt;(new int[] { 1, 2, 3 })
+        }
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>CSP</h2>
+        <pre><code class="language-csp">Content-Security-Policy:
+    default-src &#39;self&#39;;
+    style-src &#39;self&#39; css.example.com;
+    img-src *.example.com;
+    script-src &#39;unsafe-eval&#39; &#39;self&#39; js.example.com &#39;nonce-Nc3n83cnSAd3wc3Sasdfn939hc3&#39;
+</code></pre>
+      </div>
+
+      <div class="common css web all">
+        <h2>CSS</h2>
+        <pre><code class="language-css">@font-face {
+  font-family: Chunkfive; src: url(&#39;Chunkfive.otf&#39;);
+}
+
+body, .usertext {
+  color: #F0F0F0; background: #600;
+  font-family: Chunkfive, sans;
+  --heading-1: 30px/32px Helvetica, sans-serif;
+}
+
+@import url(print.css);
+@media print {
+  a[href^=http]::after {
+    content: attr(href)
+  }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>D</h2>
+        <pre><code class="language-d">#!/usr/bin/rdmd
+// Computes average line length for standard input.
+import std.stdio;
+
+/+
+  this is a /+ nesting +/ comment
++/
+
+enum COMPILED_ON = __TIMESTAMP__;  // special token
+
+enum character = &#39;©&#39;;
+enum copy_valid = &#39;&amp;copy;&#39;;
+enum backslash_escaped = &#39;\\&#39;;
+
+// string literals
+enum str = `hello &quot;world&quot;!`;
+enum multiline = r&quot;lorem
+ipsum
+dolor&quot;;  // wysiwyg string, no escapes here allowed
+enum multiline2 = &quot;sit
+amet
+\&quot;adipiscing\&quot;
+elit.&quot;;
+enum hex = x&quot;66 6f 6f&quot;;   // same as &quot;foo&quot;
+
+#line 5
+
+// float literals
+enum f = [3.14f, .1, 1., 1e100, 0xc0de.01p+100];
+
+static if (something == true) {
+   import std.algorithm;
+}
+
+void main() pure nothrow @safe {
+    ulong lines = 0;
+    double sumLength = 0;
+    foreach (line; stdin.byLine()) {
+        ++lines;
+        sumLength += line.length;
+    }
+    writeln(&quot;Average line length: &quot;,
+        lines ? sumLength / lines : 0);
+}
+</code></pre>
+      </div>
+
+      <div class="common markup all">
+        <h2>Markdown</h2>
+        <pre><code class="language-markdown"># hello world
+
+you can write text [with links](http://example.com) inline or [link references][1].
+
+* one _thing_ has *em*phasis
+* two __things__ are **bold**
+
+[1]: http://example.com
+
+---
+
+hello world
+===========
+
+&lt;this_is inline=&quot;xml&quot;&gt;&lt;/this_is&gt;
+
+&gt; markdown is so cool
+
+    so are code segments
+
+1. one thing (yeah!)
+2. two thing `i can write code`, and `more` wipee!
+
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>Dart</h2>
+        <pre><code class="language-dart">library app;
+import &#39;dart:html&#39;;
+
+part &#39;app2.dart&#39;;
+
+/**
+ * Class description and [link](http://dartlang.org/).
+ */
+@Awesome(&#39;it works!&#39;)
+class SomeClass&lt;S extends Iterable&gt; extends BaseClass&lt;S&gt; implements Comparable {
+  factory SomeClass(num param);
+  SomeClass._internal(int q) : super() {
+    assert(q != 1);
+    double z = 0.0;
+  }
+
+  /// **Sum** function
+  int sum(int a, int b) =&gt; a + b;
+
+  ElementList els() =&gt; querySelectorAll(&#39;.dart&#39;);
+}
+
+String str = &#39; (${&#39;parameter&#39; + &#39;zxc&#39;})&#39;;
+String str = &quot; (${true ? 2 + 2 / 2 : null})&quot;;
+String str = &quot; ($variable)&quot;;
+String str = r&#39;\nraw\&#39;;
+String str = r&quot;\nraw\&quot;;
+var str = &#39;&#39;&#39;
+Something ${2+3}
+&#39;&#39;&#39;;
+var str = r&quot;&quot;&quot;
+Something ${2+3}
+&quot;&quot;&quot;;
+
+checkVersion() async {
+  var version = await lookUpVersion();
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Delphi</h2>
+        <pre><code class="language-delphi">TList = Class(TObject)
+Private
+  Some: String;
+Public
+  Procedure Inside; // Suxx
+End;{TList}
+
+Procedure CopyFile(InFileName, var OutFileName: String);
+Const
+  BufSize = 4096; (* Huh? *)
+Var
+  InFile, OutFile: TStream;
+  Buffer: Array[1..BufSize] Of Byte;
+  ReadBufSize: Integer;
+Begin
+  InFile := Nil;
+  OutFile := Nil;
+  Try
+    InFile := TFileStream.Create(InFileName, fmOpenRead);
+    OutFile := TFileStream.Create(OutFileName, fmCreate);
+    Repeat
+      ReadBufSize := InFile.Read(Buffer, BufSize);
+      OutFile.Write(Buffer, ReadBufSize);
+    Until ReadBufSize&lt;&gt;BufSize;
+    Log(&#39;File &#39;&#39;&#39; + InFileName + &#39;&#39;&#39; copied&#39;#13#10);
+  Finally
+    InFile.Free;
+    OutFile.Free;
+  End;{Try}
+End;{CopyFile}
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Diff</h2>
+        <pre><code class="language-diff">Index: languages/ini.js
+===================================================================
+--- languages/ini.js    (revision 199)
++++ languages/ini.js    (revision 200)
+@@ -1,8 +1,7 @@
+ hljs.LANGUAGES.ini =
+ {
+   case_insensitive: true,
+-  defaultMode:
+-  {
++  defaultMode: {
+     contains: [&#39;comment&#39;, &#39;title&#39;, &#39;setting&#39;],
+     illegal: &#39;[^\\s]&#39;
+   },
+
+*** /path/to/original timestamp
+--- /path/to/new      timestamp
+***************
+*** 1,3 ****
+--- 1,9 ----
++ This is an important
++ notice! It should
++ therefore be located at
++ the beginning of this
++ document!
+
+! compress the size of the
+! changes.
+
+  It is important to spell
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Django</h2>
+        <pre><code class="language-django">{% if articles|length %}
+{% for article in articles %}
+
+{% custom %}
+
+{# Striped table #}
+&lt;tr class=&quot;{% cycle odd,even %}&quot;&gt;
+  &lt;td&gt;{{ article|default:&quot;Hi... &quot; }}&lt;/td&gt;
+  &lt;td {% if article.today %}class=&quot;today&quot;{% endif %}&gt;
+    Published on {{ article.date }}
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+{% endfor %}
+{% endif %}
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>DNS Zone</h2>
+        <pre><code class="language-dns">$ORIGIN example.com.    ; designates the start of this zone file in the namespace
+$TTL 1h                 ; default expiration time of all resource records without their own TTL value
+example.com.  IN  SOA   ns.example.com. username.example.com. ( 2007120710 1d 2h 4w 1h )
+example.com.  IN  NS    ns                    ; ns.example.com is a nameserver for example.com
+example.com.  IN  NS    ns.somewhere.example. ; ns.somewhere.example is a backup nameserver for example.com
+example.com.  IN  MX    10 mail.example.com.  ; mail.example.com is the mailserver for example.com
+@             IN  MX    20 mail2.example.com. ; equivalent to above line, &quot;@&quot; represents zone origin
+@             IN  MX    50 mail3              ; equivalent to above line, but using a relative host name
+example.com.  IN  A     192.0.2.1             ; IPv4 address for example.com
+              IN  AAAA  2001:db8:10::1        ; IPv6 address for example.com
+ns            IN  A     192.0.2.2             ; IPv4 address for ns.example.com
+              IN  AAAA  2001:db8:10::2        ; IPv6 address for ns.example.com
+www           IN  CNAME example.com.          ; www.example.com is an alias for example.com
+wwwtest       IN  CNAME www                   ; wwwtest.example.com is another alias for www.example.com
+mail          IN  A     192.0.2.3             ; IPv4 address for mail.example.com
+mail2         IN  A     192.0.2.4             ; IPv4 address for mail2.example.com
+mail3         IN  A     192.0.2.5             ; IPv4 address for mail3.example.com
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>Dockerfile</h2>
+        <pre><code class="language-dockerfile"># Example instructions from https://docs.docker.com/reference/builder/
+FROM ubuntu:14.04
+
+MAINTAINER example@example.com
+
+ENV foo /bar
+WORKDIR ${foo}   # WORKDIR /bar
+ADD . $foo       # ADD . /bar
+COPY \$foo /quux # COPY $foo /quux
+ARG   VAR=FOO
+
+RUN apt-get update &amp;&amp; apt-get install -y software-properties-common\
+    zsh curl wget git htop\
+    unzip vim telnet
+RUN [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;echo hello ${USER}&quot;]
+
+CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]
+CMD command param1 param2
+
+EXPOSE 1337
+
+ENV myName=&quot;John Doe&quot; myDog=Rex\ The\ Dog \
+    myCat=fluffy
+
+ENV myName John Doe
+ENV myDog Rex The Dog
+ENV myCat fluffy
+
+ADD hom* /mydir/        # adds all files starting with &quot;hom&quot;
+ADD hom?.txt /mydir/    # ? is replaced with any single character
+
+COPY hom* /mydir/        # adds all files starting with &quot;hom&quot;
+COPY hom?.txt /mydir/    # ? is replaced with any single character
+COPY --from=foo / .
+
+ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]
+ENTRYPOINT command param1 param2
+
+VOLUME [&quot;/data&quot;]
+
+USER daemon
+
+LABEL com.example.label-with-value=&quot;foo&quot;
+LABEL version=&quot;1.0&quot;
+LABEL description=&quot;This text illustrates \
+that label-values can span multiple lines.&quot;
+
+WORKDIR /path/to/workdir
+
+ONBUILD ADD . /app/src
+
+STOPSIGNAL SIGKILL
+
+HEALTHCHECK --retries=3 cat /health
+
+SHELL [&quot;/bin/bash&quot;, &quot;-c&quot;]
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Batch file (DOS)</h2>
+        <pre><code class="language-dos">cd \
+copy a b
+ping 192.168.0.1
+@rem ping 192.168.0.1
+net stop sharedaccess
+del %tmp% /f /s /q
+del %temp% /f /s /q
+ipconfig /flushdns
+taskkill /F /IM JAVA.EXE /T
+
+cd Photoshop/Adobe Photoshop CS3/AMT/
+if exist application.sif (
+    ren application.sif _application.sif
+) else (
+    ren _application.sif application.sif
+)
+
+taskkill /F /IM proquota.exe /T
+
+sfc /SCANNOW
+
+set path = test
+
+xcopy %1\*.* %2
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise config all">
+        <h2>dsconfig</h2>
+        <pre><code class="language-dsconfig"># Create client connection policies
+dsconfig create-client-connection-policy \
+  --policy-name &quot;Restrictive Client Connection Policy&quot; \
+  --set &quot;description:Restrictive Client Connection Policy&quot; \
+  --set enabled:true --set evaluation-order-index:1000 \
+  --set &quot;connection-criteria:User.0 Connection Criteria&quot; \
+  --set maximum-concurrent-connections:2 \
+  --set &quot;maximum-connection-duration:1 s&quot; \
+  --set &quot;maximum-idle-connection-duration:1 s&quot; \
+  --set maximum-operation-count-per-connection:1000
+create-client-connection-policy \
+  --policy-name &quot;Another Client Connection Policy&quot; \
+  --set enabled:true --set evaluation-order-index:100 \
+  --set &#39;connection-criteria:User.1 Connection Criteria&#39; \
+  --reset maximum-concurrent-connections
+# Configure global ACIs
+dsconfig set-access-control-handler-prop \
+ --add global-aci:&#39;(target=&quot;ldap:///cn=config&quot;)(targetattr=&quot;*&quot;)(version 3.0; acl &quot;Allow access to the config tree by cn=admin,c=us&quot;; allow(all) groupdn=&quot;ldap:///cn=directory administrators,ou=groups,c=us&quot;;)&#39; \
+ --add global-aci:&#39;(target=&quot;ldap:///cn=monitor&quot;)(targetattr=&quot;*&quot;)(version 3.0; acl &quot;Allow access to the monitor tree by cn=admin,c=us&quot;; allow(all) groupdn=&quot;ldap:///cn=directory administrators,ou=groups,c=us&quot;;)&#39; \
+ --remove global-aci:&#39;(target=&quot;ldap:///cn=alerts&quot;)(targetattr=&quot;*&quot;)(version 3.0; acl &quot;Allow access to the alerts tree by cn=admin,c=us&quot;; allow(all) groupdn=&quot;ldap:///cn=directory administrators,ou=groups,c=us&quot;;)&#39;
+# Delete error logger
+dsconfig delete-log-publisher --publisher-name &quot;File-Based Error Logger&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>Device Tree</h2>
+        <pre><code class="language-dts">/*
+ *  Copyright (C) 2011 - 2014 Xilinx
+ *
+ * This software is licensed under the terms of the GNU General Public
+ * License version 2, as published by the Free Software Foundation, and
+ * may be copied, distributed, and modified under those terms.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/include/ &quot;skeleton.dtsi&quot;
+
+/ {
+	compatible = &quot;xlnx,zynq-7000&quot;;
+
+	pmu {
+		compatible = &quot;arm,cortex-a9-pmu&quot;;
+		interrupts = &lt;0 5 4&gt;, &lt;0 6 4&gt;;
+		interrupt-parent = &lt;&amp;intc&gt;;
+		reg = &lt; 0xf8891000 0x1000 0xf8893000 0x1000 &gt;;
+	};
+
+	regulator_vccpint: fixedregulator@0 {
+		compatible = &quot;regulator-fixed&quot;;
+		regulator-name = &quot;VCCPINT&quot;;
+		regulator-min-microvolt = &lt;1000000&gt;;
+		regulator-max-microvolt = &lt;1000000&gt;;
+		regulator-boot-on;
+		regulator-always-on;
+	};
+
+	amba: amba {
+		compatible = &quot;simple-bus&quot;;
+		#address-cells = &lt;1&gt;;
+		#size-cells = &lt;1&gt;;
+		interrupt-parent = &lt;&amp;intc&gt;;
+		ranges;
+
+		adc: adc@f8007100 {
+			compatible = &quot;xlnx,zynq-xadc-1.00.a&quot;;
+			reg = &lt;0xf8007100 0x20&gt;;
+			interrupts = &lt;0 7 4&gt;;
+			interrupt-parent = &lt;&amp;intc&gt;;
+			clocks = &lt;&amp;clkc 12&gt;;
+		};
+
+		i2c0: i2c@e0004000 {
+			compatible = &quot;cdns,i2c-r1p10&quot;;
+			status = &quot;disabled&quot;;
+			clocks = &lt;&amp;clkc 38&gt;;
+			interrupt-parent = &lt;&amp;intc&gt;;
+			interrupts = &lt;0 25 4&gt;;
+			reg = &lt;0xe0004000 0x1000&gt;;
+			#address-cells = &lt;1&gt;;
+			#size-cells = &lt;0&gt;;
+		};
+
+		L2: cache-controller@f8f02000 {
+			compatible = &quot;arm,pl310-cache&quot;;
+			reg = &lt;0xF8F02000 0x1000&gt;;
+			interrupts = &lt;0 2 4&gt;;
+			arm,data-latency = &lt;3 2 2&gt;;
+			arm,tag-latency = &lt;2 2 2&gt;;
+			cache-unified;
+			cache-level = &lt;2&gt;;
+		};
+
+	};
+};
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Dust</h2>
+        <pre><code class="language-dust">&lt;h3&gt;Hours&lt;/h3&gt;
+
+&lt;ul&gt;
+  {#users}
+  &lt;li {hello}&gt;{firstName}&lt;/li&gt;{~n}
+  {/users}
+&lt;/ul&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Extended Backus-Naur Form</h2>
+        <pre><code class="language-ebnf">(* line comment *)
+
+rule        =   [optional] , symbol , { letters } , ( digit | symbol ) ;
+
+optional    =   ? something unnecessary ? ; (* trailing comment *)
+
+symbol      =   &#39;!&#39; | &#39;@&#39; | &#39;#&#39; | &#39;$&#39; | &#39;%&#39; | &#39;&amp;&#39; | &#39;*&#39; ;
+digit       =   &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot; ;
+letter      =   &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot; | &quot;G&quot;
+              | &quot;H&quot; | &quot;I&quot; | &quot;J&quot; | &quot;K&quot; | &quot;L&quot; | &quot;M&quot; | &quot;N&quot;
+              | &quot;O&quot; | &quot;P&quot; | &quot;Q&quot; | &quot;R&quot; | &quot;S&quot; | &quot;T&quot; | &quot;U&quot;
+              | &quot;V&quot; | &quot;W&quot; | &quot;X&quot; | &quot;Y&quot; | &quot;Z&quot; ;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Elixir</h2>
+        <pre><code class="language-elixir">defrecord Person, first_name: nil, last_name: &quot;Dudington&quot; do
+  def name record do # huh ?
+    &quot;#{record.first_name} #{record.last_name}&quot;
+  end
+end
+
+defrecord User, name: &quot;José&quot;, age: 25
+
+guy = Person.new first_name: &quot;Guy&quot;
+guy.name
+
+defmodule ListServer do
+  @moduledoc &quot;&quot;&quot;
+  This module provides an easy to use ListServer, useful for keeping
+  lists of things.
+  &quot;&quot;&quot;
+  use GenServer.Behaviour
+  alias Foo.Bar
+
+  ### Public API
+  @doc &quot;&quot;&quot;
+  Starts and links a new ListServer, returning {:ok, pid}
+
+  ## Example
+
+    iex&gt; {:ok, pid} = ListServer.start_link
+
+  &quot;&quot;&quot;
+  def start_link do
+    :gen_server.start_link({:local, :list}, __MODULE__, [], [])
+  end
+
+  ### GenServer API
+  def init(list) do
+    {:ok, list}
+  end
+
+  # Clear the list
+  def handle_cast :clear, list do
+    {:noreply, []}
+  end
+end
+
+{:ok, pid} = ListServer.start_link
+pid &lt;- {:foo, &quot;bar&quot;}
+
+greeter = fn(x) -&gt; IO.puts &quot;hey #{x}&quot; end
+greeter.(&quot;Bob&quot;)
+
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Elm</h2>
+        <pre><code class="language-elm">import Browser
+import Html exposing (div, button, text)
+import Html.Events exposing (onClick)
+
+type Msg
+    = Increment
+
+main =
+    Browser.sandbox
+        { init = 0
+        , update = \msg model -&gt; model + 1
+        , view = view
+        }
+
+view model =
+    div []
+        [ div [] [ text (String.fromInt model) ]
+        , button [ onClick Increment ] [ text &quot;+&quot; ]
+        ]
+
+chars =
+    String.cons &#39;C&#39; &lt;| String.cons &#39;h&#39; &lt;| &quot;ars&quot;
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Ruby</h2>
+        <pre><code class="language-ruby"># The Greeter class
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
+
+  def salute
+    puts &quot;Hello #{@name}!&quot;
+  end
+end
+
+g = Greeter.new(&quot;world&quot;)
+g.salute
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>ERB (Embedded Ruby)</h2>
+        <pre><code class="language-erb">&lt;%# this is a comment %&gt;
+
+&lt;% @posts.each do |post| %&gt;
+  &lt;p&gt;&lt;%= link_to post.title, post %&gt;&lt;/p&gt;
+&lt;% end %&gt;
+
+&lt;%- available_things = things.select(&amp;:available?) -%&gt;
+&lt;%%- x = 1 + 2 -%%&gt;
+&lt;%% value = &#39;real string #{@value}&#39; %%&gt;
+&lt;%%= available_things.inspect %%&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Erlang REPL</h2>
+        <pre><code class="language-erlang-repl">1&gt; Str = &quot;abcd&quot;.
+&quot;abcd&quot;
+2&gt; L = test:length(Str).
+4
+3&gt; Descriptor = {L, list_to_atom(Str)}.
+{4,abcd}
+4&gt; L.
+4
+5&gt; b().
+Descriptor = {4,abcd}
+L = 4
+Str = &quot;abcd&quot;
+ok
+6&gt; f(L).
+ok
+7&gt; b().
+Descriptor = {4,abcd}
+Str = &quot;abcd&quot;
+ok
+8&gt; {L, _} = Descriptor.
+{4,abcd}
+9&gt; L.
+4
+10&gt; 2#101.
+5
+11&gt; 1.85e+3.
+1850
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Erlang</h2>
+        <pre><code class="language-erlang">-module(ssh_cli).
+
+-behaviour(ssh_channel).
+
+-include(&quot;ssh.hrl&quot;).
+%% backwards compatibility
+-export([listen/1, listen/2, listen/3, listen/4, stop/1]).
+
+if L =/= [] -&gt;      % If L is not empty
+    sum(L) / count(L);
+true -&gt;
+    error
+end.
+
+%% state
+-record(state, {
+    cm,
+    channel
+   }).
+
+-spec foo(integer()) -&gt; integer().
+foo(X) -&gt; 1 + X.
+
+test(Foo)-&gt;Foo.
+
+init([Shell, Exec]) -&gt;
+    {ok, #state{shell = Shell, exec = Exec}};
+init([Shell]) -&gt;
+    false = not true,
+    io:format(&quot;Hello, \&quot;~p!~n&quot;, [atom_to_list(&#39;World&#39;)]),
+    {ok, #state{shell = Shell}}.
+
+concat([Single]) -&gt; Single;
+concat(RList) -&gt;
+    EpsilonFree = lists:filter(
+        fun (Element) -&gt;
+            case Element of
+                epsilon -&gt; false;
+                _ -&gt; true
+            end
+        end,
+        RList),
+    case EpsilonFree of
+        [Single] -&gt; Single;
+        Other -&gt; {concat, Other}
+    end.
+
+union_dot_union({union, _}=U1, {union, _}=U2) -&gt;
+    union(lists:flatten(
+        lists:map(
+            fun (X1) -&gt;
+                lists:map(
+                    fun (X2) -&gt;
+                        concat([X1, X2])
+                    end,
+                    union_to_list(U2)
+                )
+            end,
+            union_to_list(U1)
+        ))).
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Excel formulae</h2>
+        <pre><code class="language-excel">=IF(C10 &lt;= 275.5, &quot;Unprofitable&quot;, &quot;Profitable&quot;)</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>FIX</h2>
+        <pre><code class="language-fix">8=FIX.4.2␁9=0␁35=8␁49=SENDERTEST␁56=TARGETTEST␁34=00000001526␁52=20120429-13:30:08.137␁1=ABC12345␁11=2012abc1234␁14=100␁17=201254321␁20=0␁30=NYSE␁31=108.20␁32=100␁38=100␁39=2␁40=1␁47=A␁54=5␁55=BRK␁59=2␁60=20120429-13:30:08.000␁65=B␁76=BROKER␁84=0␁100=NYSE␁111=100␁150=2␁151=0␁167=CS␁377=N␁10000=SampleCustomTag␁10=123␁
+
+8=FIX.4.29=035=849=SENDERTEST56=TARGETTEST34=0000000152652=20120429-13:30:08.1371=ABC1234511=2012abc123414=10017=20125432120=030=NYSE31=108.2032=10038=10039=240=147=A54=555=BRK59=260=20120429-13:30:08.00065=B76=BROKER84=0100=NYSE111=100150=2151=0167=CS377=N10000=SampleCustomTag10=123
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Flix</h2>
+        <pre><code class="language-flix">/**
+ * An example of Flix for syntax highlighting.
+ */
+
+// Here is a namespace.
+namespace a.b.c {
+
+    // Here are some literals.
+    def b: Bool = true
+    def c: Char = &#39;a&#39;
+    def f: Float = 1.23
+    def i: Int = 42
+    def s: Str = &quot;string&quot;
+
+    // Here are some relations.
+    rel LitStm(r: Str, c: Int)
+    rel AddStm(r: Str, x: Str, y: Str)
+    rel DivStm(r: Str, x: Str, y: Str)
+
+    // Here is a lattice.
+    lat LocalVar(k: Str, v: Constant)
+
+    // Here is an index.
+    index LitStm{{r}, {r, c}}
+
+    // Here is an enum.
+    enum Constant {
+          case Top,
+
+        case Cst(Int),
+
+          case Bot
+    }
+
+    // Here is a function.
+    def leq(e1: Constant, e2: Constant): Bool = match (e1, e2) with {
+        case (Constant.Bot, _)                      =&gt; true
+        case (Constant.Cst(n1), Constant.Cst(n2))   =&gt; n1 == n2
+        case (_, Constant.Top)                      =&gt; true
+        case _                                      =&gt; false
+    }
+
+    // Here are some rules.
+    LocalVar(r, alpha(c)) :- LitStm(r, c).
+
+    LocalVar(r, sum(v1, v2)) :- AddStm(r, x, y),
+                                LocalVar(x, v1),
+                                LocalVar(y, v2).
+}
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Fortran</h2>
+        <pre><code class="language-fortran">subroutine test_sub(k)
+    implicit none
+
+  !===============================
+  !   This is a test subroutine
+  !===============================
+
+    integer, intent(in)           :: k
+    double precision, allocatable :: a(:)
+    integer, parameter            :: nmax=10
+    integer                       :: i
+
+    allocate (a(nmax))
+
+    do i=1,nmax
+      a(i) = dble(i)*5.d0
+    enddo
+
+    print *, &#39;Hello world&#39;
+    write (*,*) a(:)
+
+end subroutine test_sub
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>F#</h2>
+        <pre><code class="language-fsharp">open System
+
+// Single line comment...
+(*
+  This is a
+  multiline comment.
+*)
+let checkList alist =
+    match alist with
+    | [] -&gt; 0
+    | [a] -&gt; 1
+    | [a; b] -&gt; 2
+    | [a; b; c] -&gt; 3
+    | _ -&gt; failwith &quot;List is too big!&quot;
+
+
+let text = &quot;Some text...&quot;
+let text2 = @&quot;A &quot;&quot;verbatim&quot;&quot; string...&quot;
+let catalog = &quot;&quot;&quot;
+Some &quot;long&quot; string...
+&quot;&quot;&quot;
+
+let rec fib x = if x &lt;= 2 then 1 else fib(x-1) + fib(x-2)
+
+let fibs =
+    Async.Parallel [ for i in 0..40 -&gt; async { return fib(i) } ]
+    |&gt; Async.RunSynchronously
+
+type Sprocket(gears) =
+  member this.Gears : int = gears
+
+[&lt;AbstractClass&gt;]
+type Animal =
+  abstract Speak : unit -&gt; unit
+
+type Widget =
+  | RedWidget
+  | GreenWidget
+
+type Point = {X: float; Y: float;}
+
+[&lt;Measure&gt;]
+type s
+let minutte = 60&lt;s&gt;
+
+type DefaultMailbox&lt;&#39;a&gt;() =
+    let mutable inbox = ConcurrentQueue&lt;&#39;a&gt;()
+    let awaitMsg = new AutoResetEvent(false)
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>GAMS</h2>
+        <pre><code class="language-gams">SETS
+    I   canning plants   / SEATTLE, SAN-DIEGO /
+    J   markets          / NEW-YORK, CHICAGO, TOPEKA / ;
+PARAMETERS
+    A(I)  capacity of plant i in cases
+      /    SEATTLE     350
+           SAN-DIEGO   600  /
+    B(J)  demand at market j in cases
+      /    NEW-YORK    325
+           CHICAGO     300
+           TOPEKA      275  / ;
+TABLE D(I,J)  distance in thousands of miles
+                  NEW-YORK       CHICAGO      TOPEKA
+    SEATTLE          2.5           1.7          1.8
+    SAN-DIEGO        2.5           1.8          1.4  ;
+SCALAR F  freight in dollars per case per thousand miles  /90/ ;
+PARAMETER C(I,J)  transport cost in thousands of dollars per case ;
+          C(I,J) = F * D(I,J) / 1000 ;
+VARIABLES
+    X(I,J)  shipment quantities in cases
+    Z       total transportation costs in thousands of dollars ;
+POSITIVE VARIABLE X ;
+EQUATIONS
+    COST        define objective function
+    SUPPLY(I)   observe supply limit at plant i
+    DEMAND(J)   satisfy demand at market j ;
+COST ..        Z  =E=  SUM((I,J), C(I,J)*X(I,J)) ;
+SUPPLY(I) ..   SUM(J, X(I,J))  =L=  A(I) ;
+DEMAND(J) ..   SUM(I, X(I,J))  =G=  B(J) ;
+MODEL TRANSPORT /ALL/ ;
+SOLVE TRANSPORT USING LP MINIMIZING Z ;
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>GAUSS</h2>
+        <pre><code class="language-gauss">// This is a test
+#include pv.sdf
+
+proc (1) = calc(local__row, fin);
+    if local__row;
+        nr = local__row;
+    else;
+        k = colsf(fin);
+        nr = floor(minc(maxbytes/(k*8*3.5)|maxvec/(k+1)));
+    endif;
+    retp(nr);
+endp;
+
+s = &quot;{% test string %}&quot;;
+
+fn twopi=pi*2;
+
+/* Takes in multiple numbers.
+   Output sum */
+keyword add(str);
+   local tok,sum;
+   sum = 0;
+   do until str $== &quot;&quot;;
+      { tok, str } = token(str);
+      sum = sum + stof(tok);
+   endo;
+   print &quot;Sum is: &quot; sum;
+endp;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>G-code (ISO 6983)</h2>
+        <pre><code class="language-gcode">O003 (DIAMOND SQUARE)
+N2 G54 G90 G49 G80
+N3 M6 T1 (1.ENDMILL)
+N4 M3 S1800
+N5 G0 X-.6 Y2.050
+N6 G43  H1  Z.1
+N7 G1 Z-.3 F50.
+N8 G41 D1 Y1.45
+N9 G1 X0 F20.
+N10 G2 J-1.45
+(CUTTER COMP CANCEL)
+N11 G1 Z-.2 F50.
+N12 Y-.990
+N13 G40
+N14 G0 X-.6 Y1.590
+N15 G0 Z.1
+N16 M5 G49 G28 G91 Z0
+N17 CALL O9456
+N18 #500=0.004
+N19 #503=[#500+#501]
+N20 VC45=0.0006
+VS4=0.0007
+N21 G90 G10 L20 P3 X5.Y4. Z6.567
+N22 G0 X5000
+N23 IF [#1 LT 0.370] GOTO 49
+N24 X-0.678 Y+.990
+N25 G84.3 X-0.1
+N26 #4=#5*COS[45]
+N27 #4=#5*SIN[45]
+N28 VZOFZ=652.9658
+%
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Gherkin</h2>
+        <pre><code class="language-gherkin"># language: en
+Feature: Addition
+  In order to avoid silly mistakes
+  As a math idiot
+  I want to be told the sum of two numbers
+
+  @this_is_a_tag
+  Scenario Outline: Add two numbers
+    * I have a calculator
+    Given I have entered &lt;input_1&gt; into the calculator
+    And I have entered &lt;input_2&gt; into the calculator
+    When I press &lt;button&gt;
+    Then the result should be &lt;output&gt; on the screen
+    And I have a string like
+    &quot;&quot;&quot;
+    Here is
+    some
+    multiline text
+    &quot;&quot;&quot;
+
+  Examples:
+    | input_1 | input_2 | button | output |
+    | 20      | 30      | add    | 50     |
+    | 2       | 5       | add    | 7      |
+    | 0       | 40      | add    | 40     |
+</code></pre>
+      </div>
+
+      <div class="hidden graphics all">
+        <h2>GLSL</h2>
+        <pre><code class="language-glsl">// vertex shader
+#version 150
+in  vec2 in_Position;
+in  vec3 in_Color;
+
+out vec3 ex_Color;
+void main(void) {
+    gl_Position = vec4(in_Position.x, in_Position.y, 0.0, 1.0);
+    ex_Color = in_Color;
+}
+
+
+// geometry shader
+#version 150
+
+layout(triangles) in;
+layout(triangle_strip, max_vertices = 3) out;
+
+void main() {
+  for(int i = 0; i &lt; gl_in.length(); i++) {
+    gl_Position = gl_in[i].gl_Position;
+    EmitVertex();
+  }
+  EndPrimitive();
+}
+
+
+// fragment shader
+#version 150
+precision highp float;
+
+in  vec3 ex_Color;
+out vec4 gl_FragColor;
+
+void main(void) {
+    gl_FragColor = vec4(ex_Color, 1.0);
+}
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>GML</h2>
+        <pre><code class="language-gml">/// @description Collision code
+// standard collision handling
+
+// Horizontal collisions
+if(place_meeting(x+hspd, y, obj_wall)) {
+	while(!place_meeting(x+sign(hspd), y, obj_wall)) {
+		x += sign(hspd);
+	}
+	hspd = 0;
+}
+x += hspd;
+
+// Vertical collisions
+if(place_meeting(x, y+vspd, collide_obj)) {
+	while(!place_meeting(x, y+sign(vspd), collide_obj)) {
+		y += sign(vspd);
+	}
+	vspd = 0;
+}
+y += vspd;
+
+show_debug_message(&quot;This is a test&quot;);</code></pre>
+      </div>
+
+      <div class="common system all">
+        <h2>Go</h2>
+        <pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    ch := make(chan float64)
+    ch &lt;- 1.0e10    // magic number
+    x, ok := &lt;- ch
+    defer fmt.Println(`exitting now\`)
+    go println(len(&quot;hello world!&quot;))
+    return
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Golo</h2>
+        <pre><code class="language-golo">module hello
+
+function dyno = -&gt; DynamicObject()
+
+struct human = { name }
+
+@annotated
+function main = |args| {
+    let a = 1
+    var b = 2
+
+    println(&quot;hello&quot;)
+
+    let john = human(&quot;John Doe&quot;)
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Gradle</h2>
+        <pre><code class="language-gradle">
+apply plugin: &#39;android&#39;
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion &quot;19.1&quot;
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 19
+        versionCode 5
+        versionName &quot;0.4.4&quot;
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    signingConfigs {
+        release
+    }
+    buildTypes {
+        release {
+            // runProguard true
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.txt&#39;
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+
+    compile &#39;com.example:example-lib:1.0.0&#39;
+}
+
+
+def propFile = file(&#39;../signing.properties&#39;)
+if( propFile.canRead() ) {
+    def Properties p = new Properties()
+    p.load(new FileInputStream(propFile))
+
+    if( p!=null
+    &amp;&amp;  p.containsKey(&quot;STORE_FILE&quot;)
+    &amp;&amp;  p.containsKey(&#39;STORE_PASSWORD&#39;)
+    &amp;&amp;  p.containsKey(&#39;KEY_ALIAS&#39;)
+    &amp;&amp;  p.containsKey(&#39;KEY_PASSWORD&#39;)
+    ) {
+        println &quot;RELEASE_BUILD: Signing...&quot;
+
+        android.signingConfigs.release.storeFile = file( p[&#39;STORE_FILE&#39;] )
+        android.signingConfigs.release.storePassword = p[&#39;STORE_PASSWORD&#39;]
+        android.signingConfigs.release.keyAlias = p[&#39;KEY_ALIAS&#39;]
+        android.signingConfigs.release.keyPassword = p[&#39;KEY_PASSWORD&#39;]
+    } else {
+        println &quot;RELEASE_BUILD: Required properties in signing.properties are missing&quot;
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println &quot;RELEASE_BUILD: signing.properties not found&quot;
+    android.buildTypes.release.signingProperties = null
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Groovy</h2>
+        <pre><code class="language-groovy">#!/usr/bin/env groovy
+package model
+
+import groovy.transform.CompileStatic
+import java.util.List as MyList
+
+trait Distributable {
+    void distribute(String version) {}
+}
+
+@CompileStatic
+class Distribution implements Distributable {
+    double number = 1234.234 / 567
+    def otherNumber = 3 / 4
+    boolean archivable = condition ?: true
+    def ternary = a ? b : c
+    String name = &quot;Guillaume&quot;
+    Closure description = null
+    List&lt;DownloadPackage&gt; packages = []
+    String regex = ~/.*foo.*/
+    String multi = &#39;&#39;&#39;
+        multi line string
+    &#39;&#39;&#39; + &quot;&quot;&quot;
+        now with double quotes and ${gstring}
+    &quot;&quot;&quot; + $/
+        even with dollar slashy strings
+    /$
+
+    /**
+     * description method
+     * @param cl the closure
+     */
+    void description(Closure cl) { this.description = cl }
+
+    void version(String name, Closure versionSpec) {
+        def closure = { println &quot;hi&quot; } as Runnable
+
+        MyList ml = [1, 2, [a: 1, b:2,c :3]]
+        for (ch in &quot;name&quot;) {}
+
+        // single line comment
+        DownloadPackage pkg = new DownloadPackage(version: name)
+
+        check that: true
+
+        label:
+        def clone = versionSpec.rehydrate(pkg, pkg, pkg)
+        /*
+            now clone() in a multiline comment
+        */
+        clone()
+        packages.add(pkg)
+
+        assert 4 / 2 == 2
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>HAML</h2>
+        <pre><code class="language-haml">!!! XML
+%html
+  %body
+    %h1.jumbo{:id=&gt;&quot;a&quot;, :style=&gt;&#39;font-weight: normal&#39;, :title=&gt;title} highlight.js
+    /html comment
+    -# ignore this line
+    %ul(style=&#39;margin: 0&#39;)
+    -items.each do |i|
+      %i= i
+    = variable
+    =variable2
+    ~ variable3
+    ~variable4
+    The current year is #{DataTime.now.year}.
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Handlebars</h2>
+        <pre><code class="language-handlebars">&lt;div class=&quot;entry&quot;&gt;
+  {{!-- only show if author exists --}}
+  {{#if author}}
+    &lt;h1&gt;{{firstName}} {{lastName}}&lt;/h1&gt;
+  {{/if}}
+&lt;/div&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Haskell</h2>
+        <pre><code class="language-haskell">{-# LANGUAGE TypeSynonymInstances #-}
+module Network.UDP
+( DataPacket(..)
+, openBoundUDPPort
+, openListeningUDPPort
+, pingUDPPort
+, sendUDPPacketTo
+, recvUDPPacket
+, recvUDPPacketFrom
+) where
+
+import qualified Data.ByteString as Strict (ByteString, concat, singleton)
+import qualified Data.ByteString.Lazy as Lazy (ByteString, toChunks, fromChunks)
+import Data.ByteString.Char8 (pack, unpack)
+import Network.Socket hiding (sendTo, recv, recvFrom)
+import Network.Socket.ByteString (sendTo, recv, recvFrom)
+
+-- Type class for converting StringLike types to and from strict ByteStrings
+class DataPacket a where
+  toStrictBS :: a -&gt; Strict.ByteString
+  fromStrictBS :: Strict.ByteString -&gt; a
+
+instance DataPacket Strict.ByteString where
+  toStrictBS = id
+  {-# INLINE toStrictBS #-}
+  fromStrictBS = id
+  {-# INLINE fromStrictBS #-}
+
+openBoundUDPPort :: String -&gt; Int -&gt; IO Socket
+openBoundUDPPort uri port = do
+  s &lt;- getUDPSocket
+  bindAddr &lt;- inet_addr uri
+  let a = SockAddrInet (toEnum port) bindAddr
+  bindSocket s a
+  return s
+
+pingUDPPort :: Socket -&gt; SockAddr -&gt; IO ()
+pingUDPPort s a = sendTo s (Strict.singleton 0) a &gt;&gt; return ()
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Haxe</h2>
+        <pre><code class="language-haxe">package my.package;
+
+#if js
+import js.Browser;
+#elseif sys
+import Sys;
+#else
+import Date;
+#end
+
+import Lambda;
+using Main.IntExtender;
+
+extern class Math {
+    static var PI(default,null) : Float;
+    static function floor(v:Float):Int;
+}
+
+/**
+ * Abstract forwarding
+ */
+abstract MyAbstract(Int) from Int to Int {
+    inline function new(i:Int) {
+        this = i;
+    }
+
+    @:op(A * B)
+    public function multiply(rhs:MyAbstract) {
+        return this * rhs;
+    }
+}
+
+// an enum
+enum Color {
+    Red;
+    Green;
+    Blue;
+    Rgb(r:Int, g:Int, b:Int);
+}
+
+@:generic
+class Gen&lt;T&gt; {
+    var v:T;
+    public function new(v:T) {
+        this.v = v;
+    }
+
+    public var x(get, set):T;
+
+    private inline function get_x():T
+        return v;
+
+    private inline function set_x(x:T):T
+        return v = x;
+}
+
+class Main extends BaseClass implements SomeFunctionality {
+    var callback:Void-&gt;Void = null;
+    var myArray:Array&lt;Float&gt; = new Array&lt;Float&gt;();
+    var arr = [4,8,0,3,9,1,5,2,6,7];
+
+    public function new(x) {
+        super(x);
+    }
+
+    public static function main() {
+        trace(&#39;What\&#39;s up?&#39;);
+        trace(&#39;Hi, ${name}!&#39;);
+
+        // switch statements!
+        var c:Color = Color.Green;
+        var x:Int = switch(c) {
+            case Red: 0;
+            case Green: 1;
+            case Blue: 2;
+            case Rgb(r, g, b): 3;
+            case _: -1;
+        }
+
+        for(i in 0...3) {
+            trace(i);
+            continue;
+            break;
+        }
+
+        do {
+            trace(&quot;Hey-o!&quot;);
+        } while(false);
+
+        var done:Bool = false;
+        while(!done) {
+            done = true;
+        }
+
+        var H:Int = cast new MyAbstract(42);
+        var h:Int = cast(new MyAbstract(31), Int);
+
+        try {
+            throw &quot;error&quot;;
+        }
+        catch(err:String) {
+            trace(err);
+        }
+
+        var map = new haxe.ds.IntMap&lt;String&gt;();
+        var f = map.set.bind(_, &quot;12&quot;);
+    }
+
+    function nothing():Void
+        trace(&quot;nothing!&quot;);
+
+    private inline function func(a:Int, b:Float, ?c:String, d:Bool=false):Dynamic {
+        return {
+            x: 0,
+            y: true,
+            z: false,
+            a: 1.53,
+            b: 5e10,
+            c: -12,
+            h: null
+        };
+    }
+
+
+    override function quicksort( lo : Int, hi : Int ) : Void {
+        var i = lo;
+        var j = hi;
+        var buf = arr;
+        var p = buf[(lo+hi)&gt;&gt;1];
+        while( i &lt;= j ) {
+            while( arr[i] &gt; p ) i++;
+            while( arr[j] &lt; p ) j--;
+            if( i &lt;= j ) {
+                var t = buf[i];
+                buf[i++] = buf[j];
+                buf[j--] = t;
+            }
+        }
+        if( lo &lt; j ) quicksort( lo, j );
+        if( i &lt; hi ) quicksort( i, hi );
+    }
+}</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>HSP</h2>
+        <pre><code class="language-hsp">#include &quot;foo.hsp&quot;
+
+	// line comment
+	message = &quot;Hello, World!&quot;
+	message2 = {&quot;Multi
+	line
+	string&quot;}
+	num = 0
+	mes message
+
+	input num : button &quot;sqrt&quot;, *label
+	stop
+
+*label
+	/*
+	 block comment
+	*/
+	if(num &gt;= 0) {
+		dialog &quot;sqrt(&quot; + num + &quot;) = &quot; + sqrt(num)
+	} else {
+		dialog &quot;error&quot;, 1
+	}
+	stop
+</code></pre>
+      </div>
+
+      <div class="hidden protocols web all">
+        <h2>HTTP</h2>
+        <pre><code class="language-http">POST /task?id=1 HTTP/1.1
+Host: example.org
+Content-Type: application/json; charset=utf-8
+Content-Length: 137
+
+{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;extended&quot;: true,
+  &quot;results&quot;: [
+    {&quot;value&quot;: 0, &quot;type&quot;: &quot;int64&quot;},
+    {&quot;value&quot;: 1.0e+3, &quot;type&quot;: &quot;decimal&quot;}
+  ]
+}
+</code></pre>
+      </div>
+
+      <div class="hidden lisp all">
+        <h2>Hy</h2>
+        <pre><code class="language-hy">#!/usr/bin/env hy
+
+(import os.path)
+
+(import hy.compiler)
+(import hy.core)
+
+
+;; absolute path for Hy core
+(setv *core-path* (os.path.dirname hy.core.--file--))
+
+
+(defn collect-macros [collected-names opened-file]
+  (while True
+    (try
+     (let [data (read opened-file)]
+       (if (and (in (first data)
+                    &#39;(defmacro defmacro/g! defn))
+                (not (.startswith (second data) &quot;_&quot;)))
+         (.add collected-names (second data))))
+     (except [e EOFError] (break)))))
+
+
+(defmacro core-file [filename]
+  `(open (os.path.join *core-path* ~filename)))
+
+
+(defmacro contrib-file [filename]
+  `(open (os.path.join *core-path* &quot;..&quot; &quot;contrib&quot; ~filename)))
+
+
+(defn collect-core-names []
+  (doto (set)
+        (.update hy.core.language.*exports*)
+        (.update hy.core.shadow.*exports*)
+        (collect-macros (core-file &quot;macros.hy&quot;))
+        (collect-macros (core-file &quot;bootstrap.hy&quot;))))
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Inform 7</h2>
+        <pre><code class="language-inform7">Book 1 - Language Definition Testing File
+
+[Comments in Inform 7 can be [nested] inside one another]
+
+Syntax highlighting is an action applying to one thing.
+Understand &quot;highlight [something preferably codeish]&quot; as syntax highlighting.
+
+Code is a kind of thing. Code is usually plural-named.
+
+Code can be highlighted. Code is usually not highlighted.
+
+Check syntax highlighting:
+  unless the noun is code:
+    say &quot;[The noun] isn&#39;t source code you can highlight.&quot;;
+    rule fails.
+
+Carry out syntax highlighting:
+  now the noun is highlighted.
+
+Table of Programming Languages
+language  utility
+ruby      &quot;Web back-end development&quot;
+lua       &quot;Embedded scripting&quot;
+erlang    &quot;High-concurrency server applications&quot;</code></pre>
+      </div>
+
+      <div class="common config all">
+        <h2>TOML, also INI</h2>
+        <pre><code class="language-ini">; boilerplate
+[package]
+name = &quot;some_name&quot;
+authors = [&quot;Author&quot;]
+description = &quot;This is \
+a description&quot;
+
+[[lib]]
+name = ${NAME}
+default = True
+auto = no
+counter = 1_000
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>IRPF90</h2>
+        <pre><code class="language-irpf90"> BEGIN_PROVIDER [ integer(bit_kind), psi_det_sorted_bit, (N_int,2,psi_det_size) ]
+&amp;BEGIN_PROVIDER [ double precision, psi_coef_sorted_bit, (psi_det_size,N_states) ]
+ implicit none
+ BEGIN_DOC
+ ! Determinants on which we apply &lt;i|H|psi&gt; for perturbation.
+ ! They are sorted by determinants interpreted as integers. Useful
+ ! to accelerate the search of a random determinant in the wave
+ ! function.
+ END_DOC
+ integer :: i,j,k
+ integer, allocatable ::  iorder(:)
+ integer*8, allocatable :: bit_tmp(:)
+ integer*8, external :: det_search_key
+
+ allocate ( iorder(N_det), bit_tmp(N_det) )
+
+ do i=1,N_det
+   iorder(i) = i
+   !DIR$ FORCEINLINE
+   bit_tmp(i) = det_search_key(psi_det(1,1,i),N_int)
+ enddo
+ call isort(bit_tmp,iorder,N_det)
+ !DIR$ IVDEP
+ do i=1,N_det
+  do j=1,N_int
+    psi_det_sorted_bit(j,1,i) = psi_det(j,1,iorder(i))
+    psi_det_sorted_bit(j,2,i) = psi_det(j,2,iorder(i))
+  enddo
+  do k=1,N_states
+    psi_coef_sorted_bit(i,k) = psi_coef(iorder(i),k)
+  enddo
+ enddo
+
+ deallocate(iorder, bit_tmp)
+
+END_PROVIDER
+
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise all">
+        <h2>ISBL</h2>
+        <pre><code class="language-isbl">﻿  // Описание констант
+  ADD_EQUAL_NUMBER_TEMPLATE = &quot;%s.%s = %s&quot;
+  EMPLOYEES_REFERENCE = &quot;РАБ&quot;
+  /*********************************************
+   *  Получить список кодов или ИД работников, *
+   *  соответствующих текущему пользователю    *
+   *********************************************/
+  Employees: IReference.РАБ = CreateReference(EMPLOYEES_REFERENCE;
+    ArrayOf(&quot;Пользователь&quot;; SYSREQ_STATE); MyFunction(FALSE; MyParam * 0.05))
+  Employees.Events.DisableAll
+  EmployeesTableName = Employees.TableName
+  EmployeesUserWhereID = Employees.AddWhere(Format(ADD_EQUAL_NUMBER_TEMPLATE;
+    ArrayOf(EmployeesTableName; Employees.Requisites(&quot;Пользователь&quot;).SQLFieldName;
+    EDocuments.CurrentUser.ID)))
+  Employees.Open()
+  Result = CreateStringList()
+  foreach Employee in Employees
+    if IsResultCode
+      Result.Add(Employee.SYSREQ_CODE)
+    else
+      Result.Add(Employee.SYSREQ_ID)
+    endif
+  endforeach
+  Employees.Close()
+  Employees.DelWhere(EmployeesUserWhereID)
+  Employees.Events.EnableAll
+  Employees = nil</code></pre>
+      </div>
+
+      <div class="common enterprise all">
+        <h2>Java</h2>
+        <pre><code class="language-java">/**
+ * @author John Smith &lt;john.smith@example.com&gt;
+*/
+package l2f.gameserver.model;
+
+public abstract strictfp class L2Char extends L2Object {
+  public static final Short ERROR = 0x0001;
+
+  public void moveTo(int x, int y, int z) {
+    _ai = null;
+    log(&quot;Should not be called&quot;);
+    if (1 &gt; 5) { // wtf!?
+      return;
+    }
+  }
+}
+</code></pre>
+      </div>
+
+      <div class="common scripting web all">
+        <h2>JavaScript</h2>
+        <pre><code class="language-javascript">function $initHighlight(block, cls) {
+  try {
+    if (cls.search(/\bno\-highlight\b/) != -1)
+      return process(block, true, 0x0F) +
+             ` class=&quot;${cls}&quot;`;
+  } catch (e) {
+    /* handle exception */
+  }
+  for (var i = 0 / 2; i &lt; classes.length; i++) {
+    if (checkCondition(classes[i]) === undefined)
+      console.log(&#39;undefined&#39;);
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;web-component&gt;{block}&lt;/web-component&gt;
+    &lt;/div&gt;
+  )
+}
+
+export  $initHighlight;
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>JBoss CLI</h2>
+        <pre><code class="language-jboss-cli">jms-queue add --queue-address=myQueue --entries=queue/myQueue
+
+deploy /path/to/file.war
+
+/system-property=prop1:add(value=value1)
+
+
+
+/extension=org.jboss.as.modcluster:add
+
+./foo=bar:remove
+
+/subsystem=security/security-domain=demo-realm/authentication=classic:add
+
+/subsystem=security/security-domain=demo-realm/authentication=classic/login-module=UsersRoles:add( \
+    code=UsersRoles, \
+    flag=required, \
+    module-options=  { \
+         usersProperties=auth/demo-users.properties, \
+         rolesProperties =auth/demo-roles.properties,  \
+         hashAlgorithm= MD5, \
+         hashCharset=&quot;UTF-8&quot;  \
+    } \
+)
+</code></pre>
+      </div>
+
+      <div class="common protocols web all">
+        <h2>JSON</h2>
+        <pre><code class="language-json">[
+  {
+    &quot;title&quot;: &quot;apples&quot;,
+    &quot;count&quot;: [12000, 20000],
+    &quot;description&quot;: {&quot;text&quot;: &quot;...&quot;, &quot;sensitive&quot;: false}
+  },
+  {
+    &quot;title&quot;: &quot;oranges&quot;,
+    &quot;count&quot;: [17500, null],
+    &quot;description&quot;: {&quot;text&quot;: &quot;...&quot;, &quot;sensitive&quot;: false}
+  }
+]
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Julia</h2>
+        <pre><code class="language-julia">### Types
+
+struct Plus
+    f::typeof(+)
+end
+
+mutable struct Mut
+    mutable::A          # mutable should not be highlighted (not followed by struct)
+    primitive::B        # primitive should not be highlighted (not followed by type)
+end
+
+primitive type Prim 8 end
+
+abstract type Abstr end
+
+### Modules
+
+module M
+
+using X
+import Y
+
+export a, b, c
+
+end # module
+
+baremodule Bare
+end
+
+
+### Miscellaneous
+
+# Some things new for Julia &gt;1.0
+function f(x::Union{String,Missing,Nothing}, y::Tuple{Float64,ComplexF64})
+    if x === nothing
+        println(devnull, &quot;nothing&quot;)
+    elseif x === missing
+        println(stderr, &quot;missing&quot;)
+    else
+        println(stdout, x)
+    end
+end
+
+f(x::UndefInitializer = undef) = Regex(&quot;^hello, world\$&quot;)
+
+# where, infix isa, UnionAll
+function F{T}(x::T) where T
+    for i in x
+        i isa UnionAll &amp;&amp; return
+    end
+end
+
+#=
+Multi
+Line
+Comment
+=#
+function method0(x, y::Int; version::VersionNumber=v&quot;0.1.2&quot;)
+    &quot;&quot;&quot;
+    Triple
+    Quoted
+    String
+    &quot;&quot;&quot;
+
+    @assert π &gt; e
+
+    s = 1.2
+    変数 = &quot;variable&quot;
+
+    if s * 100_000 ≥ 5.2e+10 &amp;&amp; true || x === nothing
+        s = 1. + .5im
+    elseif 1 ∈ [1, 2, 3]
+        println(&quot;s is $s and 変数 is $変数&quot;)
+    else
+        x = [1 2 3; 4 5 6]
+        @show x&#39;
+    end
+
+    local var = rand(10)
+    global g = 44
+    var[1:5]
+    var[5:end-1]
+    var[end]
+
+    opt = &quot;-la&quot;
+    run(`ls $opt`)
+
+    try
+        ccall(:lib, (Ptr{Void},), Ref{C_NULL})
+    catch
+        throw(ArgumentError(&quot;wat&quot;))
+    finally
+        warn(&quot;god save the queen&quot;)
+    end
+
+    &#39;\u2200&#39; != &#39;T&#39;
+
+    return 5s / 2
+end
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Julia REPL</h2>
+        <pre><code class="language-julia-repl">julia&gt; function foo(x) x + 1 end
+foo (generic function with 1 method)
+
+julia&gt; foo(42)
+43
+
+julia&gt; foo(42) === 43.
+false
+
+
+Here we match all three lines of code:
+
+julia&gt; function foo(x::Float64)
+           42. - x
+       end
+foo (generic function with 2 methods)
+
+julia&gt; for x in Any[1, 2, 3.4]
+          println(&quot;foo($x) = $(foo(x))&quot;)
+       end
+foo(1) = 2
+foo(2) = 3
+foo(3.4) = 38.6
+
+
+... unless it is not properly indented:
+
+julia&gt; function foo(x)
+    x + 1
+end
+
+
+Ordinary Julia code does not get highlighted:
+
+Pkg.add(&quot;Combinatorics&quot;)
+abstract type Foo end
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Kotlin</h2>
+        <pre><code class="language-kotlin">import kotlinx.serialization.Serializable
+import kotlin.random.Random
+
+interface Building
+
+@Serializable
+class House(
+    private val rooms: Int? = 3,
+    val name: String = &quot;Palace&quot;
+) : Building {
+    var residents: Int = 4
+        get() {
+            println(&quot;Current residents: $field&quot;)
+            return field
+        }
+
+    fun burn(evacuation: (people: Int) -&gt; Boolean) {
+        rooms ?: return
+        if (evacuation((0..residents).random()))
+            residents = 0
+    }
+}
+
+fun main() {
+    val house = House(name = &quot;Skyscraper 1&quot;)
+    house.burn {
+        Random.nextBoolean()
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Lasso</h2>
+        <pre><code class="language-lasso">&lt;?LassoScript
+/* Lasso 8 */
+  local(&#39;query&#39; = &#39;SELECT * FROM `&#39;+var:&#39;table&#39;+&#39;` WHERE `id` &gt; 10
+    ORDER BY `Name` LIMIT 30&#39;);
+  Inline: -Username=$DBuser, -Password=$DBpass, -Database=$DBname, -sql=#query;
+    var(&quot;class1.name&quot; = (found_count != 0 ? &quot;subtotal&quot; | &quot;nonefound&quot;),
+        &quot;total_amount&quot; = found_count || &quot;No results&quot;);
+    records;
+      output: &quot;&lt;tr&gt;&quot;loop_count&quot;&lt;/tr&gt;&quot;;
+    /records;
+  /Inline;
+?&gt;&lt;div class=&quot;[$class1.name]&quot;&gt;[$total_amount]&lt;/div&gt;
+&lt;?lasso
+/* Lasso 9 */ ?&gt;
+[noprocess] causes [delimiters] to be &lt;?=skipped?&gt; until the next [/noprocess]
+[
+  define strings.combine(value::string, ...other)::string =&gt; {
+    local(result = #value-&gt;append(#other-&gt;asString&amp;trim))
+    return set(#result, not #other, \givenBlock)
+  }
+  /**! descriptive text */
+  define person =&gt; type {
+    parent entity
+    data name::string, protected nickname, birthdate :: date
+    data private ssn = null
+    private showAge() =&gt; frozen { return ..age }
+    protected fullName() =&gt; `&quot;` + .nickname + `&quot;` + .&#39;name&#39;
+    public ssnListed::boolean =&gt; .ssn() ? true | false
+  }
+  define person-&gt;name=(value) =&gt; {
+    .&#39;name&#39; = #value
+    return self-&gt;&#39;name&#39;
+  }
+  define bytes-&gt;+(rhs::bytes) =&gt; bytes(self)-&gt;append(#rhs)&amp;
+] &lt;!-- an HTML comment &lt;?=disables delimiters?&gt; as well --&gt;
+[no_square_brackets] disables [square brackets] for the rest of the file
+&lt;?=
+  // query expression
+  with n in array((:-12, 0xABCD, 3.14159e14), (:NaN, -infinity, .57721))
+  let swapped = pair(#n-&gt;\second, #n-&gt;first)
+  group #swapped by #n-&gt;first into t
+  let key = #t-&gt;key
+  order by #key
+  select pair(#key, #1)
+  do {^
+    #n-&gt;upperCase
+  ^}
+?&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden markup all">
+        <h2>LaTeX</h2>
+        <pre><code class="language-latex">% !TeX encoding = utf8
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{xparse}
+\usepackage{mathtools}
+
+\newcommand\hi[1]{Hello #1!}
+
+\ExplSyntaxOn
+  % Convert a roman number into an arabic one
+  \NewDocumentCommand \romantonum { m }
+    { \int_from_roman:n { #1 } }
+\ExplSyntaxOff
+
+\begin{document}
+
+\section{Highlight.js}
+\hi{you}
+This is \LaTeX\ syntax highlighted by \verb|highlight.js|.
+You should look at section~\ref{sec:fermat} next.
+
+Did you know that MDCLXI is \romantonum{MDCLXI}? % It&#39;s 1661.
+
+\subsection{Fermat}\label{sec:fermat}
+I have a wonderful proof that
+\[
+  a^n + b^n \neq c^n
+\]
+for \(a, b, c, d, n \in \mathbb{Z}_+\) with \(n &gt; 2\).
+Sadly, it is too large to fit in this code snippet.
+
+\end{document}
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise config all">
+        <h2>LDIF</h2>
+        <pre><code class="language-ldif"># Example LDAP user
+dn: uid=user.0,ou=People,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+givenName: Morris
+sn: Day
+cn: Morris Day
+initials: MD
+employeeNumber: 0
+uid: user.0
+mail: user.0@example.com
+userPassword: password
+telephoneNumber: +1 042 100 3866
+homePhone: +1 039 680 4135
+pager: +1 284 199 0966
+mobile: +1 793 707 0251
+street: 90280 Spruce Street
+l: Minneapolis
+st: MN
+postalCode: 50401
+postalAddress: Morris Day$90280 Spruce Street$Minneapolis, MN  50401
+description: This is the description for Morris Day.
+
+dn: CN=John Smith,OU=Legal,DC=example,DC=com
+changetype: modify
+replace: employeeID
+employeeID: 1234
+-
+replace: employeeNumber
+employeeNumber: 98722
+-
+replace: extensionAttribute6
+extensionAttribute6: JSmith98
+-
+
+dn: CN=Jane Smith,OU=Accounting,DC=example,DC=com
+changetype: modify
+replace: employeeID
+employeeID: 5678
+-
+replace: employeeNumber
+employeeNumber: 76543
+-
+replace: extensionAttribute6
+extensionAttribute6: JSmith14
+-
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Leaf</h2>
+        <pre><code class="language-leaf">#empty(friends) {
+    Try adding some friends!
+} ##loop(friends, &quot;friend&quot;) {
+    &lt;li&gt; #(friend.name) &lt;/li&gt;
+}
+
+#someTag(parameter.list, goes, &quot;here&quot;) {
+    This is an optional body here
+}
+
+#index(friends, &quot;0&quot;) {
+    Hello, #(self)!
+} ##else() {
+    Nobody&#39;s there!
+}
+
+#()
+
+#raw() {
+    &lt;li&gt; Hello &lt;/li&gt;
+}
+</code></pre>
+      </div>
+
+      <div class="common css web all">
+        <h2>Less</h2>
+        <pre><code class="language-less">@import &quot;fruits&quot;;
+
+@rhythm: 1.5em;
+
+@media screen and (min-resolution: 2dppx) {
+    body {font-size: 125%}
+}
+
+section &gt; .foo + #bar:hover [href*=&quot;less&quot;] {
+    margin:     @rhythm 0 0 @rhythm;
+    padding:    calc(5% + 20px);
+    background: #f00ba7 url(http://placehold.alpha-centauri/42.png) no-repeat;
+    background-image: linear-gradient(-135deg, wheat, fuchsia) !important ;
+    background-blend-mode: multiply;
+}
+
+@font-face {
+    font-family: /* ? */ &#39;Omega&#39;;
+    src: url(&#39;../fonts/omega-webfont.woff?v=2.0.2&#39;);
+}
+
+.icon-baz::before {
+    display:     inline-block;
+    font-family: &quot;Omega&quot;, Alpha, sans-serif;
+    content:     &quot;\f085&quot;;
+    color:       rgba(98, 76 /* or 54 */, 231, .75);
+}
+</code></pre>
+      </div>
+
+      <div class="hidden lisp all">
+        <h2>Lisp</h2>
+        <pre><code class="language-lisp">#!/usr/bin/env csi
+
+(defun prompt-for-cd ()
+   &quot;Prompts
+    for CD&quot;
+   (prompt-read &quot;Title&quot; 1.53 1 2/4 1.7 1.7e0 2.9E-4 +42 -7 #b001 #b001/100 #o777 #O777 #xabc55 #c(0 -5.6))
+   (prompt-read &quot;Artist&quot; &amp;rest)
+   (or (parse-integer (prompt-read &quot;Rating&quot;) :junk-allowed t) 0)
+  (if x (format t &quot;yes&quot;) (format t &quot;no&quot; nil) ;and here comment
+  )
+  ;; second line comment
+  &#39;(+ 1 2)
+  (defvar *lines*)                ; list of all lines
+  (position-if-not #&#39;sys::whitespacep line :start beg))
+  (quote (privet 1 2 3))
+  &#39;(hello world)
+  (* 5 7)
+  (1 2 34 5)
+  (:use &quot;aaaa&quot;)
+  (let ((x 10) (y 20))
+    (print (+ x y))
+  )</code></pre>
+      </div>
+
+      <div class="hidden enterprise all">
+        <h2>LiveCode</h2>
+        <pre><code class="language-livecodeserver">&lt;?rev
+
+global gControllerHandlers, gData
+local sTest
+put &quot;blog,index&quot; into gControllerHandlers
+
+
+command blog
+  -- simple comment
+  put &quot;Hello World!&quot; into sTest
+  # ANOTHER COMMENT
+  put &quot;form,url,asset&quot; into tHelpers
+  rigLoadHelper tHelpers
+end blog
+
+/*Hello
+block comment!*/
+
+function myFunction
+  if the secs &gt; 2000000000 then
+    put &quot;Welcome to the future!&quot;
+  else
+    return &quot;something&quot;
+  end if
+end myFunction
+
+
+--| END OF blog.lc
+--| Location: ./system/application/controllers/blog.lc
+----------------------------------------------------------------------
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>LiveScript</h2>
+        <pre><code class="language-livescript"># take the first n objects from a list
+take = (n, [x, ...xs]:list) --&gt;
+  | n &lt;= 0     =&gt; []
+  | empty list =&gt; []
+  | otherwise  =&gt; [x] ++ take n - 1, xs
+
+take 2, [1, 2, 3, 4, 5]
+
+# Curried functions
+take-three = take 3
+take-three [6, 7, 8, 9, 10]
+
+# Function composition
+last-three = reverse &gt;&gt; take-three &gt;&gt; reverse
+last-three [1 to 8]
+
+# List comprehensions and piping
+const t1 =
+  * id: 1
+    name: &#39;george&#39;
+  * id: 2
+    name: &#39;mike&#39;
+  * id: 3
+    name: &#39;donald&#39;
+
+const t2 =
+  * id: 2
+    age: 21
+  * id: 1
+    age: 20
+  * id: 3
+    age: 26
+[{id:id1, name, age}
+  for {id:id1, name} in t1
+  for {id:id2, age} in t2
+  where id1 is id2]
+  |&gt; sort-by \id
+  |&gt; JSON.stringify
+
+~function add x, y
+  @result = x + y
+
+class A
+  (num) -&gt;
+    @x = num
+  property: 1
+  method: (y) -&gt;
+    @x + @property + y
+
+a = new A 3
+a.x        #=&gt; 3
+a.property #=&gt; 1
+a.method 6 #=&gt; 10
+
+f = !-&gt; 2
+g = (x) !-&gt; x + 2
+
+result = switch &#39;test&#39;
+case &#39;blatant&#39;
+  &#39;effort&#39;
+  fallthrough
+case &#39;at&#39;
+  &#39;increasing&#39;
+  fallthrough
+case &#39;relevance&#39;
+  void
+</code></pre>
+      </div>
+
+      <div class="hidden assembler all">
+        <h2>LLVM IR</h2>
+        <pre><code class="language-llvm">; ModuleID = &#39;test.c&#39;
+target datalayout = &quot;e-m:e-i64:64-f80:128-n8:16:32:64-S128&quot;
+target triple = &quot;x86_64-unknown-linux-gnu&quot;
+
+%struct._IO_FILE = type { i32, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, %struct._IO_marker*, %struct._IO_FILE*, i32, i32, i64, i16, i8, [1 x i8], i8*, i64, i8*, i8*, i8*, i8*, i64, i32, [20 x i8] }
+%struct._IO_marker = type { %struct._IO_marker*, %struct._IO_FILE*, i32 }
+%struct.what = type { i8, i16 }
+
+@.str = private unnamed_addr constant [6 x i8] c&quot;foo()\00&quot;, align 1
+@e_long = common global i64 0, align 8
+@g_double = common global double 0.000000e+00, align 8
+@.str.1 = private unnamed_addr constant [7 x i8] c&quot;oooooh\00&quot;, align 1
+@func_ptr = common global i32 (...)* null, align 8
+@stderr = external global %struct._IO_FILE*, align 8
+
+; Function Attrs: nounwind uwtable
+define i32 @foo() #0 {
+  %1 = call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str, i32 0, i32 0))
+  ret i32 0
+}
+
+declare i32 @puts(i8*) #1
+
+; Function Attrs: nounwind uwtable
+define i32 @main(i32 %argc, i8** %argv) #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca i8**, align 8
+
+; &lt;label&gt;:7                                       ; preds = %0
+  %8 = getelementptr inbounds %struct.what, %struct.what* %X, i32 0, i32 0
+  store i8 1, i8* %8, align 2
+  store i8 49, i8* %b_char, align 1
+  %9 = getelementptr inbounds %struct.what, %struct.what* %X, i32 0, i32 1
+  store double 1.000000e+01, double* @g_double, align 8
+  store i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.1, i32 0, i32 0), i8** %cp_char_ptr, align 8
+  store i32 (...)* bitcast (i32 ()* @foo to i32 (...)*), i32 (...)** @func_ptr, align 8
+  %10 = call i32 @puts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.2, i32 0, i32 0))
+  store i32 10, i32* %1, align 4
+  br label %66
+
+; &lt;label&gt;:63                                      ; preds = %11
+  %64 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8
+  %65 = call i32 @fputs(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.9, i32 0, i32 0), %struct._IO_FILE* %64)
+  store i32 -1, i32* %1, align 4
+  br label %66
+
+; &lt;label&gt;:66                                      ; preds = %63, %46, %7
+  %67 = load i32, i32* %1, align 4
+  ret i32 %67
+}
+
+declare i32 @printf(i8*, ...) #1
+
+declare i32 @fputs(i8*, %struct._IO_FILE*) #1
+
+attributes #0 = { nounwind uwtable &quot;disable-tail-calls&quot;=&quot;false&quot; &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;x86-64&quot; &quot;target-features&quot;=&quot;+fxsr,+mmx,+sse,+sse2&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; }
+
+!llvm.ident = !{!0}
+
+!0 = !{!&quot;clang version 3.8.0 (tags/RELEASE_380/final)&quot;}
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>LSL (Linden Scripting Language)</h2>
+        <pre><code class="language-lsl">default
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, &quot;Hello, Avatar!&quot;);
+    }
+
+    touch_start(integer num_detected)
+    {
+        llSay(PUBLIC_CHANNEL, &quot;Touched.&quot;);
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="common scripting all">
+        <h2>Lua</h2>
+        <pre><code class="language-lua">--[[
+Simple signal/slot implementation
+]]
+local signal_mt = {
+    __index = {
+        register = table.insert
+    }
+}
+function signal_mt.__index:emit(... --[[ Comment in params ]])
+    for _, slot in ipairs(self) do
+        slot(self, ...)
+    end
+end
+local function create_signal()
+    return setmetatable({}, signal_mt)
+end
+
+-- Signal test
+local signal = create_signal()
+signal:register(function(signal, ...)
+    print(...)
+end)
+signal:emit(&#39;Answer to Life, the Universe, and Everything:&#39;, 42)
+
+--[==[ [=[ [[
+Nested ]]
+multi-line ]=]
+comment ]==]
+[==[ Nested
+[=[ multi-line
+[[ string
+]] ]=] ]==]
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Makefile</h2>
+        <pre><code class="language-makefile"># Makefile
+
+BUILDDIR      = _build
+EXTRAS       ?= $(BUILDDIR)/extras
+
+.PHONY: main clean
+
+main:
+	@echo &quot;Building main facility...&quot;
+	build_main $(BUILDDIR)
+
+clean:
+	rm -rf $(BUILDDIR)/*
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Wolfram Language</h2>
+        <pre><code class="language-mathematica">(* Real-world example from StackExchange *)
+xkcdStyle = {FontFamily -&gt; &quot;Comic Sans MS&quot;, 16};
+
+xkcdLabel[{str_String, {x1_, y1_}, {xo_, yo_}}] := Module[{x2, y2},
+  x2 = x1 + xo; y2 = y1 + yo;
+  {
+    Inset[
+      Style[str, xkcdStyle],
+      {x2, y2},
+      {1.2*Sign[x1 - x2], Sign[y1 - y2] Boole[x1 == x2]}
+    ],
+    Thick,
+    BezierCurve[{{0.9*x1 + 0.1*x2, 0.9*y1 + 0.1*y2}, {x1, y2}, {x2, y2}}]
+  }
+];
+
+xkcdRules = {
+  EdgeForm[ef : Except[None]] :&gt; EdgeForm[Flatten@{ef, Thick, Black}],
+  Style[x_, st_] :&gt; Style[x, xkcdStyle],
+  Pane[s_String] :&gt; Pane[Style[s, xkcdStyle]],
+  {h_Hue, l_Line} :&gt; {Thickness[0.02], White, l, Thick, h, l},
+  Grid[{{g_Graphics, s_String}}] :&gt; Grid[{{g, Style[s, xkcdStyle]}}],
+  Rule[PlotLabel, lab_] :&gt; Rule[PlotLabel, Style[lab, xkcdStyle]]
+};
+
+xkcdShow[plot_] := Show[plot, AxesStyle -&gt; Thick, LabelStyle -&gt; xkcdStyle] /. xkcdRules;
+xkcdShow[Labeled[plot_, rest__]] := Labeled[
+  Show[plot, AxesStyle -&gt; Thick, LabelStyle -&gt; xkcdStyle], rest ] /. xkcdRules;
+
+xkcdDistort[plot_] := Module[{r, ix, iy},
+  r = ImagePad[Rasterize@plot, 10, Padding -&gt; White];
+  {ix, iy} = Table[
+    RandomImage[{-1, 1}, ImageDimensions@r] ~ ImageConvolve ~ GaussianMatrix[10],
+    {2}
+  ];
+  ImagePad[
+    ImageTransformation[r, # + 15 {ImageValue[ix, #], ImageValue[iy, #]} &amp;, DataRange -&gt; Full],
+    -5
+  ]
+];
+xkcdConvert[plot_] := xkcdDistort[xkcdShow[plot]];
+xkcdConvert[Plot[Sin[x], {x, 0, 4 Pi}]]
+
+(* Features *)
+
+(* The Wolfram Language supports a variety of different number input forms *)
+(* All numbers below are correct numbers! *)
+
+numbers = {
+    123,
+    123.123,
+    2^^101.101,
+    35^^WolframLanguage,
+    16^^dead.Beef,
+    123`,
+    1.381`,
+    16^^9fe.c3`7,
+    3.0`+7,
+    3`7,
+    3.000000000000000000000`7,
+    3.000000000000000000`-7,
+    3.98`5*^3,
+    16^^dead.beef``+4*^-3,
+    0.0000000001*^10,
+    35^^small*^-10,
+    10000000000*^-10
+}
+
+(* Named Characters are matched as normal symbols *)
+{ \[Gamma],  \[CapitalEAcute], \[DoubleLeftRightArrow], \[FormalEpsilon], my\[CapitalEAcute]Variable }
+
+(* Patterns and Slots *)
+xkcdLabel[{str_String, {x1_Integer, y1_Real}, {_Real, _List}}]
+If[# &gt; 5, #, ## &amp;[]] &amp; /@ Range[10]
+
+(* Usage and other messages, In/Out *)
+In[1]:= func::usage = &quot;A Usage message&quot;
+Out[1]= &quot;A Usage message&quot;
+
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Matlab</h2>
+        <pre><code class="language-matlab">n = 20; % number of points
+points = [random(&#39;unid&#39;, 100, n, 1), random(&#39;unid&#39;, 100, n, 1)];
+len = zeros(1, n - 1);
+points = sortrows(points);
+%% Initial set of points
+plot(points(:,1),points(:,2));
+for i = 1: n-1
+    len(i) = points(i + 1, 1) - points(i, 1);
+end
+while(max(len) &gt; 2 * min(len))
+    [d, i] = max(len);
+    k = on_margin(points, i, d, -1);
+    m = on_margin(points, i + 1, d, 1);
+    xm = 0; ym = 0;
+%% New point
+    if(i == 1 || i + 1 == n)
+        xm = mean(points([i,i+1],1))
+        ym = mean(points([i,i+1],2))
+    else
+        [xm, ym] = dlg1(points([k, i, i + 1, m], 1), ...
+            points([k, i, i + 1, m], 2))
+    end
+
+    points = [ points(1:i, :); [xm, ym]; points(i + 1:end, :)];
+end
+
+%{
+    This is a block comment. Please ignore me.
+%}
+
+function [net] = get_fit_network(inputs, targets)
+    % Create Network
+    numHiddenNeurons = 20;  % Adjust as desired
+    net = newfit(inputs,targets,numHiddenNeurons);
+    net.trainParam.goal = 0.01;
+    net.trainParam.epochs = 1000;
+    % Train and Apply Network
+    [net,tr] = train(net,inputs,targets);
+end
+
+foo_matrix = [1, 2, 3; 4, 5, 6]&#39;&#39;&#39;;
+foo_cell = {1, 2, 3; 4, 5, 6}&#39;&#39;.&#39;.&#39;;
+
+cell2flatten = {1,2,3,4,5};
+flattenedcell = cat(1, cell2flatten{:});
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Maxima</h2>
+        <pre><code class="language-maxima">/* Maxima computer algebra system */
+
+/* symbolic constants */
+
+[true, false, unknown, inf, minf, ind,
+ und, %e, %i, %pi, %phi, %gamma];
+
+/* programming keywords */
+
+if a then b elseif c then d else f;
+for x:1 thru 10 step 2 do print(x);
+for z:-2 while z &lt; 0 do print(z);
+for m:0 unless m &gt; 10 do print(m);
+for x in [1, 2, 3] do print(x);
+foo and bar or not baz;
+
+/* built-in variables */
+
+[_, __, %, %%, linel, simp, dispflag,
+ stringdisp, lispdisp, %edispflag];
+
+/* built-in functions */
+
+[sin, cosh, exp, atan2, sqrt, log, struve_h,
+ sublist_indices, read_array];
+
+/* user-defined symbols */
+
+[foo, ?bar, baz%, quux_mumble_blurf];
+
+/* symbols using Unicode characters */
+
+[Љ, Щ, щ, Ӄ, ЩЩЩ, ӃӃЉЉщ];
+
+/* numbers */
+
+ibase : 18 $
+[0, 1234, 1234., 0abcdefgh];
+reset (ibase) $
+[.54321, 3.21e+0, 12.34B56];
+
+/* strings */
+
+s1 : &quot;\&quot;now\&quot; is&quot;;
+s2 : &quot;the &#39;time&#39; for all good men&quot;;
+print (s1, s2, &quot;to come to the aid&quot;,
+  &quot;of their country&quot;);
+
+/* expressions */
+
+foo (x, y, z) :=
+  if x &gt; 1 + y
+    then z - x*y
+  elseif y &lt;= 100!
+    then x/(y + z)^2
+  else z - y . x . y;
+
+</code></pre>
+      </div>
+
+      <div class="hidden graphics all">
+        <h2>MEL</h2>
+        <pre><code class="language-mel">proc string[] getSelectedLights()
+
+{
+  string $selectedLights[];
+
+  string $select[] = `ls -sl -dag -leaf`;
+
+  for ( $shape in $select )
+  {
+    // Determine if this is a light.
+    //
+    string $class[] = getClassification( `nodeType $shape` );
+
+
+    if ( ( `size $class` ) &gt; 0 &amp;&amp; ( &quot;light&quot; == $class[0] ) )
+    {
+      $selectedLights[ `size $selectedLights` ] = $shape;
+    }
+  }
+
+  // Result is an array of all lights included in
+
+  // current selection list.
+  return $selectedLights;
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Mercury</h2>
+        <pre><code class="language-mercury">% &quot;Hello World&quot; in Mercury.
+:- module hello.
+
+
+:- interface.
+:- import_module io.
+
+:- pred main(io::di, io::uo) is det.
+
+
+:- implementation.
+
+main(!IO) :-
+    io.write_string(&quot;Hello, world\n&quot;, !IO).
+
+:- pred filter(pred(T), list(T), list(T), list(T) ).
+:- mode filter(in(pred(in) is semidet), in, out, out ) is det.
+
+filter(_, [], [], []).
+filter(P, [X | Xs], Ys, Zs) :-
+    filter(P, Xs, Ys0, Zs0),
+    ( if P(X)   then    Ys = [X | Ys0],   Zs = Zs0
+                else    Ys = Ys0      ,   Zs = [X | Zs0]
+    ).
+</code></pre>
+      </div>
+
+      <div class="hidden assembler all">
+        <h2>MIPS Assembly</h2>
+        <pre><code class="language-mipsasm">.text
+.global AckermannFunc
+
+# Preconditions:
+#   1st parameter ($a0) m
+#   2nd parameter ($a1) n
+# Postconditions:
+#   result in ($v0) = value of A(m,n)
+
+AckermannFunc:
+            addi    $sp,   $sp, -8
+            sw      $s0, 4($sp)
+            sw      $ra, 0($sp)
+
+            # move the parameter registers to temporary  - no, only when nec.
+
+LABEL_IF:   bne     $a0, $zero, LABEL_ELSE_IF
+
+            addi    $v0, $a1, 1
+
+            # jump to LABEL_DONE
+            j LABEL_DONE
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Mizar</h2>
+        <pre><code class="language-mizar">::: ## Lambda calculus
+
+environ
+
+  vocabularies LAMBDA,
+      NUMBERS,
+      NAT_1, XBOOLE_0, SUBSET_1, FINSEQ_1, XXREAL_0, CARD_1,
+      ARYTM_1, ARYTM_3, TARSKI, RELAT_1, ORDINAL4, FUNCOP_1;
+
+  :: etc...
+
+begin
+
+reserve D for DecoratedTree,
+        p,q,r for FinSequence of NAT,
+        x for set;
+
+definition
+  let D;
+
+  attr D is LambdaTerm-like means
+    (dom D qua Tree) is finite &amp;
+::&gt;                          *143,306
+    for r st r in dom D holds
+      r is FinSequence of {0,1} &amp;
+      r^&lt;*0*&gt; in dom D implies D.r = 0;
+end;
+
+registration
+  cluster LambdaTerm-like for DecoratedTree of NAT;
+  existence;
+::&gt;       *4
+end;
+
+definition
+  mode LambdaTerm is LambdaTerm-like DecoratedTree of NAT;
+end;
+
+::: Then we extend this ordinary one-step beta reduction, that is,
+:::  any subterm is also allowed to reduce.
+definition
+  let M,N;
+
+  pred M beta N means
+    ex p st
+      M|p beta_shallow N|p &amp;
+      for q st not p is_a_prefix_of q holds
+        [r,x] in M iff [r,x] in N;
+end;
+
+theorem Th4:
+  ProperPrefixes (v^&lt;*x*&gt;) = ProperPrefixes v \/ {v}
+proof
+  thus ProperPrefixes (v^&lt;*x*&gt;) c= ProperPrefixes v \/ {v}
+  proof
+    let y;
+    assume y in ProperPrefixes (v^&lt;*x*&gt;);
+    then consider v1 such that
+A1: y = v1 and
+A2: v1 is_a_proper_prefix_of v^&lt;*x*&gt; by TREES_1:def 2;
+ v1 is_a_prefix_of v &amp; v1 &lt;&gt; v or v1 = v by A2,TREES_1:9;
+then
+ v1 is_a_proper_prefix_of v or v1 in {v} by TARSKI:def 1,XBOOLE_0:def 8;
+then  y in ProperPrefixes v or y in {v} by A1,TREES_1:def 2;
+    hence thesis by XBOOLE_0:def 3;
+  end;
+  let y;
+  assume y in ProperPrefixes v \/ {v};
+then A3: y in ProperPrefixes v or y in {v} by XBOOLE_0:def 3;
+A4: now
+    assume y in ProperPrefixes v;
+    then consider v1 such that
+A5: y = v1 and
+A6: v1 is_a_proper_prefix_of v by TREES_1:def 2;
+ v is_a_prefix_of v^&lt;*x*&gt; by TREES_1:1;
+then  v1 is_a_proper_prefix_of v^&lt;*x*&gt; by A6,XBOOLE_1:58;
+    hence thesis by A5,TREES_1:def 2;
+  end;
+ v^{} = v by FINSEQ_1:34;
+  then
+ v is_a_prefix_of v^&lt;*x*&gt; &amp; v &lt;&gt; v^&lt;*x*&gt; by FINSEQ_1:33,TREES_1:1;
+then  v is_a_proper_prefix_of v^&lt;*x*&gt; by XBOOLE_0:def 8;
+then  y in ProperPrefixes v or y = v &amp; v in ProperPrefixes (v^&lt;*x*&gt;)
+  by A3,TARSKI:def 1,TREES_1:def 2;
+  hence thesis by A4;
+end;</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Perl</h2>
+        <pre><code class="language-perl"># loads object
+sub load
+{
+  my $flds = $c-&gt;db_load($id,@_) || do {
+    Carp::carp &quot;Can`t load (class: $c, id: $id): &#39;$!&#39;&quot;; return undef
+  };
+  my $o = $c-&gt;_perl_new();
+  $id12 = $id / 24 / 3600;
+  $o-&gt;{&#39;ID&#39;} = $id12 + 123;
+  #$o-&gt;{&#39;SHCUT&#39;} = $flds-&gt;{&#39;SHCUT&#39;};
+  my $p = $o-&gt;props;
+  my $vt;
+  $string =~ m/^sought_text$/;
+  $items = split //, &#39;abc&#39;;
+  $string //= &quot;bar&quot;;
+  for my $key (keys %$p)
+  {
+    if(${$vt.&#39;::property&#39;}) {
+      $o-&gt;{$key . &#39;_real&#39;} = $flds-&gt;{$key};
+      tie $o-&gt;{$key}, &#39;CMSBuilder::Property&#39;, $o, $key;
+    }
+  }
+  $o-&gt;save if delete $o-&gt;{&#39;_save_after_load&#39;};
+
+  # GH-117
+  my $g = glob(&quot;/usr/bin/*&quot;);
+
+  return $o;
+}
+
+__DATA__
+@@ layouts/default.html.ep
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;&lt;%= content %&gt;&lt;/body&gt;
+&lt;/html&gt;
+__END__
+
+=head1 NAME
+POD till the end of file
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Mojolicious</h2>
+        <pre><code class="language-mojolicious">%layout &#39;bootstrap&#39;;
+% title &quot;Import your subs&quot;;
+%= form_for &#39;/settings/import&#39; =&gt; (method =&gt; &#39;post&#39;, enctype =&gt; &#39;multipart/form-data&#39;) =&gt; begin
+     %= file_field &#39;opmlfile&#39; =&gt; multiple =&gt; &#39;true&#39;
+     %= submit_button &#39;Import&#39;, &#39;class&#39; =&gt; &#39;btn&#39;
+% end
+&lt;div&gt;
+% if ($subs) {
+&lt;dl&gt;
+% for my $item (@$subs) {
+% my ($dir, $align) = ($item-&gt;{rtl}) ? (&#39;rtl&#39;, &#39;right&#39;) : (&#39;ltr&#39;, &#39;left&#39;);
+&lt;dt align=&quot;&lt;%= $align %&gt;&quot;&gt;&lt;a href=&quot;&lt;%= $item-&gt;{&#39;xmlUrl&#39;} %&gt;&quot;&gt;&lt;i class=&quot;icon-rss&quot;&gt;&lt;/i&gt; rss&lt;/a&gt;
+&lt;a dir=&quot;&lt;%= $dir %&gt;&quot; href=&quot;&lt;%= $item-&gt;{htmlUrl} %&gt;&quot;&gt;&lt;%== $item-&gt;{title} %&gt;&lt;/a&gt;
+&lt;/dt&gt;
+&lt;dd&gt;&lt;b&gt;Categories&lt;/b&gt;
+%= join q{, }, sort @{ $item-&gt;{categories} || [] };
+&lt;/dd&gt;
+&lt;/dl&gt;
+% }
+&lt;/div&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Monkey</h2>
+        <pre><code class="language-monkey">#IMAGE_FILES=&quot;*.png|*.jpg&quot;
+#SOUND_FILES=&quot;*.wav|*.ogg&quot;
+#MUSIC_FILES=&quot;*.wav|*.ogg&quot;
+#BINARY_FILES=&quot;*.bin|*.dat&quot;
+
+Import mojo
+
+&#39; The main class which expends Mojo&#39;s &#39;App&#39; class:
+Class GameApp Extends App
+    Field player:Player
+
+    Method OnCreate:Int()
+        Local img:Image = LoadImage(&quot;player.png&quot;)
+        Self.player = New Player()
+        SetUpdateRate(60)
+
+        Return 0
+    End
+
+    Method OnUpdate:Int()
+        player.x += HALFPI
+
+        If (player.x &gt; 100) Then
+            player.x = 0
+        Endif
+
+        Return 0
+    End
+
+    Method OnRender:Int()
+        Cls(32, 64, 128)
+        player.Draw()
+
+        player = Null
+        Return 0
+    End
+End
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>MoonScript</h2>
+        <pre><code class="language-moonscript">print &quot;I am #{math.random! * 100}% sure.&quot;
+
+my_function = (name=&quot;something&quot;, height=100) -&gt;
+  print &quot;Hello I am&quot;, name
+  print &quot;My height is&quot;, height
+
+my_function dance: &quot;Tango&quot;, partner: &quot;none&quot;
+
+my_func 5,4,3,      -- multi-line arguments
+  8,9,10
+
+table = {
+  name: &quot;Bill&quot;,
+  age: 200,
+  [&quot;favorite food&quot;]: &quot;rice&quot;,
+  :keyvalue,
+  [1+7]: &#39;eight&#39;
+}
+
+class Inventory
+  new: =&gt;
+    @items = {}
+
+  add_item: (name) =&gt;
+    if @items[name]
+      @items[name] += 1
+    else
+      @items[name] = 1
+
+inv = Inventory!
+inv\add_item &quot;t-shirt&quot;
+inv\add_item &quot;pants&quot;
+
+import
+  assert_csrf
+  require_login
+  from require &quot;helpers&quot;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>N1QL</h2>
+        <pre><code class="language-n1ql">SELECT *
+FROM `beer-sample`
+WHERE brewery_id IS NOT MISSING AND type=&quot;beer&quot;
+LIMIT 1;
+
+UPSERT INTO product (KEY, VALUE) VALUES (
+    &quot;odwalla-juice1&quot;, {
+        &quot;productId&quot;: &quot;odwalla-juice1&quot;,
+        &quot;unitPrice&quot;: 5.40,
+        &quot;type&quot;: &quot;product&quot;,
+        &quot;color&quot;:&quot;red&quot;
+    }
+) RETURNING *;
+
+INFER `beer-sample` WITH {
+    &quot;sample_size&quot;: 10000,
+    &quot;num_sample_values&quot;: 1,
+    &quot;similarity_metric&quot;: 0.0
+};
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>NestedText</h2>
+        <pre><code class="language-nestedtext"># Contact information for our officers
+
+president:
+    name: Katheryn McDaniel
+    address:
+        &gt; 138 Almond Street
+        &gt; Topeka, Kansas 20697
+    phone:
+        cell: 1-210-555-5297
+        home: 1-210-555-8470
+            # Katheryn prefers that we always call her on her cell phone.
+    email: KateMcD@aol.com
+    kids:
+        - Joanie
+        - Terrance
+
+vice president:
+    name: Margaret Hodge
+    address:
+        &gt; 2586 Marigold Land
+        &gt; Topeka, Kansas 20697
+    phone: 1-470-555-0398
+    email: margaret.hodge@ku.edu
+    kids:
+        - Arnie
+        - Zach
+        - Maggie
+</code></pre>
+      </div>
+
+      <div class="hidden config web all">
+        <h2>Nginx config</h2>
+        <pre><code class="language-nginx">user  www www;
+worker_processes  2;
+pid /var/run/nginx.pid;
+error_log  /var/log/nginx.error_log  debug | info | notice | warn | error | crit;
+
+events {
+    connections   2000;
+    use kqueue | rtsig | epoll | /dev/poll | select | poll;
+}
+
+http {
+    log_format main      &#39;$remote_addr - $remote_user [$time_local] &#39;
+                         &#39;&quot;$request&quot; $status $bytes_sent &#39;
+                         &#39;&quot;$http_referer&quot; &quot;$http_user_agent&quot; &#39;
+                         &#39;&quot;$gzip_ratio&quot;&#39;;
+
+    send_timeout 3m;
+    client_header_buffer_size 1k;
+
+    gzip on;
+    gzip_min_length 1100;
+
+    #lingering_time 30;
+
+    server {
+        server_name   one.example.com  www.one.example.com;
+        access_log   /var/log/nginx.access_log  main;
+
+        rewrite (.*) /index.php?page=$1 break;
+
+        location / {
+            proxy_pass         http://127.0.0.1/;
+            proxy_redirect     off;
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            charset            koi8-r;
+        }
+
+        location /api/ {
+            fastcgi_pass 127.0.0.1:9000;
+        }
+
+        location ~* \.(jpg|jpeg|gif)$ {
+            root         /spool/www;
+        }
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden system all">
+        <h2>Nim</h2>
+        <pre><code class="language-nim">import module1, module2, module3
+from module4 import nil
+
+type
+  TFoo = object ## Doc comment
+    a: int32
+  PFoo = ref TFoo
+
+proc do_stuff314(param_1: TFoo, par2am: var PFoo): PFoo {.exportc: &quot;dostuff&quot; .} =
+  # Regular comment
+  discard &quot;&quot;&quot;
+  dfag
+sdfg&quot;&quot;
+&quot;&quot;&quot;
+  result = nil
+
+method abc(a: TFoo) = discard 1u32 + 0xabcdefABCDEFi32 + 0o01234567i8 + 0b010
+
+discard rawstring&quot;asdf&quot;&quot;adfa&quot;
+var normalstring = &quot;asdf&quot;
+let a: uint32 = 0xFFaF&#39;u32
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Nix</h2>
+        <pre><code class="language-nix">{ stdenv, foo, bar ? false, ... }:
+
+/*
+ * foo
+ */
+
+let
+  a = 1; # just a comment
+  b = null;
+  c = toString 10;
+in stdenv.mkDerivation rec {
+  name = &quot;foo-${version}&quot;;
+  version = &quot;1.3&quot;;
+
+  configureFlags = [ &quot;--with-foo2&quot; ] ++ stdenv.lib.optional bar &quot;--with-foo=${ with stdenv.lib; foo }&quot;
+
+  postInstall = &#39;&#39;
+    ${ if true then &quot;--${test}&quot; else false }
+  &#39;&#39;;
+
+  meta = with stdenv.lib; {
+    homepage = https://nixos.org;
+  };
+}
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>Node REPL</h2>
+        <pre><code class="language-node-repl">&gt; a = &quot;1&quot;
+&#39;1&#39;
+&gt; function b(){
+... return 1+2;</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>NSIS</h2>
+        <pre><code class="language-nsis">/*
+  NSIS Scheme
+  for highlight.js
+*/
+
+; Includes
+!include MUI2.nsh
+
+; Defines
+!define x64 &quot;true&quot;
+
+; Settings
+Name &quot;installer_name&quot;
+OutFile &quot;installer_name.exe&quot;
+RequestExecutionLevel user
+CRCCheck on
+
+!ifdef ${x64}
+  InstallDir &quot;$PROGRAMFILES64\installer_name&quot;
+!else
+  InstallDir &quot;$PROGRAMFILES\installer_name&quot;
+!endif
+
+; Pages
+!insertmacro MUI_PAGE_INSTFILES
+
+; Sections
+Section &quot;section_name&quot; section_index
+  nsExec::ExecToLog &quot;calc.exe&quot;
+SectionEnd
+
+; Functions
+Function .onInit
+  DetailPrint &quot;The install button reads $(^InstallBtn)&quot;
+  DetailPrint &#39;Here comes a$\n$\rline-break!&#39;
+  DetailPrint `Escape the dollar-sign: $$`
+FunctionEnd
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Objective-C</h2>
+        <pre><code class="language-objectivec">#import &lt;UIKit/UIKit.h&gt;
+#import &quot;Dependency.h&quot;
+
+@protocol WorldDataSource
+@optional
+- (NSString*)worldName;
+@required
+- (BOOL)allowsToLive;
+@end
+
+@property (nonatomic, readonly) NSString *title;
+- (IBAction) show;
+@end
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>OCaml</h2>
+        <pre><code class="language-ocaml">(* This is a
+multiline, (* nested *) comment *)
+type point = { x: float; y: float };;
+let some_string = &quot;this is a string&quot;;;
+let rec length lst =
+    match lst with
+      [] -&gt; 0
+    | head :: tail -&gt; 1 + length tail
+  ;;
+exception Test;;
+type expression =
+      Const of float
+    | Var of string
+    | Sum of expression * expression    (* e1 + e2 *)
+    | Diff of expression * expression   (* e1 - e2 *)
+    | Prod of expression * expression   (* e1 * e2 *)
+    | Quot of expression * expression   (* e1 / e2 *)
+class point =
+    object
+      val mutable x = 0
+      method get_x = x
+      method private move d = x &lt;- x + d
+    end;;
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>OpenSCAD</h2>
+        <pre><code class="language-openscad">use &lt;write.scad&gt;
+include &lt;../common/base.scad&gt;
+
+//draw a foobar
+module foobar(){
+    translate([0,-10,0])
+    difference(){
+        cube([5,10.04,15]);
+        sphere(r=10,$fn=100);
+    }
+}
+
+foobar();
+#cube ([5,5,5]);
+echo(&quot;done&quot;);</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Oxygene</h2>
+        <pre><code class="language-oxygene">namespace LinkedList;
+
+interface
+
+uses
+  System.Text;
+
+type
+  List&lt;T&gt; = public class
+    where T is Object;
+  private
+    method AppendToString(aBuilder: StringBuilder);
+  public
+    constructor(aData: T);
+    constructor(aData: T; aNext: List&lt;T&gt;);
+    property Next: List&lt;T&gt;;
+    property Data: T;
+
+    method ToString: string; override;
+  end;
+
+implementation
+
+constructor List&lt;T&gt;(aData: T);
+begin
+  Data := aData;
+end;
+
+constructor List&lt;T&gt;(aData: T; aNext: List&lt;T&gt;);
+begin
+  constructor(aData);
+  Next := aNext;
+end;
+
+method List&lt;T&gt;.ToString: string;
+begin
+  with lBuilder := new StringBuilder do begin
+    AppendToString(lBuilder);
+    result := lBuilder.ToString();
+  end;
+end;
+
+method List&lt;T&gt;.AppendToString(aBuilder: StringBuilder);
+begin
+  if assigned(Data) then
+    aBuilder.Append(Data.ToString)
+  else
+    aBuilder.Append(&#39;nil&#39;);
+
+  if assigned(Next) then begin
+    aBuilder.Append(&#39;, &#39;);
+    Next.AppendToString(aBuilder);
+  end;
+end;
+
+end.
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Parser3</h2>
+        <pre><code class="language-parser3">@CLASS
+base
+
+@USE
+module.p
+
+@BASE
+class
+
+# Comment for code
+@create[aParam1;aParam2][local1;local2]
+  ^connect[mysql://host/database?ClientCharset=windows-1251]
+  ^for[i](1;10){
+    &lt;p class=&quot;paragraph&quot;&gt;^eval($i+10)&lt;/p&gt;
+    ^connect[mysql://host/database]{
+      $tab[^table::sql{select * from `table` where a=&#39;1&#39;}]
+      $var_Name[some${value}]
+    }
+  }
+
+  ^rem{
+    Multiline comment with code: $var
+    ^while(true){
+      ^for[i](1;10){
+        ^sleep[]
+      }
+    }
+  }
+  ^taint[^#0A]
+
+@GET_base[]
+## Comment for code
+  # Isn&#39;t comment
+  $result[$.hash_item1[one] $.hash_item2[two]]
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>Packet Filter config</h2>
+        <pre><code class="language-pf"># from the PF FAQ: http://www.openbsd.org/faq/pf/example1.html
+
+# macros
+
+int_if=&quot;xl0&quot;
+
+tcp_services=&quot;{ 22, 113 }&quot;
+icmp_types=&quot;echoreq&quot;
+
+comp3=&quot;192.168.0.3&quot;
+
+# options
+
+set block-policy return
+set loginterface egress
+set skip on lo
+
+# FTP Proxy rules
+
+anchor &quot;ftp-proxy/*&quot;
+
+pass in quick on $int_if inet proto tcp to any port ftp \
+    divert-to 127.0.0.1 port 8021
+
+# match rules
+
+match out on egress inet from !(egress:network) to any nat-to (egress:0)
+
+# filter rules
+
+block in log
+pass out quick
+
+antispoof quick for { lo $int_if }
+
+pass in on egress inet proto tcp from any to (egress) \
+    port $tcp_services
+
+pass in on egress inet proto tcp to (egress) port 80 rdr-to $comp3
+
+pass in inet proto icmp all icmp-type $icmp_types
+
+pass in on $int_if
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>PostgreSQL and PL/pgSQL</h2>
+        <pre><code class="language-pgsql">BEGIN;
+SELECT sum(salary) OVER w, avg(salary) OVER w
+  FROM empsalary
+  WINDOW w AS (PARTITION BY depname ORDER BY salary DESC);
+END;
+
+CREATE FUNCTION days_of_week() RETURNS SETOF text AS $$
+BEGIN
+  FOR i IN 7 .. 13 LOOP
+    RETURN NEXT to_char(to_date(i::text,&#39;J&#39;),&#39;TMDy&#39;);
+  END LOOP;
+END;
+$$ STABLE LANGUAGE plpgsql;
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>PHP</h2>
+        <pre><code class="language-php">require_once &#39;Zend/Uri/Http.php&#39;;
+
+namespace Location\Web;
+
+interface Factory
+{
+    static function _factory();
+}
+
+abstract class URI extends BaseURI implements Factory
+{
+    abstract function test();
+
+    public static $st1 = 1;
+    const ME = &quot;Yo&quot;;
+    var $list = NULL;
+    private $var;
+
+    /**
+     * Returns a URI
+     *
+     * @return URI
+     */
+    static public function _factory($stats = array(), $uri = &#39;http&#39;)
+    {
+        echo __METHOD__;
+        $uri = explode(&#39;:&#39;, $uri, 0b10);
+        $schemeSpecific = isset($uri[1]) ? $uri[1] : &#39;&#39;;
+        $desc = &#39;Multi
+line description&#39;;
+
+        // Security check
+        if (!ctype_alnum($scheme)) {
+            throw new Zend_Uri_Exception(&#39;Illegal scheme&#39;);
+        }
+
+        $this-&gt;var = 0 - self::$st;
+        $this-&gt;list = list(Array(&quot;1&quot;=&gt; 2, 2=&gt;self::ME, 3 =&gt; \Location\Web\URI::class));
+
+        return [
+            &#39;uri&#39;   =&gt; $uri,
+            &#39;value&#39; =&gt; null,
+        ];
+    }
+}
+
+match ($key) {
+    1 =&gt; &#39;Integer 1&#39;,
+    &#39;1&#39; =&gt; &#39;String 1&#39;,
+    true =&gt; &#39;Bool true&#39;,
+    [] =&gt; &#39;Empty array&#39;,
+    [1] =&gt; &#39;Array [1]&#39;,
+};
+
+enum Foo: string {
+    case Test = &#39;test&#39;;
+}
+
+match ($key) {
+    1 =&gt; &#39;Integer 1&#39;,
+    &#39;1&#39; =&gt; &#39;String 1&#39;,
+    true =&gt; &#39;Bool true&#39;,
+    [] =&gt; &#39;Empty array&#39;,
+    [1] =&gt; &#39;Array [1]&#39;,
+};
+
+echo URI::ME . URI::$st1;
+
+__halt_compiler () ; datahere
+datahere
+datahere */
+datahere
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>PHP Template</h2>
+        <pre><code class="language-php-template">&lt;html&gt;
+&lt;/html&gt;
+&lt;body&gt;
+&lt;?php
+# Here echo command is used to print
+echo &quot;Hello, world!&quot;;
+?&gt;
+&lt;/body&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Pony</h2>
+        <pre><code class="language-pony">use &quot;collections&quot;
+
+class StopWatch
+  &quot;&quot;&quot;
+  A simple stopwatch class for performance micro-benchmarking
+  &quot;&quot;&quot;
+  var _s: U64 = 0
+
+  fun delta(): U64 =&gt;
+    Time.nanos() - _s
+
+actor LonelyPony
+  &quot;&quot;&quot;
+  A simple manifestation of the lonely pony problem
+  &quot;&quot;&quot;
+  var env: Env
+  let sw: StopWatch = StopWatch
+
+  new create(env&#39;: Env) =&gt;
+    env = env
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>PowerShell</h2>
+        <pre><code class="language-powershell">$initialDate = [datetime]&#39;2013/1/8&#39;
+
+$rollingDate = $initialDate
+
+do {
+    $client = New-Object System.Net.WebClient
+    $results = $client.DownloadString(&quot;http://not.a.real.url&quot;)
+    Write-Host &quot;$rollingDate.ToShortDateString() - $results&quot;
+    $rollingDate = $rollingDate.AddDays(21)
+    $username = [System.Environment]::UserName
+} until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)
+</code></pre>
+      </div>
+
+      <div class="hidden graphics all">
+        <h2>Processing</h2>
+        <pre><code class="language-processing">import java.util.LinkedList;
+import java.awt.Point;
+
+PGraphics pg;
+String load;
+
+void setup() {
+  size(displayWidth, displayHeight, P3D);
+  pg = createGraphics(displayWidth*2,displayHeight,P2D);
+  pg.beginDraw();
+  pg.background(255,255,255);
+  //pg.smooth(8);
+  pg.endDraw();
+}
+void draw(){
+  background(255);
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Python profiler</h2>
+        <pre><code class="language-profile">       261917242 function calls in 686.251 CPU seconds
+
+       ncalls  tottime  filename:lineno(function)
+       152824  513.894  {method &#39;sort&#39; of &#39;list&#39; objects}
+    129590630   83.894  rrule.py:842(__cmp__)
+    129590630   82.439  {cmp}
+       153900    1.296  rrule.py:399(_iter)
+304393/151570    0.963  rrule.py:102(_iter_cached)
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Prolog</h2>
+        <pre><code class="language-prolog">mergesort([],[]). % special case
+mergesort([A],[A]).
+mergesort([A,B|R],S) :-
+   split([A,B|R],L1,L2),
+   mergesort(L1,S1),
+   mergesort(L2,S2),
+   merge(S1,S2,S).
+
+split([],[],[]).
+split([A],[A],[]).
+split([A,B|R],[A|Ra],[B|Rb]) :-  split(R,Ra,Rb).
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>.properties</h2>
+        <pre><code class="language-properties"># .properties
+! Exclamation mark = comments, too
+
+key1 = value1
+key2 : value2
+key3   value3
+key\ spaces multiline\
+            value4
+empty_key
+! Key can contain escaped chars
+\:\= = value5
+</code></pre>
+      </div>
+
+      <div class="hidden protocols all">
+        <h2>Protocol Buffers</h2>
+        <pre><code class="language-protobuf">package languages.protobuf;
+
+option java_package = &quot;org.highlightjs.languages.protobuf&quot;;
+
+message Customer {
+  required int64 customer_id = 1;
+  optional string name = 2;
+  optional string real_name = 3 [default = &quot;Anonymous&quot;];
+  optional Gender gender = 4;
+  repeated string email_addresses = 5;
+
+  optional bool is_admin = 6 [default = false]; // or should this be a repeated field in Account?
+
+  enum Gender {
+    MALE = 1,
+    FEMALE = 2
+  }
+}
+
+service CustomerSearch {
+  rpc FirstMatch(CustomerRequest) returns (CustomerResponse);
+  rpc AllMatches(CustomerRequest) returns (CustomerResponse);
+}
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>Puppet</h2>
+        <pre><code class="language-puppet"># EC2 sample
+
+class ec2utils {
+
+    # This must include the path to the Amazon EC2 tools
+    $ec2path = [&quot;/usr/bin&quot;, &quot;/bin&quot;, &quot;/usr/sbin&quot;, &quot;/sbin&quot;,
+                &quot;/opt/ec2/ec2-api-tools/bin&quot;,
+                &quot;/opt/ec2/aws-elb-tools/bin&quot;]
+
+    define elasticip ($instanceid, $ip)
+    {
+        exec { &quot;ec2-associate-address-$name&quot;:
+            logoutput   =&gt; on_failure,
+            environment =&gt; $ec2utils::ec2env,
+            path        =&gt; $ec2utils::ec2path,
+            command     =&gt; &quot;ec2assocaddr $ip \
+                                         -i $instanceid&quot;,
+            # Only do this when necessary
+            unless =&gt; &quot;test `ec2daddr $ip | awk &#39;{print \$3}&#39;` == $instanceid&quot;,
+        }
+    }
+
+    mount { &quot;$mountpoint&quot;:
+        device  =&gt; $devicetomount,
+        ensure  =&gt; mounted,
+        fstype  =&gt; $fstype,
+        options =&gt; $mountoptions,
+        require =&gt; [ Exec[&quot;ec2-attach-volume-$name&quot;],
+                     File[&quot;$mountpoint&quot;]
+        ],
+    }
+
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>PureBASIC</h2>
+        <pre><code class="language-purebasic">; PureBASIC 5 - Syntax Highlighting Example
+
+Enumeration Test 3 Step 10
+  #Constant_One ; Will be 3
+  #Constant_Two ; Will be 13
+EndEnumeration
+
+A.i = #Constant_One
+B = A + 3
+
+STRING.s = SomeProcedure(&quot;Hello World&quot;, 2, #Empty$, #Null$)
+ESCAPED_STRING$ = ~&quot;An escaped (\\) string!\nNewline...&quot;
+
+FixedString.s{5} = &quot;12345&quot;
+
+Macro XCase(Type, Text)
+  Type#Case(Text)
+EndMacro
+
+StrangeProcedureCall (&quot;This command is split &quot; +
+                      &quot;over two lines&quot;) ; Line continuation example
+
+If B &gt; 3 : X$ = &quot;Concatenation of commands&quot; : Else : X$ = &quot;Using colons&quot; : EndIf
+
+Declare.s Attach(String1$, String2$)
+
+Procedure.s Attach(String1$, String2$)
+  ProcedureReturn String1$+&quot; &quot;+String2$
+EndProcedure
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Python</h2>
+        <pre><code class="language-python">@requires_authorization(roles=[&quot;ADMIN&quot;])
+def somefunc(param1=&#39;&#39;, param2=0):
+    r&#39;&#39;&#39;A docstring&#39;&#39;&#39;
+    if param1 &gt; param2: # interesting
+        print &#39;Gre\&#39;ater&#39;
+    return (param2 - param1 + 1 + 0b10l) or None
+
+class SomeClass:
+    pass
+
+&gt;&gt;&gt; message = &#39;&#39;&#39;interpreter
+... prompt&#39;&#39;&#39;
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Python REPL</h2>
+        <pre><code class="language-python-repl">&gt;&gt;&gt; v = &quot;foo = 42&quot;
+&gt;&gt;&gt; v
+&quot;foo = 42&quot;
+&gt;&gt;&gt; print(v)
+foo = 42
+&gt;&gt;&gt; print(repr(v).rstrip(&#39;&quot;&#39;))
+&quot;foo = 42
+&gt;&gt;&gt; print(repr(v).lstrip(&#39;&quot;&#39;))
+foo = 42&quot;
+
+&gt;&gt;&gt; &quot;&quot;&quot;
+... abc
+... &quot;&quot;&quot;
+&gt;&gt;&gt; def test():
+...     pass
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Q</h2>
+        <pre><code class="language-q">select time, price by date,stock from quote where price=(max;price)fby stock
+data:raze value flip trade
+select vwap:size wavg price by 5 xbar time.minute from aapl where date within (.z.d-10;.z.d)
+f1:{[x;y;z] show (x;y+z);sum 1 2 3}
+.z.pc:{[handle] show -3!(`long$.z.p;&quot;Closed&quot;;handle)}
+// random normal distribution, e.g. nor 10
+nor:{$[x=2*n:x div 2;raze sqrt[-2*log n?1f]*/:(sin;cos)@\:(2*pi)*n?1f;-1_.z.s 1+x]}
+
+mode:{where g=max g:count each group x}		// mode function</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>QML</h2>
+        <pre><code class="language-qml">/****************************************************************************
+** QML with Highlight.js                                                  **/
+import QtQuick 2.5 // good version
+
+Window {
+    id: root
+    width: 1024; height: 600
+    color: &quot;black&quot;
+    property int highestZ: 0 // 0 is lowest, +infinity is highest
+    property real defaultSize = 200.1
+    signal activated(real xPosition, real yPosition)
+    // show the file picker
+    FileDialog {
+        id:fileDialog // an id in a comment should not be detected
+        title: &quot;Choose a folder with some images&quot;
+        onAccepted: folderModel.folder = fileUrl + &quot;/&quot; // if this is on property
+    }
+    Flickable {
+        id: flickableproperty
+        contentHeight: height * surfaceViewportRatio
+        property real zRestore: 0
+        Behavior on scale { NumberAnimation { duration: 200 } }
+        Repeater {
+            model: FolderListModel {
+                id: folderModel
+                nameFilters: [&quot;*.png&quot;, &quot;*.jpg&quot;, &quot;*.gif&quot;]
+            }
+            Component.onCompleted: {
+                var x;
+                x = Math.random() * root.width - width / 2
+                rotation = Math.random() * 13 - 6
+                if (pinch.scale &gt; 0) {
+                    photoFrame.rotation = 0;
+                    photoFrame.scale = Math.min(root.width, root.height) / Math.max(image.sourceSize.width, image.sourceSize.height) * 0.85
+                } else {
+                    photoFrame.rotation = pinch.previousAngle
+                    photoFrame.scale = pinch.previousScale
+                }
+            }
+            function setFrameColor() {
+                if (currentFrame)
+                    currentFrame.border.color = &quot;black&quot;;
+                currentFrame = photoFrame;
+            }
+        }
+    }
+    Timer { id: fadeTimer; interval: 1000; onTriggered: { hfade.start(); vfade.start() } }
+    Component.onCompleted: fileDialog.open()
+}
+</code></pre>
+      </div>
+
+      <div class="common scientific all">
+        <h2>R</h2>
+        <pre><code class="language-r">require(stats)
+
+#&#39; Compute different averages
+#&#39;
+#&#39; @param x \code{numeric} vector of sample data
+#&#39; @param type \code{character} vector of length 1 specifying the average type
+#&#39; @return \code{centre} returns the sample average according to the chosen method.
+#&#39; @examples
+#&#39; centre(rcauchy(10), &quot;mean&quot;)
+#&#39; @export
+centre &lt;- function(x, type) {
+  switch(type,
+         mean = mean(x),
+         median = median(x),
+         trimmed = mean(x, trim = .1))
+}
+x &lt;- rcauchy(10)
+centre(x, &quot;mean&quot;)
+
+library(ggplot2)
+
+models &lt;- tibble::tribble(
+  ~model_name,    ~ formula,
+  &quot;length-width&quot;, Sepal.Length ~ Petal.Width + Petal.Length,
+  &quot;interaction&quot;,  Sepal.Length ~ Petal.Width * Petal.Length
+)
+
+iris %&gt;%
+  nest_by(Species) %&gt;%
+  left_join(models, by = character()) %&gt;%
+  rowwise(Species, model_name) %&gt;%
+  mutate(model = list(lm(formula, data = data))) %&gt;%
+  summarise(broom::glance(model))
+#&gt; `summarise()` regrouping output by &#39;Species&#39;, &#39;model_name&#39; (override with `.groups` argument)
+#&gt; # A tibble: 6 x 13
+#&gt; # Groups:   Species, model_name [6]
+#&gt;   Species model_name r.squared adj.r.squared sigma statistic  p.value    df
+#&gt;   &lt;fct&gt;   &lt;chr&gt;          &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+#&gt; 1 setosa  length-wi…     0.112        0.0739 0.339      2.96 6.18e- 2     3
+#&gt; 2 setosa  interacti…     0.133        0.0760 0.339      2.34 8.54e- 2     4
+#&gt; 3 versic… length-wi…     0.574        0.556  0.344     31.7  1.92e- 9     3
+#&gt; 4 versic… interacti…     0.577        0.549  0.347     20.9  1.11e- 8     4
+#&gt; 5 virgin… length-wi…     0.747        0.736  0.327     69.3  9.50e-15     3
+#&gt; 6 virgin… interacti…     0.757        0.741  0.323     47.8  3.54e-14     4
+#&gt; # … with 5 more variables: logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,
+#&gt; #   df.residual &lt;int&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>ReasonML</h2>
+        <pre><code class="language-reasonml">/* This is a
+   multiline
+   comment */
+
+type point = {
+  x: float,
+  y: float,
+};
+
+let some_string = &quot;this is a string&quot;;
+
+let rec length = lst =&gt;
+  switch (lst) {
+  | [] =&gt; 0
+  | [head, ...tail] =&gt; 1 + length(tail)
+  };
+
+type result(&#39;a, &#39;b) =
+  | Ok(&#39;a)
+  | Error(&#39;b);
+
+let promisify = (res: result(&#39;a, &#39;b)) : Js.Promise.t(&#39;a) =&gt;
+  switch (res) {
+  | Ok(a) =&gt; Js.Promise.resolve(a)
+  | Error(b) =&gt; Js.Promise.reject(b)
+  };
+
+exception Test;
+
+module MakeFFI = (T: {type t;}) =&gt; {
+  [@bs.module] external ffi : string =&gt; T.t = &quot;&quot;;
+};
+
+type expression =
+  | Const(float)
+  | Var(string)
+  | Sum(expression, expression) /* e1 + e2 */
+  | Diff(expression, expression) /* e1 - e2 */
+  | Prod(expression, expression) /* e1 * e2 */
+  | Quot(expression, expression); /* e1 / e2 */
+
+class point = {
+  as _;
+  val mutable x = 0;
+  pub get_x = x;
+  pri move = d =&gt; x = x + d;
+};
+</code></pre>
+      </div>
+
+      <div class="hidden graphics all">
+        <h2>RenderMan RIB</h2>
+        <pre><code class="language-rib">FrameBegin 0
+Display &quot;Scene&quot; &quot;framebuffer&quot; &quot;rgb&quot;
+Option &quot;searchpath&quot; &quot;shader&quot; &quot;+&amp;:/home/kew&quot;
+Option &quot;trace&quot; &quot;int maxdepth&quot; [4]
+Attribute &quot;visibility&quot; &quot;trace&quot; [1]
+Attribute &quot;irradiance&quot; &quot;maxerror&quot; [0.1]
+Attribute &quot;visibility&quot; &quot;transmission&quot; &quot;opaque&quot;
+Format 640 480 1.0
+ShadingRate 2
+PixelFilter &quot;catmull-rom&quot; 1 1
+PixelSamples 4 4
+Projection &quot;perspective&quot; &quot;fov&quot; 49.5502811377
+Scale 1 1 -1
+
+WorldBegin
+
+ReadArchive &quot;Lamp.002_Light/instance.rib&quot;
+Surface &quot;plastic&quot;
+ReadArchive &quot;Cube.004_Mesh/instance.rib&quot;
+# ReadArchive &quot;Sphere.010_Mesh/instance.rib&quot;
+# ReadArchive &quot;Sphere.009_Mesh/instance.rib&quot;
+ReadArchive &quot;Sphere.006_Mesh/instance.rib&quot;
+
+WorldEnd
+FrameEnd
+</code></pre>
+      </div>
+
+      <div class="hidden config all">
+        <h2>Roboconf</h2>
+        <pre><code class="language-roboconf"># This is a comment
+import toto.graph;
+
+##
+# Facet
+##
+facet VM {
+	installer: iaas;
+}
+
+# Components
+VM_ec2 {
+	facets: VM;
+	children: cluster-node, mysql;
+}
+
+VM_openstack {
+	facets: VM;
+	children: cluster-node, mysql;
+}
+
+cluster-node {
+	alias: a cluster node;
+	installer: puppet;
+	exports: ip, port, optional-property1, optional_property2;
+	imports: cluster-node.ip (optional), cluster-node.port (optional), mysql.ip, mysql.port;
+}
+
+mysql {
+	alias: a MySQL database;
+	installer: puppet;
+	exports: ip, port;
+}
+
+##
+# Normally, instances are defined in another file...
+##
+instance of VM_ec2 {
+	name: VM_;
+	count: 3;
+	my-instance-property: whatever;
+
+	instance of cluster-node {
+		name: cluster node;		# An in-line comment
+	}
+}
+
+instance of VM_openstack {
+	name: VM_database;
+
+	instance of mysql {
+		name: mysql;
+	}
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Microtik RouterOS script</h2>
+        <pre><code class="language-routeros"># Берем список DNS серверов из /ip dns
+ # Проверяем их доступность,
+# и только рабочие прописываем в настройки DHCP сервера
+:global ActiveDNSServers []
+:local PingResult 0
+:foreach serv in=[/ip dns get servers] do={
+  :do {:set PingResult [ping $serv count=3]} on-error={:set PingResult 0}
+  :if ($PingResult=3) do={ :set ActiveDNSServers ($ActiveDNSServers,$serv) }
+# отладочный вывод в журнал
+  :log info &quot;Server: $serv, Ping-result: $PingResult&quot;;
+}
+
+/ip dhcp-server network set [find address=192.168.254.0/24] dns-server=$ActiveDNSServers
+
+#---   FIX TTL  ----
+/ip firewall mangle chain=postrouting action=change-ttl new-ttl=set:128 comment=&quot;NAT hide&quot;
+
+</code></pre>
+      </div>
+
+      <div class="hidden graphics all">
+        <h2>RenderMan RSL</h2>
+        <pre><code class="language-rsl">#define TEST_DEFINE 3.14
+/*  plastic surface shader
+ *
+ *  Pixie is:
+ *  (c) Copyright 1999-2003 Okan Arikan. All rights reserved.
+ */
+
+surface plastic (float Ka = 1, Kd = 0.5, Ks = 0.5, roughness = 0.1;
+                 color specularcolor = 1;) {
+  normal Nf = faceforward (normalize(N),I);
+  Ci = Cs * (Ka*ambient() + Kd*diffuse(Nf)) + specularcolor * Ks *
+       specular(Nf,-normalize(I),roughness);
+  Oi = Os;
+  Ci *= Oi;
+}
+</code></pre>
+      </div>
+
+      <div class="hidden enterprise all">
+        <h2>Oracle Rules Language</h2>
+        <pre><code class="language-ruleslanguage">//This is a comment
+ABORT &quot;You experienced an abort.&quot;;
+WARN &quot;THIS IS A WARNING&quot;;
+CALL &quot;RIDER_X&quot;;
+DONE;
+FOR EACH X IN CSV_FILE &quot;d:\lodestar\user\d377.lse&quot;
+ LEAVE FOR;
+END FOR;
+IF ((BILL_KW = 0) AND (KW &gt; 0)) THEN
+END IF;
+INCLUDE &quot;R1&quot;;
+LEAVE RIDER;
+SELECT BILL_PERIOD
+   WHEN &quot;WINTER&quot;
+      BLOCK KWH
+      FROM 0 TO 400 CHARGE $0.03709
+      FROM 400 CHARGE $0.03000
+      TOTAL $ENERGY_CHARGE_WIN;
+   WHEN &quot;SUMMER&quot;
+      $VOLTAGE_DISCOUNT_SUM = $0.00
+   OTHERWISE
+      $VOLTAGE_DISCOUNT_SUM = $1.00
+END SELECT;
+/* Report top five peaks */
+LABEL PK.NM &quot;Peak Number&quot;;
+SAVE_UPDATE MV TO TABLE &quot;METERVALUE&quot;;
+
+FOR EACH INX IN ARRAYUPPERBOUND(#MYARRAY[])
+  #MYARRAY[INX].VALUE = 2;
+  CLEAR #MYARRAY[];
+END FOR
+
+//Interval Data
+HNDL_1_ADD_EDI = INTDADDATTRIBUTE(HNDL_1, &quot;EDI_TRANSACTION&quot;, EDI_ID);
+HNDL_1_ADD_VAL_MSG = INTDADDVMSG(HNDL_1,&quot;Missing (Status Code 9) values found&quot;);
+EMPTY_HNDL = INTDCREATEHANDLE(&#39;05/03/2006 00:00:00&#39;, &#39;05/03/2006 23:59:59&#39;, 3600, &quot;Y&quot;, &quot;0&quot;, &quot; &quot;);
+</code></pre>
+      </div>
+
+      <div class="common system all">
+        <h2>Rust</h2>
+        <pre><code class="language-rust">#[derive(Debug)]
+pub enum State {
+    Start,
+    Transient,
+    Closed,
+}
+
+impl From&lt;&amp;&#39;a str&gt; for State {
+    fn from(s: &amp;&#39;a str) -&gt; Self {
+        match s {
+            &quot;start&quot; =&gt; State::Start,
+            &quot;closed&quot; =&gt; State::Closed,
+            _ =&gt; unreachable!(),
+        }
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>SAS</h2>
+        <pre><code class="language-sas">/**********************************************************************
+ * Program: example.sas
+ * Purpose: SAS Example for HighlightJS Plug-in
+ **********************************************************************/
+
+%put Started at %sysfunc(putn(%sysfunc(datetime()), datetime.));
+options
+    errors = 20  /* Maximum number of prints of repeat errors */
+    fullstimer   /* Detailed timer after each step execution  */
+;
+
+%let maindir = /path/to/maindir;
+%let outdir  = &amp;maindir/out.;
+
+systask command &quot;mkdir -p &amp;outdir.&quot; wait;
+libname main &quot;&amp;maindir&quot; access = readonly;
+
+data testing;
+    input name $ number delimiter = &quot;,&quot;;
+    datalines;
+    John,1
+    Mary,2
+    Jane,3
+    ;
+    if number &gt; 1 then final = 0;
+    else do;
+        final = 1;
+    end;
+run;
+
+%macro testMacro(positional, named = value);
+    %put positional = &amp;positional.;
+    %put named      = &amp;named.;
+%mend testMacro;
+%testMacro(positional, named = value);
+
+dm &#39;clear log output odsresults&#39;;
+
+proc datasets lib = work kill noprint; quit;
+libname _all_ clear;
+
+data _null_;
+    set sashelp.macro(
+        keep  = name
+        where = (scope = &quot;global&quot;);
+    );
+    call symdel(name);
+run;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>Scala</h2>
+        <pre><code class="language-scala">/**
+ * A person has a name and an age.
+ */
+case class Person(name: String, age: Int)
+
+abstract class Vertical extends CaseJeu
+case class Haut(a: Int) extends Vertical
+case class Bas(name: String, b: Double) extends Vertical
+
+sealed trait Ior[+A, +B]
+case class Left[A](a: A) extends Ior[A, Nothing]
+case class Right[B](b: B) extends Ior[Nothing, B]
+case class Both[A, B](a: A, b: B) extends Ior[A, B]
+
+trait Functor[F[_]] {
+  def map[A, B](fa: F[A], f: A =&gt; B): F[B]
+}
+
+// beware Int.MinValue
+def absoluteValue(n: Int): Int =
+  if (n &lt; 0) -n else n
+
+def interp(n: Int): String =
+  s&quot;there are $n ${color} balloons.\n&quot;
+
+type ξ[A] = (A, A)
+
+trait Hist { lhs =&gt;
+  def ⊕(rhs: Hist): Hist
+}
+
+def gsum[A: Ring](as: Seq[A]): A =
+  as.foldLeft(Ring[A].zero)(_ + _)
+
+val actions: List[Symbol] =
+  &#39;init :: &#39;read :: &#39;write :: &#39;close :: Nil
+
+trait Cake {
+  type T;
+  type Q
+  val things: Seq[T]
+
+  abstract class Spindler
+
+  def spindle(s: Spindler, ts: Seq[T], reversed: Boolean = false): Seq[Q]
+}
+
+val colors = Map(
+  &quot;red&quot;       -&gt; 0xFF0000,
+  &quot;turquoise&quot; -&gt; 0x00FFFF,
+  &quot;black&quot;     -&gt; 0x000000,
+  &quot;orange&quot;    -&gt; 0xFF8040,
+  &quot;brown&quot;     -&gt; 0x804000)
+
+lazy val ns = for {
+  x &lt;- 0 until 100
+  y &lt;- 0 until 100
+} yield (x + y) * 33.33
+</code></pre>
+      </div>
+
+      <div class="hidden lisp all">
+        <h2>Scheme</h2>
+        <pre><code class="language-scheme">;; Calculation of Hofstadter&#39;s male and female sequences as a list of pairs
+
+(define (hofstadter-male-female n)
+(letrec ((female (lambda (n)
+           (if (= n 0)
+           1
+           (- n (male (female (- n 1)))))))
+     (male (lambda (n)
+         (if (= n 0)
+             0
+             (- n (female (male (- n 1))))))))
+  (let loop ((i 0))
+    (if (&gt; i n)
+    &#39;()
+    (cons (cons (female i)
+            (male i))
+      (loop (+ i 1)))))))
+
+(hofstadter-male-female 8)
+
+(define (find-first func lst)
+(call-with-current-continuation
+ (lambda (return-immediately)
+   (for-each (lambda (x)
+       (if (func x)
+           (return-immediately x)))
+         lst)
+   #f)))
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Scilab</h2>
+        <pre><code class="language-scilab">// A comment
+function I = foo(dims, varargin)
+  d=[1; matrix(dims(1:$-1),-1,1)]
+  for i=1:size(varargin)
+    if varargin(i)==[] then
+       I=[],
+       return;
+    end
+  end
+endfunction
+
+b = cos(a) + cosh(a);
+bar_matrix = [ &quot;Hello&quot;, &quot;world&quot; ];
+foo_matrix = [1, 2, 3; 4, 5, 6];
+</code></pre>
+      </div>
+
+      <div class="common css web all">
+        <h2>SCSS</h2>
+        <pre><code class="language-scss">@import &quot;compass/reset&quot;;
+
+// variables
+$colorGreen: #008000;
+$colorGreenDark: darken($colorGreen, 10);
+
+@mixin container {
+    max-width: 980px;
+}
+
+// mixins with parameters
+@mixin button($color:green) {
+    @if ($color == green) {
+        background-color: #008000;
+    }
+    @else if ($color == red) {
+        background-color: #B22222;
+    }
+}
+
+button {
+    @include button(red);
+}
+
+div,
+.navbar,
+#header,
+input[type=&quot;input&quot;] {
+    font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.row-12 &gt; [class*=&quot;spans&quot;] {
+    border-left: 1px solid #B5C583;
+}
+
+// nested definitions
+ul {
+    width: 100%;
+    padding: {
+        left: 5px; right: 5px;
+    }
+  li {
+      float: left; margin-right: 10px;
+      .home {
+          background: url(&#39;http://placehold.it/20&#39;) scroll no-repeat 0 0;
+    }
+  }
+}
+
+.banner {
+    @extend .container;
+}
+
+a {
+  color: $colorGreen;
+  &amp;:hover { color: $colorGreenDark; }
+  &amp;:visited { color: #c458cb; }
+}
+
+@for $i from 1 through 5 {
+    .span#{$i} {
+        width: 20px*$i;
+    }
+}
+
+@mixin mobile {
+  @media screen and (max-width : 600px) {
+    @content;
+  }
+}</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Shell Session</h2>
+        <pre><code class="language-shell">$ echo $EDITOR
+vim
+$ git checkout main
+Switched to branch &#39;main&#39;
+Your branch is up-to-date with &#39;origin/main&#39;.
+$ git push
+Everything up-to-date
+$ echo &#39;All
+&gt; done!&#39;
+All
+done!
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Smali</h2>
+        <pre><code class="language-smali">.class public Lcom/test/Preferences;
+.super Landroid/preference/PreferenceActivity;
+.source &quot;Preferences.java&quot;
+
+
+# instance fields
+.field private PACKAGE_NAME:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor &lt;init&gt;()V
+    .registers 1
+    .annotation build Landroid/annotation/SuppressLint;
+        value = {
+            &quot;InlinedApi&quot;
+        }
+    .end annotation
+
+    .prologue
+    .line 25
+    invoke-direct {p0}, Landroid/preference/PreferenceActivity;-&gt;&lt;init&gt;()V
+
+    const-string v4, &quot;ASDF!&quot;
+
+    .line 156
+    .end local v0           #customOther:Landroid/preference/Preference;
+    .end local v1           #customRate:Landroid/preference/Preference;
+    .end local v2           #hideApp:Landroid/preference/Preference;
+    :cond_56
+
+        .line 135
+    invoke-static {p1}, Lcom/google/ads/AdActivity;-&gt;b(Lcom/google/ads/internal/d;)Lcom/google/ads/internal/d;
+
+    .line 140
+    :cond_e
+    monitor-exit v1
+    :try_end_f
+    .catchall {:try_start_5 .. :try_end_f} :catchall_30
+
+    .line 143
+    invoke-virtual {p1}, Lcom/google/ads/internal/d;-&gt;g()Lcom/google/ads/m;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/google/ads/m;-&gt;c:Lcom/google/ads/util/i$d;
+
+    invoke-virtual {v0}, Lcom/google/ads/util/i$d;-&gt;a()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/Activity;
+
+    .line 144
+    if-nez v0, :cond_33
+
+    .line 145
+    const-string v0, &quot;activity was null while launching an AdActivity.&quot;
+
+    invoke-static {v0}, Lcom/google/ads/util/b;-&gt;e(Ljava/lang/String;)V
+
+    .line 160
+    :goto_22
+    return-void
+
+    .line 136
+    :cond_23
+    :try_start_23
+    invoke-static {}, Lcom/google/ads/AdActivity;-&gt;c()Lcom/google/ads/internal/d;
+
+    move-result-object v0
+
+    if-eq v0, p1, :cond_e
+
+    return-void
+.end method
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Smalltalk</h2>
+        <pre><code class="language-smalltalk">Object&gt;&gt;method: num
+    &quot;comment 123&quot;
+    | var1 var2 |
+    (1 to: num) do: [:i | |var| ^i].
+    Klass with: var1.
+    Klass new.
+    arr := #(&#39;123&#39; 123.345 #hello Transcript var $@).
+    arr := #().
+    var2 = arr at: 3.
+    ^ self abc
+
+heapExample
+    &quot;HeapTest new heapExample&quot;
+    &quot;Multiline
+    decription&quot;
+    | n rnd array time sorted |
+    n := 5000.
+    &quot;# of elements to sort&quot;
+    rnd := Random new.
+    array := (1 to: n)
+                collect: [:i | rnd next].
+    &quot;First, the heap version&quot;
+    time := Time
+                millisecondsToRun: [sorted := Heap withAll: array.
+    1
+        to: n
+        do: [:i |
+            sorted removeFirst.
+            sorted add: rnd next]].
+    Transcript cr; show: &#39;Time for Heap: &#39; , time printString , &#39; msecs&#39;.
+    &quot;The quicksort version&quot;
+    time := Time
+                millisecondsToRun: [sorted := SortedCollection withAll: array.
+    1
+        to: n
+        do: [:i |
+            sorted removeFirst.
+            sorted add: rnd next]].
+    Transcript cr; show: &#39;Time for SortedCollection: &#39; , time printString , &#39; msecs&#39;
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>SML (Standard ML)</h2>
+        <pre><code class="language-sml">structure List : LIST =
+  struct
+
+    val op +  = InlineT.DfltInt.+
+
+    datatype list = datatype list
+
+    exception Empty = Empty
+
+    fun last [] = raise Empty
+      | last [x] = x
+      | last (_::r) = last r
+
+  fun loop ([], []) = EQUAL
+    | loop ([], _) = LESS
+    | loop (_, []) = GREATER
+    | loop (x :: xs, y :: ys) =
+      (case compare (x, y) of
+     EQUAL =&gt; loop (xs, ys)
+         | unequal =&gt; unequal)
+    in
+  loop
+    end
+
+  end (* structure List *)
+
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>SQF</h2>
+        <pre><code class="language-sqf">/***
+	Arma Scripting File
+	Edition: 1.66
+***/
+
+// Enable eating to improve health.
+_unit addAction [&quot;Eat Energy Bar&quot;, {
+    if (_this getVariable [&quot;EB_NumActivation&quot;, 0] &gt; 0) then {
+        _this setDamage (0 max (damage _this - 0.25));
+    } else {
+        hint &quot;You have eaten it all&quot;;
+    };
+    // 4 - means something...
+    Z_obj_vip = nil;
+    [_boat, [&quot;Black&quot;, 1], true] call BIS_fnc_initVehicle;
+    [_boat] call myTag_component_fnc_initVehicle;
+}];
+</code></pre>
+      </div>
+
+      <div class="common database all">
+        <h2>SQL</h2>
+        <pre><code class="language-sql">CREATE TABLE &quot;topic&quot; (
+    &quot;id&quot; integer NOT NULL PRIMARY KEY,
+    &quot;forum_id&quot; integer NOT NULL,
+    &quot;subject&quot; varchar(255) NOT NULL
+);
+ALTER TABLE &quot;topic&quot;
+ADD CONSTRAINT forum_id FOREIGN KEY (&quot;forum_id&quot;)
+REFERENCES &quot;forum&quot; (&quot;id&quot;);
+
+-- Initials
+insert into &quot;topic&quot; (&quot;forum_id&quot;, &quot;subject&quot;)
+values (2, &#39;D&#39;&#39;artagnian&#39;);
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Stan</h2>
+        <pre><code class="language-stan">// Multivariate Regression Example
+// Taken from stan-reference-2.8.0.pdf p.66
+
+data {
+  int&lt;lower=0&gt; N;             // num individuals
+  int&lt;lower=1&gt; K;             // num ind predictors
+  int&lt;lower=1&gt; J;             // num groups
+  int&lt;lower=1&gt; L;             // num group predictors
+  int&lt;lower=1,upper=J&gt; jj[N]; // group for individual
+  matrix[N,K] x;              // individual predictors
+  row_vector[L] u[J];         // group predictors
+  vector[N] y;                // outcomes
+}
+parameters {
+  corr_matrix[K] Omega;       // prior correlation
+  vector&lt;lower=0&gt;[K] tau;     // prior scale
+  matrix[L,K] gamma;          // group coeffs
+  vector[K] beta[J];          // indiv coeffs by group
+  real&lt;lower=0&gt; sigma;        // prediction error scale
+}
+model {
+  tau ~ cauchy(0,2.5);
+  Omega ~ lkj_corr(2);
+  to_vector(gamma) ~ normal(0, 5);
+  {
+    row_vector[K] u_gamma[J];
+    for (j in 1:J)
+      u_gamma[j] &lt;- u[j] * gamma;
+    beta ~ multi_normal(u_gamma, quad_form_diag(Omega, tau));
+  }
+  {
+    vector[N] x_beta_jj;
+    for (n in 1:N)
+      x_beta_jj[n] &lt;- x[n] * beta[jj[n]];
+    y ~ normal(x_beta_jj, sigma);
+  }
+}
+
+# Note: Octothorpes indicate comments, too!
+</code></pre>
+      </div>
+
+      <div class="hidden scientific all">
+        <h2>Stata</h2>
+        <pre><code class="language-stata">program define gr_log
+version 6.0
+
+local or = `2&#39;
+local xunits = `3&#39;
+local b1 = ln(`or&#39;)
+
+* make summary of logistic data from equation
+set obs `xunits&#39;
+generate pgty = 1 - 1/(1 + exp(score))
+/**
+ * Comment 1
+*/
+reg y x
+* Comment 2
+reg y2 x //comment 3
+This is a `loc&#39; $glob ${glob2}
+This is a `&quot;string &quot; &quot;&#39; &quot;string`1&#39;two${hi}&quot; bad `&quot;string &quot; &quot;&#39; good `&quot;string &quot; &quot;&#39;
+
+//Limit to just the project ados
+cap adopath - SITE
+cap adopath - PLUS
+/*cap adopath - PERSONAL
+cap adopath - OLDPLACE*/
+adopath ++ &quot;${dir_base}/code/ado/&quot;
+A string `&quot;Wow&quot;&#39;. `&quot;&quot;one&quot; &quot;two&quot;&quot;&#39;
+A `local&#39; em`b&#39;ed
+a global ${dir_base} $dir_base em${b}ed
+
+forval i=1/4{
+  if `i&#39;==2{
+    cap reg y x1, robust
+    local x = ln(4)
+    local x =ln(4)
+    local ln = ln
+  }
+}
+
+* add mlibs in the new adopath to the index
+mata: mata mlib index</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>STEP Part 21</h2>
+        <pre><code class="language-step21">ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION((&#39;&#39;),&#39;2;1&#39;);
+FILE_NAME(&#39;CUBE_4SQUARE&#39;,&#39;2013-11-29T&#39;,(&#39;acook&#39;),(&#39;&#39;),
+&#39;SOMETHINGCAD BY SOME CORPORATION, 2012130&#39;,
+&#39;SOMETHINGCAD BY SOME CORPORATION, 2012130&#39;,&#39;&#39;);
+FILE_SCHEMA((&#39;CONFIG_CONTROL_DESIGN&#39;));
+ENDSEC;
+/* file written by SomethingCAD */
+DATA;
+#1=DIRECTION(&#39;&#39;,(1.E0,0.E0,0.E0));
+#2=VECTOR(&#39;&#39;,#1,4.E0);
+#3=CARTESIAN_POINT(&#39;&#39;,(-2.E0,-2.E0,-2.E0));
+#4=LINE(&#39;&#39;,#3,#2);
+#5=DIRECTION(&#39;&#39;,(0.E0,1.E0,0.E0));
+#6=VECTOR(&#39;&#39;,#5,4.E0);
+#7=CARTESIAN_POINT(&#39;&#39;,(2.E0,-2.E0,-2.E0));
+#8=LINE(&#39;&#39;,#7,#6);
+#9=DIRECTION(&#39;&#39;,(-1.E0,0.E0,0.E0));
+#10=VECTOR(&#39;&#39;,#9,4.E0);
+#11=CARTESIAN_POINT(&#39;&#39;,(2.E0,2.E0,-2.E0));
+#12=LINE(&#39;&#39;,#11,#10);
+#13=DIRECTION(&#39;&#39;,(0.E0,-1.E0,0.E0));
+#14=VECTOR(&#39;&#39;,#13,4.E0);
+#15=CARTESIAN_POINT(&#39;&#39;,(-2.E0,2.E0,-2.E0));
+#16=LINE(&#39;&#39;,#15,#14);
+#17=DIRECTION(&#39;&#39;,(0.E0,0.E0,1.E0));
+#18=VECTOR(&#39;&#39;,#17,4.E0);
+#19=CARTESIAN_POINT(&#39;&#39;,(-2.E0,-2.E0,-2.E0));
+#20=LINE(&#39;&#39;,#19,#18);
+#21=DIRECTION(&#39;&#39;,(0.E0,0.E0,1.E0));
+ENDSEC;
+END-ISO-10303-21;
+</code></pre>
+      </div>
+
+      <div class="hidden css web all">
+        <h2>Stylus</h2>
+        <pre><code class="language-stylus">@import &quot;nib&quot;
+
+// variables
+$green = #008000
+$green_dark = darken($green, 10)
+
+// mixin/function
+container()
+  max-width 980px
+
+// mixin/function with parameters
+buttonBG($color = green)
+  if $color == green
+    background-color #008000
+  else if $color == red
+    background-color #B22222
+
+button
+  buttonBG(red)
+
+.blue-button
+  buttonBG(blue)
+
+#content, .content
+  font Tahoma, Chunkfive, sans-serif
+  background url(&#39;hatch.png&#39;)
+  color #F0F0F0 !important
+  width 100%
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>SubUnit</h2>
+        <pre><code class="language-subunit">progress: 28704
+time: 2016-07-05 12:17:02.290433Z
+test: bzrlib.doc.api.DocFileTest(/usr/lib64/python2.7/site-packages/bzrlib/doc/api/branch.txt)
+time: 2016-07-05 12:17:02.314892Z
+successful: bzrlib.doc.api.DocFileTest(/usr/lib64/python2.7/site-packages/bzrlib/doc/api/branch.txt)
+time: 2016-07-05 12:17:02.314939Z
+time: 2016-07-05 12:17:02.314991Z
+test: bzrlib.doc.api.DocFileTest(/usr/lib64/python2.7/site-packages/bzrlib/doc/api/transport.txt)
+time: 2016-07-05 12:17:02.315665Z
+successful: bzrlib.doc.api.DocFileTest(/usr/lib64/python2.7/site-packages/bzrlib/doc/api/transport.txt)
+time: 2016-07-05 12:17:02.315691Z
+time: 2016-07-05 12:17:02.315770Z
+test: bzrlib.tests.blackbox.test_add.TestAdd.test_add_control_dir(pre-views)
+time: 2016-07-05 12:17:02.368936Z
+successful: bzrlib.tests.blackbox.test_add.TestAdd.test_add_control_dir(pre-views) [ multipart
+]
+time: 2016-07-05 12:17:02.368993Z
+time: 2016-07-05 12:17:02.369079Z
+</code></pre>
+      </div>
+
+      <div class="common system all">
+        <h2>Swift</h2>
+        <pre><code class="language-swift">import Foundation
+
+@objc class Person: Entity {
+  var name: String!
+  var age:  Int!
+
+  init(name: String, age: Int) {
+    /* /* ... */ */
+  }
+
+  // Return a descriptive string for this person
+  func description(offset: Int = 0) -&gt; String {
+    return &quot;\(name) is \(age + offset) years old&quot;
+  }
+}
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Tagger Script</h2>
+        <pre><code class="language-taggerscript">$if($is_video(),video,$if($is_lossless(),lossless,lossy))/
+$if($is_video(),
+$noop(Video track)
+$if($ne(%album%,[non-album tracks]),
+$if2(%albumartist%,%artist%) - %album%$if(%discsubtitle%, - %discsubtitle%)/%_discandtracknumber%%title%,
+Music Videos/%artist%/%artist% - %title%),
+$if($eq(%compilation%,1),
+$noop(Various Artist albums)
+$firstalphachar($if2(%albumartistsort%,%artistsort%))/$if2(%albumartist%,%artist%)/%album%$if(%_releasecomment%, \(%_releasecomment%\),)/%_discandtracknumber%%artist% - %title%,
+$noop(Single Artist Albums)
+$firstalphachar($if2(%albumartistsort%,%artistsort%))/$if2(%albumartist%,%artist%)/%album%$if(%_releasecomment%, \(%_releasecomment%\),)/%_discandtracknumber%%title%
+))
+</code></pre>
+      </div>
+
+      <div class="common config all">
+        <h2>YAML</h2>
+        <pre><code class="language-yaml">---
+# comment
+string_1: &quot;Bar&quot;
+string_2: &#39;bar&#39;
+string_3: bar
+inline_keys_ignored: sompath/name/file.jpg
+keywords_in_yaml:
+  - true
+  - false
+  - TRUE
+  - FALSE
+  - 21
+  - 21.0
+  - !!str 123
+&quot;quoted_key&quot;: &amp;foobar
+  bar: foo
+  foo:
+  &quot;foo&quot;: bar
+
+reference: *foobar
+
+multiline_1: |
+  Multiline
+  String
+multiline_2: &gt;
+  Multiline
+  String
+multiline_3: &quot;
+  Multiline string
+  &quot;
+
+ansible_variables: &quot;foo {{variable}}&quot;
+
+array_nested:
+- a
+- b: 1
+  c: 2
+- b
+- comment
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Test Anything Protocol</h2>
+        <pre><code class="language-tap"># Hardware architecture: x86_64
+# Timestamp: 2016-06-16 06:23 (GMT+1)
+#
+TAP version 13
+1..19
+ok 1 - zdtm/static/conntracks # SKIP manual run only
+ok 2 - zdtm/static/maps03 # SKIP manual run only
+ok 3 - zdtm/static/mlock_setuid
+ok 4 - zdtm/static/groups
+ok 5 - zdtm/static/maps05
+ok 6 - zdtm/static/pdeath_sig
+ok 7 - zdtm/static/xids00
+ok 8 - zdtm/static/proc-self
+ok 9 - zdtm/static/file_fown
+ok 10 - zdtm/static/eventfs00
+ok 11 - zdtm/static/uptime_grow # SKIP manual run only
+ok 12 - zdtm/static/signalfd00
+ok 13 - zdtm/static/inotify_irmap
+ok 14 - zdtm/static/fanotify00
+ok 15 - zdtm/static/session00
+ok 16 - zdtm/static/rlimits00
+ok 17 - zdtm/static/maps04
+ok 18 - zdtm/static/pty03
+ok 19 - zdtm/static/pty02
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Tcl</h2>
+        <pre><code class="language-tcl">package json
+
+source helper.tcl
+# randomness verified by a die throw
+set ::rand 4
+
+proc give::recursive::count {base p} { ; # 2 mandatory params
+    while {$p &gt; 0} {
+        set result [expr $result * $base]; incr p -1
+    }
+    return $result
+}
+
+set a {a}; set b &quot;bcdef&quot;; set lst [list &quot;item&quot;]
+puts [llength $a$b]
+
+set ::my::tid($id) $::my::tid(def)
+lappend lst $arr($idx) $::my::arr($idx) $ar(key)
+lreplace ::my::tid($id) 4 4
+puts $::rand ${::rand} ${::AWESOME::component::variable}
+
+puts &quot;$x + $y is\t [expr $x + $y]&quot;
+
+proc isprime x {
+    expr {$x&gt;1 &amp;&amp; ![regexp {^(oo+?)\1+$} [string repeat o $x]]}
+}
+</code></pre>
+      </div>
+
+      <div class="hidden protocols all">
+        <h2>Thrift</h2>
+        <pre><code class="language-thrift">namespace * thrift.test
+
+/**
+ * Docstring!
+ */
+enum Numberz
+{
+  ONE = 1,
+  TWO,
+  THREE,
+  FIVE = 5,
+  SIX,
+  EIGHT = 8
+}
+
+const Numberz myNumberz = Numberz.ONE;
+// the following is expected to fail:
+// const Numberz urNumberz = ONE;
+
+typedef i64 UserId
+
+struct Msg
+{
+  1: string message,
+  2: i32 type
+}
+struct NestedListsI32x2
+{
+  1: list&lt;list&lt;i32&gt;&gt; integerlist
+}
+struct NestedListsI32x3
+{
+  1: list&lt;list&lt;list&lt;i32&gt;&gt;&gt; integerlist
+}
+service ThriftTest
+{
+  void        testVoid(),
+  string      testString(1: string thing),
+  oneway void testInit()
+}</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>TP</h2>
+        <pre><code class="language-tp">/PROG  ALL
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= &quot;&quot;;
+PROG_SIZE	= 3689;
+CREATE		= DATE 14-05-13  TIME 17:03:06;
+MODIFIED	= DATE 14-05-13  TIME 17:21:44;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 118;
+MEMORY_SIZE	= 4365;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/MN
+  ! motion ;
+J P[1:test point] 100% FINE    ;
+J P[1] 100.0sec CNT100    ;
+J P[1] 100msec CNT R[1]    ;
+L P[1] 100/sec FINE    ;
+L P[1] 100cm/min CNT100    ;
+L P[1] 100.0inch/min CNT100    ;
+L P[1] 100deg/sec CNT100    ;
+  ! indirect speed ;
+L P[1] R[1]sec CNT100    ;
+  ! indirect indirect ;
+L PR[1] R[R[1]]msec CNT100    ;
+  ! indirect destination ;
+L PR[R[1]] max_speed CNT100    ;
+   ;
+  ! assignment ;
+  R[1]=R[2]    ;
+  ! indirect assignment ;
+  R[R[1]]=R[2] ;
+  ! system variables ;
+  $foo=$bar[100].$baz ;
+  R[1]=$FOO.$BAR ;
+    ;
+  ! various keyword assignments ;
+  PR[1]=LPOS    ;
+  PR[1]=JPOS    ;
+  PR[1]=UFRAME[1] ;
+  PR[1]=UTOOL[1] ;
+  PR[1]=P[1]    ;
+  PR[1,1:component]=5    ;
+  SR[1:string reg]=SR[2]+AR[1]    ;
+  R[1]=SO[1:Cycle start] DIV SI[2:Remote]    ;
+  R[1]=UO[1:Cmd enabled] MOD UI[1:*IMSTP]    ;
+  ! mixed logic ;
+  DO[1]=(DI[1] AND AR[1] AND F[1] OR TIMER[1]&gt;TIMER_OVERFLOW[1]) ;
+  F[1]=(ON) ;
+  JOINT_MAX_SPEED[1]=5 ;
+  LINEAR_MAX_SPEED=5 ;
+  SKIP CONDITION DI[1]=OFF-   ;
+  PAYLOAD[R[1]] ;
+  OFFSET CONDITION PR[1]    ;
+  UFRAME_NUM=1 ;
+  UTOOL_NUM=1 ;
+  UFRAME[1]=PR[1] ;
+  UTOOL[1]=PR[1] ;
+  RSR[1]=ENABLE ;
+  RSR[AR[1]]=DISABLE ;
+  UALM[1] ;
+  TIMER[1]=START ;
+  TIMER[1]=STOP ;
+  TIMER[1]=RESET ;
+  OVERRIDE=50% ;
+  TOOL_OFFSET CONDITION PR[1]    ;
+  LOCK PREG ;
+  UNLOCK PREG ;
+  COL DETECT ON ;
+  COL DETECT OFF ;
+  COL GUARD ADJUST R[1] ;
+  COL GUARD ADJUST 50 ;
+  MONITOR TEST ;
+  MONITOR END TEST ;
+  R[1]=STRLEN SR[1] ;
+  SR[1]=SUBSTR SR[2],R[3],R[4] ;
+  R[1]=FINDSTR SR[1],SR[2] ;
+  DIAG_REC[1,5,2] ;
+   ;
+  ! program calls ;
+  CALL TEST ;
+  CALL TEST(1,&#39;string&#39;,SR[1],AR[1]) ;
+  RUN TEST ;
+  RUN TEST(1,&#39;string&#39;,SR[1],AR[1]) ;
+   ;
+  ! conditionals ;
+  IF R[1]=1,JMP LBL[5] ;
+  IF R[1]=AR[1],CALL TEST ;
+  IF (DI[1]),R[1]=(5) ;
+  SELECT R[1]=1,JMP LBL[5] ;
+         =2,CALL TEST ;
+         ELSE,JMP LBL[100] ;
+  FOR R[1]=1 TO R[2] ;
+  ENDFOR ;
+   ;
+  ! wait statement ;
+  WAIT   1.00(sec) ;
+  WAIT R[5] ;
+  WAIT DI[1]=ON    ;
+  WAIT DI[1]=ON+    ;
+  WAIT ERR_NUM=1    ;
+  WAIT (DI[1]=ON) ;
+   ;
+  ! jumps and labels ;
+  JMP LBL[1] ;
+  JMP LBL[R[1]] ;
+  LBL[100] ;
+  LBL[100:TEST] ;
+   ;
+  ! statements ;
+  PAUSE ;
+  ABORT ;
+  ERROR_PROG=ALL ;
+  RESUME_PROG[1]=TEST ;
+  END ;
+  MESSAGE[ASDF] ;
+   ;
+  ! comments ;
+  --eg:ASDFASDFASDF ;
+  // L P[9] 100mm/sec CNT100 ACC100    ;
+   ;
+  ! motion modifiers ;
+L P[1] 100mm/sec CNT100 ACC100    ;
+L P[1] 100mm/sec CNT100 ACC R[1]    ;
+L P[1] 100mm/sec CNT100 Skip,LBL[1]    ;
+L P[1] 100mm/sec CNT100 BREAK    ;
+L P[1] 100mm/sec CNT100 Offset    ;
+L P[1] 100mm/sec CNT100 PSPD50    ;
+L P[1] 100mm/sec CNT100 Offset,PR[1]    ;
+L P[1] 100mm/sec CNT100 INC    ;
+L P[1] 100mm/sec CNT100 RT_LDR[1]    ;
+L P[1] 100mm/sec CNT100 AP_LD50    ;
+L P[1] 100mm/sec CNT100 Tool_Offset    ;
+L P[1] 100mm/sec CNT100 Tool_Offset,PR[1]    ;
+L P[1] 100mm/sec CNT100 Skip,LBL[1],PR[1]=LPOS    ;
+L P[1] 100mm/sec CNT100 TB R[5]sec,CALL ALL    ;
+L P[1] 100mm/sec CNT100 TA   0.00sec,AO[1]=R[5]    ;
+L P[1] 100mm/sec CNT100 DB    0.0mm,CALL ALL    ;
+L P[1] 100mm/sec CNT100 PTH    ;
+L P[1] 100mm/sec CNT100 VOFFSET,VR[1] ;
+/POS
+P[1:&quot;test&quot;]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : &#39;&#39;,
+	X =   550.000  mm,	Y =     0.000  mm,	Z =  -685.000  mm,
+	W =   180.000 deg,	P =     0.000 deg,	R =     0.000 deg
+};
+/END
+</code></pre>
+      </div>
+
+      <div class="hidden template all">
+        <h2>Twig</h2>
+        <pre><code class="language-twig">{% if posts|length %}
+  {% for article in articles %}
+  &amp;lt;div&amp;gt;
+  {{ article.title|upper() }}
+
+  {# outputs &#39;WELCOME&#39; #}
+  &amp;lt;/div&amp;gt;
+  {% endfor %}
+{% endif %}
+
+{% set user = json_encode(user) %}
+
+{{ random([&#39;apple&#39;, &#39;orange&#39;, &#39;citrus&#39;]) }}
+
+{{ include(template_from_string(&quot;Hello {{ name }}&quot;)) }}
+
+
+{#
+Comments may be long and multiline.
+Markup is &amp;lt;em&amp;gt;not&amp;lt;/em&amp;gt; highlighted within comments.
+#}
+</code></pre>
+      </div>
+
+      <div class="common scripting all">
+        <h2>TypeScript</h2>
+        <pre><code class="language-typescript">class MyClass {
+  public static myValue: string;
+  constructor(init: string) {
+    this.myValue = init;
+  }
+}
+import fs = require(&quot;fs&quot;);
+module MyModule {
+  export interface MyInterface extends Other {
+    myProperty: any;
+  }
+}
+declare magicNumber number;
+myArray.forEach(() =&gt; { }); // fat arrow syntax
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Vala</h2>
+        <pre><code class="language-vala">using DBus;
+
+namespace Test {
+  class Foo : Object {
+    public signal void some_event ();   // definition of the signal
+    public void method () {
+      some_event ();                    // emitting the signal (callbacks get invoked)
+    }
+  }
+}
+
+/* defining a class */
+class Track : GLib.Object, Test.Foo {              /* subclassing &#39;GLib.Object&#39; */
+  public double mass;                  /* a public field */
+  public double name { get; set; }     /* a public property */
+  private bool terminated = false;     /* a private field */
+  public void terminate() {            /* a public method */
+    terminated = true;
+  }
+}
+
+const ALL_UPPER_CASE = &quot;you should follow this convention&quot;;
+
+var t = new Track();      // same as: Track t = new Track();
+var s = &quot;hello&quot;;          // same as: string s = &quot;hello&quot;;
+var l = new List&lt;int&gt;();       // same as: List&lt;int&gt; l = new List&lt;int&gt;();
+var i = 10;               // same as: int i = 10;
+
+
+#if (ololo)
+Regex regex = /foo/;
+#endif
+
+/*
+ * Entry point can be outside class
+ */
+void main () {
+  var long_string = &quot;&quot;&quot;
+    Example of &quot;verbatim string&quot;.
+    Same as in @&quot;string&quot; in C#
+  &quot;&quot;&quot;
+  var foo = new Foo ();
+  foo.some_event.connect (callback_a);      // connecting the callback functions
+  foo.some_event.connect (callback_b);
+  foo.method ();
+}
+</code></pre>
+      </div>
+
+      <div class="common all">
+        <h2>Visual Basic .NET</h2>
+        <pre><code class="language-vbnet">Imports System
+Imports System.IO
+#Const DEBUG = True
+
+Namespace Highlighter.Test
+  &#39;&#39;&#39; &lt;summary&gt;This is an example class.&lt;/summary&gt;
+  Public Class Program
+    Protected Shared hello As Integer = 3
+    Private Const ABC As Boolean = False
+
+#Region &quot;Code&quot;
+    &#39; Cheers!
+    &lt;STAThread()&gt; _
+    Public Shared Sub Main(ByVal args() As String, ParamArray arr As Object) Handles Form1.Click
+      On Error Resume Next
+      If ABC Then
+        While ABC : Console.WriteLine() : End While
+        For i As Long = 0 To 1000 Step 123
+          Try
+            System.Windows.Forms.MessageBox.Show(CInt(&quot;1&quot;).ToString())
+          Catch ex As Exception       &#39; What are you doing? Well...
+            Dim exp = CType(ex, IOException)
+            REM ORZ
+            Return
+          End Try
+        Next
+      Else
+        Dim l As New System.Collections.List&lt;String&gt;()
+        SyncLock l
+          If TypeOf l Is Decimal And l IsNot Nothing Then
+            RemoveHandler button1.Paint, delegate
+          End If
+          Dim d = New System.Threading.Thread(AddressOf ThreadProc)
+          Dim a = New Action(Sub(x, y) x + y)
+          Static u = From x As String In l Select x.Substring(2, 4) Where x.Length &gt; 0
+        End SyncLock
+        Do : Laugh() : Loop Until hello = 4
+      End If
+    End Sub
+#End Region
+  End Class
+End Namespace
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>VBScript</h2>
+        <pre><code class="language-vbscript">&#39; creating configuration storage and initializing with default values
+Set cfg = CreateObject(&quot;Scripting.Dictionary&quot;)
+
+&#39; reading ini file
+for i = 0 to ubound(ini_strings)
+    s = trim(ini_strings(i))
+
+    &#39; skipping empty strings and comments
+    if mid(s, 1, 1) &lt;&gt; &quot;#&quot; and len(s) &gt; 0 then
+      &#39; obtaining key and value
+      parts = split(s, &quot;=&quot;, -1, 1)
+
+      if ubound(parts)+1 = 2 then
+        parts(0) = trim(parts(0))
+        parts(1) = trim(parts(1))
+
+        &#39; reading configuration and filenames
+        select case lcase(parts(0))
+          case &quot;uncompressed&quot;&quot;_postfix&quot; cfg.item(&quot;uncompressed&quot;&quot;_postfix&quot;) = parts(1)
+          case &quot;f&quot;
+                    options = split(parts(1), &quot;|&quot;, -1, 1)
+                    if ubound(options)+1 = 2 then
+                      &#39; 0: filename,  1: options
+                      ff.add trim(options(0)), trim(options(1))
+                    end if
+        end select
+      end if
+    end if
+next</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>VBScript in HTML</h2>
+        <pre><code class="language-vbscript-html">&lt;body&gt;
+&lt;%
+If i &lt;  10 Then
+  response.write(&quot;Good morning!&quot;)
+End If
+%&gt;
+&lt;/body&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Verilog</h2>
+        <pre><code class="language-verilog">`timescale 1ns / 1ps
+
+/**
+ * counter: a generic clearable up-counter
+ */
+
+module counter
+    #(parameter WIDTH=64, NAME=&quot;world&quot;)
+    (
+        input clk,
+        input ce,
+        input arst_n,
+        output reg [WIDTH-1:0] q
+    );
+
+    string name = &quot;counter&quot;;
+    localparam val0 = 12&#39;ha1f;
+    localparam val1 = 12&#39;h1fa;
+    localparam val2 = 12&#39;hfa1;
+
+    // some child
+    clock_buffer #(WIDTH) buffer_inst (
+      .clk(clk),
+      .ce(ce),
+      .reset(arst_n)
+    );
+
+    // Simple gated up-counter with async clear
+
+    always @(posedge clk or negedge arst_n) begin
+        if (arst_n == 1&#39;b0) begin
+            q &lt;= {WIDTH {1&#39;b0}};
+            end
+        else begin
+            q &lt;= q;
+            if (ce == 1&#39;b1) begin
+                q &lt;= q + 1;
+            end
+        end
+    end
+
+    function int add_one(int x);
+      return x + 1;
+    endfunction : add_one
+
+`ifdef SIMULATION
+initial $display(&quot;Hello %s&quot;, NAME);
+`endif
+endmodule : counter
+
+class my_data extends uvm_data;
+  int x, y;
+
+  function add_one();
+    x++;
+    y++;
+  endfunction : add_one
+endclass : my_data
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>VHDL</h2>
+        <pre><code class="language-vhdl">/*
+ * RS-trigger with assynch. reset
+ */
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity RS_trigger is
+    generic (T: Time := 0ns);
+    port ( R, S  : in  std_logic;
+           Q, nQ : out std_logic;
+           reset, clock : in  std_logic );
+end RS_trigger;
+
+architecture behaviour of RS_trigger is
+    signal QT: std_logic; -- Q(t)
+begin
+    process(clock, reset) is
+        subtype RS is std_logic_vector (1 downto 0);
+    begin
+        if reset = &#39;0&#39; then
+            QT &lt;= &#39;0&#39;;
+        else
+            if rising_edge(C) then
+                if not (R&#39;stable(T) and S&#39;stable(T)) then
+                    QT &lt;= &#39;X&#39;;
+                else
+                    case RS&#39;(R&amp;S) is
+                        when &quot;01&quot; =&gt; QT &lt;= &#39;1&#39;;
+                        when &quot;10&quot; =&gt; QT &lt;= &#39;0&#39;;
+                        when &quot;11&quot; =&gt; QT &lt;= &#39;X&#39;;
+                        when others =&gt; null;
+                    end case;
+                end if;
+            end if;
+        end if;
+    end process;
+
+    Q  &lt;= QT;
+    nQ &lt;= not QT;
+end architecture behaviour;
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>Vim Script</h2>
+        <pre><code class="language-vim">if foo &gt; 2 || has(&quot;gui_running&quot;)
+  syntax on
+  set hlsearch
+endif
+
+set autoindent
+
+&quot; switch on highlighting
+function UnComment(fl, ll)
+  while idx &gt;= a:ll
+    let srclines=getline(idx)
+    let dstlines=substitute(srclines, b:comment, &quot;&quot;, &quot;&quot;)
+    call setline(idx, dstlines)
+  endwhile
+endfunction
+
+let conf = {&#39;command&#39;: &#39;git&#39;}
+</code></pre>
+      </div>
+
+      <div class="hidden web all">
+        <h2>WebAssembly</h2>
+        <pre><code class="language-wasm">(module
+  (import &quot;js&quot; &quot;memory&quot; (memory 1))
+  (import &quot;js&quot; &quot;table&quot; (table 1 funcref))
+  (type $void_to_i32 (func (result i32)))
+  (func (export &quot;doIt&quot;) (result i32)
+   i32.const 0
+   i32.const 42
+   i32.store  ;; store 42 at address 0
+   i32.const 0
+   call_indirect (type $void_to_i32))
+)
+</code></pre>
+      </div>
+
+      <div class="hidden scripting all">
+        <h2>Wren</h2>
+        <pre><code class="language-wren">/*
+borrowed from https://github.com/paladin-t/b95/blob/master/b95.wren
+*/
+
+class Stack is Sequence {
+	construct new() {
+		_list = [ ]
+	}
+
+	count {
+		return _list.count
+	}
+	isEmpty {
+		return _list.isEmpty
+	}
+	clear() {
+		_list.clear()
+	}
+
+	peek {
+		if (_list.isEmpty) {
+			Fiber.abort(&quot;Peeking from empty stack.&quot;)
+		}
+
+		return _list[_list.count - 1]
+	}
+	pop() {
+		if (_list.isEmpty) {
+			Fiber.abort(&quot;Popping from empty stack.&quot;)
+		}
+
+		var ret = _list[_list.count - 1]
+		_list.removeAt(_list.count - 1)
+
+		return ret
+	}
+	push(val) {
+		_list.add(val)
+
+		return this
+	}
+
+	// Iterates top-down, but doesn&#39;t pop anything.
+	iterate(iterator) {
+		if (iterator == null) {
+			iterator = _list.count
+		}
+		iterator = iterator - 1
+		if (iterator &lt; 0) {
+			return null
+		}
+
+		return iterator
+	}
+	iteratorValue(iterator) {
+		return _list[iterator]
+	}
+}
+
+var add = Fn.new { |a,b| a + b }
+var mul = Fn.new { |a,b| a * b }
+</code></pre>
+      </div>
+
+      <div class="hidden assembler all">
+        <h2>Intel x86 Assembly</h2>
+        <pre><code class="language-x86asm">section .text
+extern  _MessageBoxA@16
+%if     __NASM_VERSION_ID__ &gt;= 0x02030000
+safeseh handler         ; register handler as &quot;safe handler&quot;
+%endif
+
+handler:
+        push    dword 1 ; MB_OKCANCEL
+        push    dword caption
+        push    dword text
+        push    dword 0
+        call    _MessageBoxA@16
+        sub     eax,1   ; incidentally suits as return value
+                        ; for exception handler
+        ret
+
+global  _main
+_main:  push    dword handler
+        push    dword [fs:0]
+        mov     dword [fs:0], esp
+        xor     eax,eax
+        mov     eax, dword[eax]   ; cause exception
+        pop     dword [fs:0]      ; disengage exception handler
+        add     esp, 4
+        ret
+
+avx2:   vzeroupper
+        push      rbx
+        mov       rbx,   rsp
+        sub       rsp,   0h20
+        vmovdqa   ymm0,  [rcx]
+        vpaddb    ymm0,  [rdx]
+        leave
+        ret
+
+text:   db      &#39;OK to rethrow, CANCEL to generate core dump&#39;,0
+caption:db      &#39;SEGV&#39;,0
+
+section .drectve info
+        db      &#39;/defaultlib:user32.lib /defaultlib:msvcrt.lib &#39;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>XL</h2>
+        <pre><code class="language-xl">import Animate
+import SeasonsGreetingsTheme
+import &quot;myhelper.xl&quot;
+theme &quot;SeasonsGreetings&quot;
+function X:real -&gt; sin(X*0.5) + 16#0.002
+page &quot;A nice car&quot;,
+// --------------------------------------
+//    Display car model on a pedestal
+// --------------------------------------
+    clear_color 0, 0, 0, 1
+    hand_scale -&gt; 0.3
+
+    // Display the background image
+    background -4000,
+        locally
+            disable_depth_test
+            corridor N:integer -&gt;
+                locally
+                    rotatez 60 * N
+                    translatex 1000
+                    rotatey 90
+                    color &quot;white&quot;
+                    texture &quot;stars.png&quot;
+                    texture_wrap true, true
+                    texture_transform
+                        translate (time + N) * 0.02 mod 1, 0, 0
+                        scale 0.2, 0.3, 0.3
+                    rectangle 0, 0, 100000, 1154
+</code></pre>
+      </div>
+
+      <div class="hidden functional all">
+        <h2>XQuery</h2>
+        <pre><code class="language-xquery">xquery version &quot;3.1&quot;;
+(:~
+ : @author Duncan Paterson
+ : @version 1.0:)
+
+declare variable $local:num := math:log10(12345);
+
+(
+let $map := map { &#39;R&#39;: &#39;red&#39;, &#39;G&#39;: &#39;green&#39;, &#39;B&#39;: &#39;blue&#39; }
+return (
+  $map?*          (: 1. returns all values; same as: map:keys($map) ! $map(.) :),
+  $map?R          (: 2. returns the value associated with the key &#39;R&#39;; same as: $map(&#39;R&#39;) :),
+  $map?(&#39;G&#39;,&#39;B&#39;)  (: 3. returns the values associated with the key &#39;G&#39; and &#39;B&#39; :)
+),
+
+declare function local:city($country as node()*) as element (country) {
+for $country in doc(&#39;factbook&#39;)//country
+where $country/@population &gt; 100000000
+let $name := $country/name[1]
+for $city in $country//city[population gt 1000000]
+group by $name
+return
+   element country { attribute type { $name },
+    $city/name }
+};
+
+return
+(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;) =&gt; count(),
+
+&lt;root&gt;{local:city(.) + $local:num}&lt;/root&gt;
+</code></pre>
+      </div>
+
+      <div class="hidden misc all">
+        <h2>Zephir</h2>
+        <pre><code class="language-zephir">function testBefore(&lt;Test&gt; a, var b = 5, int c = 10)
+{
+    a-&gt;method1();
+
+    return b + c;
+}
+
+namespace Test;
+
+use RuntimeException as RE;
+
+/**
+ * Example comment
+ */
+class Test extends CustomClass implements TestInterface
+{
+    const C1 = null;
+
+    // Magic constant: http://php.net/manual/ru/language.constants.predefined.php
+    const className = __CLASS__;
+
+    public function method1()
+    {
+        int a = 1, b = 2;
+        if likely a &gt; b {
+            a++;
+        } else if unlikely b &lt; a {
+            a--;
+        }
+        return a + b;
+    }
+
+    // See fn is allowed like shortcut
+    public fn method2() -&gt; &lt;Test&gt;
+    {
+        call_user_func(function() { echo &quot;hello&quot;; });
+
+
+        [1, 2, 3, 4, 5]-&gt;walk(
+            function(int! x) {
+                return x * x;
+            }
+        );
+
+        [1, 2, 3, 4, 5]-&gt;walk(
+            function(_, int key) { echo key; }
+        );
+
+        array input = [1, 2, 3, 4, 5];
+
+        input-&gt;walk(
+            function(_, int key) { echo key; }
+        );
+
+
+        input-&gt;map(x =&gt; x * x);
+
+        return this;
+    }
+}
+</code></pre>
+      </div>
+    </main>
+  </body>
+</html>
