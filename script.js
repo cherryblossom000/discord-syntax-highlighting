@@ -1,3 +1,5 @@
+/* global hljs */
+
 hljs.debugMode()
 hljs.highlightAll()
 
