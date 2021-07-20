@@ -4,12 +4,14 @@
   font-family: Whitney;
   font-weight: 400;
   src: url('fonts/whitney-400.woff');
+  font-display: swap;
 }
 
 @font-face {
   font-family: Ginto;
   font-weight: 600;
   src: url('fonts/ginto-600.woff');
+  font-display: swap;
 }
 
 /* Variables */
