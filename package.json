@@ -1,0 +1,14 @@
+{
+  "name": "discord-syntax-highlighting",
+  "version": "0.0.1",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "build": "node add-aliases.mjs"
+  },
+  "devDependencies": {
+    "highlight.js": "11.0.1"
+  }
+}
