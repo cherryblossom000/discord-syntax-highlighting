@@ -1,8 +1,3 @@
-import hljs from 'highlight.js'
-
-hljs.debugMode()
-hljs.highlightAll()
-
 // NodeListOf<HTMLLIElement> is different to NodeListOf<Element>
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/non-nullable-type-assertion-style -- ^
 for (const category of document.querySelectorAll(

@@ -45,7 +45,7 @@
       <% languages.forEach(({lang, name, aliases, categories, sample}) => {%>
       <div class ="<%= [...(categories.includes('common') ? [] : ['hidden']), ...categories].join(' ') %>">
         <h2><%= name %> <%- [lang, ...aliases].map(code => `<code>${code}</code>`).join(' ') %></h2>
-        <pre><code class="language-<%= lang %>"><%= sample %></code></pre>
+        <pre><code class="language-<%= lang %> hljs"><%-sample%></code></pre>
       </div>
       <% }) %>
     </main>

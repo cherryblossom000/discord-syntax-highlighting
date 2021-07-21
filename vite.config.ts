@@ -91,7 +91,11 @@ const configFn: UserConfigFn = async () => {
         aliases,
         // https://github.com/highlightjs/highlight.js/blob/main/tools/lib/language.js#L66
         categories: [...(categories.length ? categories : ['misc']), 'all'],
-        sample
+        sample: hljs
+          .highlight(lang, sample)
+          // Vite uses Vue's HTML parser, where curly braces are special
+          .value.replace(/\{/gu, '&#123;')
+          .replace(/\}/gu, '&#125;')
       }
     })
   )
