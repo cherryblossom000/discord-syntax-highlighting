@@ -165,6 +165,9 @@ aside ul::-webkit-scrollbar-thumb {
 aside li {
   padding: 1px 1em;
   cursor: pointer;
+  /* Make arrow thing centered vertically */
+  display: flex;
+  align-items: center;
 }
 
 aside li:hover {
