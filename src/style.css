@@ -207,7 +207,6 @@ code {
 
 pre {
   background: var(--background-secondary);
-  border: 1px solid var(--background-tertiary);
   margin-top: 6px;
 }
 
@@ -226,6 +225,7 @@ code {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
+  border: 1px solid var(--background-tertiary);
   border-radius: 4px;
   color: var(--header-secondary);
   -webkit-text-size-adjust: none;
