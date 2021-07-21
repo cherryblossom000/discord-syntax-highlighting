@@ -1,3 +1,5 @@
+import hljs from 'highlight.js'
+
 hljs.debugMode()
 hljs.highlightAll()
 

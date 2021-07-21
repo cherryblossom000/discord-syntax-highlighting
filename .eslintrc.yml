@@ -1,14 +1,8 @@
 settings:
   jsdoc:
     mode: typescript
-rules:
-  jsdoc/no-undefined-types:
-  - 1
-  - definedTypes:
-    - ReadonlyArray
-    - ReadonlyMap
 overrides:
-  - files: build.mjs
+  - files: '*.mjs'
     extends:
     - '@cherryblossom/eslint-config/js/node/esm'
     - '@cherryblossom/eslint-config/node/14'

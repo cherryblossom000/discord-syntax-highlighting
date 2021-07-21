@@ -9,14 +9,17 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "node build.mjs",
-    "lint": "eslint --max-warnings 0 build.mjs src/script.js"
+    "build": "vite build",
+    "lint": "eslint --max-warnings 0 .",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "highlight.js": "10.6.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
     "@cherryblossom/eslint-config": "file:../../conf/eslint-config",
-    "ejs": "^3.1.6",
     "ejs-lint": "^1.2.1",
     "eslint": "^7.31.0",
     "eslint-plugin-compat": "^3.11.1",
@@ -27,7 +30,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-unicorn": "^34.0.1",
-    "highlight.js": "10.6.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "vite": "^2.4.3",
+    "vite-plugin-html": "^2.0.7"
   }
 }
