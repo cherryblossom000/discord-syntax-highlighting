@@ -1,4 +1,4 @@
-/bundle/
 /dist/
 /node_modules/
 /themes.css
+.eslintcache

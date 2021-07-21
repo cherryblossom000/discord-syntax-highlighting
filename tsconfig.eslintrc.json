@@ -1,0 +1,9 @@
+{
+  "include": ["**/.eslintrc.js"],
+  "extends": "./tsconfig.settings.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "checkJs": true,
+    "moduleResolution": "node"
+  }
+}

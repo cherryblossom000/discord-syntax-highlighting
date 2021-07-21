@@ -1,0 +1,18 @@
+{
+  "exclude": ["node_modules", "highlight.js"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "lib": ["ES2020"],
+
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useDefineForClassFields": true,
+    "strict": true
+  }
+}
