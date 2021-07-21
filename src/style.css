@@ -27,6 +27,7 @@
   --header-secondary: #b9bbbe;
   --interactive-muted: #4f545c;
   --text-normal: #dcddde;
+  --text-link: hsl(197, 100%, 47.8%);
   --scrollbar-thin-thumb: #202225;
   --scrollbar-thin-track: transparent;
 }
@@ -42,6 +43,7 @@
   --header-secondary: #4f5660;
   --interactive-muted: #c7ccd1;
   --text-normal: #2e3338;
+  --text-link: hsl(212, 100%, 43.9%);
   --scrollbar-thin-thumb: rgba(79, 84, 92, 0.3);
   --scrollbar-thin-track: transparent;
 }
@@ -72,6 +74,15 @@ h2,
 aside > div {
   font-size: 120%;
   margin: 1.5em 0 0.5em 0;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 aside {
