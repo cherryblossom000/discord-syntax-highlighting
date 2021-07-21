@@ -16,7 +16,7 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@cherryblossom/eslint-config": "file:../../conf/eslint-config",
+    "@cherryblossom/eslint-config": "15.0.0-beta.11",
     "@types/eslint": "^7.28.0",
     "@types/node": "^14.17.5",
     "@typescript-eslint/eslint-plugin": "^4.28.4",

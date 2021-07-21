@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@cherryblossom/eslint-config': file:../../conf/eslint-config
+  '@cherryblossom/eslint-config': ^15.0.0-beta.11
   '@types/eslint': ^7.28.0
   '@types/node': ^14.17.5
   '@typescript-eslint/eslint-plugin': ^4.28.4
@@ -23,7 +23,7 @@ specifiers:
   vite-plugin-html: ^2.0.7
 
 devDependencies:
-  '@cherryblossom/eslint-config': link:../../conf/eslint-config
+  '@cherryblossom/eslint-config': 15.0.0-beta.11_2a8a96bb66036d57198078957acd88ad
   '@types/eslint': 7.28.0
   '@types/node': 14.17.5
   '@typescript-eslint/eslint-plugin': 4.28.4_b1648df9f9ba40bdeef3710a5a5af353
@@ -296,6 +296,61 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.14.8
       to-fast-properties: 2.0.0
+    dev: true
+
+  /@cherryblossom/eslint-config/15.0.0-beta.11_2a8a96bb66036d57198078957acd88ad:
+    resolution: {integrity: sha512-lwIwFvsXrC6YT3hrnnM2ry7vvlKoedSen3kVXS1jiIbmyzb52wgDPLvZGWv4g6FBvUNp+dBkU+hK/y6+mnpYHQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^4.21
+      eslint: ^7.15
+      eslint-plugin-compat: ^3
+      eslint-plugin-eslint-comments: ^3.2
+      eslint-plugin-html: ^6
+      eslint-plugin-import: ^2.21
+      eslint-plugin-jest: ^24.3
+      eslint-plugin-jsdoc: '>=34.4 <36'
+      eslint-plugin-markdown: ^2
+      eslint-plugin-node: ^11.1
+      eslint-plugin-prettier: ^3
+      eslint-plugin-promise: '>=4 <6'
+      eslint-plugin-react-hooks: ^4
+      eslint-plugin-unicorn: ^34
+      typescript: ^4.1.2
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+      eslint-plugin-compat:
+        optional: true
+      eslint-plugin-html:
+        optional: true
+      eslint-plugin-import:
+        optional: true
+      eslint-plugin-jest:
+        optional: true
+      eslint-plugin-markdown:
+        optional: true
+      eslint-plugin-node:
+        optional: true
+      eslint-plugin-react-hooks:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 4.28.4_b1648df9f9ba40bdeef3710a5a5af353
+      '@typescript-eslint/parser': 4.28.4_eslint@7.31.0+typescript@4.3.5
+      eslint: 7.31.0
+      eslint-plugin-compat: 3.11.1_eslint@7.31.0
+      eslint-plugin-eslint-comments: 3.2.0_eslint@7.31.0
+      eslint-plugin-import: 2.23.4_eslint@7.31.0
+      eslint-plugin-jsdoc: 35.5.0_eslint@7.31.0
+      eslint-plugin-node: 11.1.0_eslint@7.31.0
+      eslint-plugin-prettier: 3.4.0_eslint@7.31.0+prettier@2.3.2
+      eslint-plugin-promise: 5.1.0_eslint@7.31.0
+      eslint-plugin-unicorn: 34.0.1_eslint@7.31.0
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@es-joy/jsdoccomment/0.9.0-alpha.1:
