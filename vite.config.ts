@@ -88,7 +88,7 @@ const configFn: UserConfigFn = async () => {
       return {
         lang,
         name,
-        aliases,
+        aliases: aliases.filter(alias => alias !== lang),
         // https://github.com/highlightjs/highlight.js/blob/main/tools/lib/language.js#L66
         categories: [...(categories.length ? categories : ['misc']), 'all'],
         sample: hljs
