@@ -1,0 +1,28 @@
+settings:
+  jsdoc:
+    mode: typescript
+rules:
+  jsdoc/no-undefined-types:
+  - 1
+  - definedTypes:
+    - ReadonlyArray
+    - ReadonlyMap
+overrides:
+  - files: build.mjs
+    extends:
+    - '@cherryblossom/eslint-config/js/node/esm'
+    - '@cherryblossom/eslint-config/node/14'
+    parser: '@babel/eslint-parser' # top-level await
+    parserOptions:
+      requireConfigFile: false
+      babelOptions:
+        plugins:
+        - '@babel/plugin-syntax-top-level-await'
+    rules:
+      node/no-unsupported-features/es-syntax:
+      - 2
+      - ignores:
+        - dynamicImport
+        - modules
+      node/no-unpublished-import: 0
+      import/no-unused-modules: 0

@@ -1,0 +1,51 @@
+<!-- https://github.com/highlightjs/highlight.js/blob/main/demo/index.html -->
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Discord Syntax Highlighting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="highlight.min.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <aside>
+      <header>
+        <h1>Discord Syntax Highlighting</h1>
+      </header>
+
+      <div>
+        <label for="light-theme"
+          >Light Theme
+          <input id="light-theme" type="checkbox" hidden />
+          <div id="checkbox">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+              <path id="tick"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"
+              ></path>
+            </svg>
+          </div>
+        </label>
+      </div>
+
+      <h2>Language Categories</h2>
+      <ul class="categories">
+        <% categories.forEach(({name, count}, i) => {%>
+        <li<%- i ? '' : ' class="current"' %> data-category="<%= name %>"><%= `${name} (${count})` %></li>
+        <% }) %>
+      </ul>
+    </aside>
+
+    <main>
+      <% languages.forEach(({lang, name, aliases, categories, sample}) => {%>
+      <div class ="<%= [...(categories.includes('common') ? [] : ['hidden']), ...categories].join(' ') %>">
+        <h2><%= name %> <%- [lang, ...aliases].map(code => `<code>${code}</code>`).join(' ') %></h2>
+        <pre><code class="language-<%= lang %>"><%= sample %></code></pre>
+      </div>
+      <% }) %>
+    </main>
+  </body>
+</html>

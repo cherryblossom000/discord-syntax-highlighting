@@ -1,24 +1,20 @@
-/* global hljs */
-
 hljs.debugMode()
 hljs.highlightAll()
 
 for (const category of document.querySelectorAll('.categories > li')) {
-  category.addEventListener('click', event => {
+  category.addEventListener('click', ev => {
     const current = document.querySelector('.categories .current')
     const currentCategory = current.dataset.category
-    const nextCategory = event.target.dataset.category
+    const nextCategory = ev.target.dataset.category
 
     if (currentCategory !== nextCategory) {
       current.classList.remove('current')
-      event.target.classList.add('current')
+      ev.target.classList.add('current')
 
-      document
-        .querySelectorAll(`.${currentCategory}`)
-        .forEach(language => language.classList.add('hidden'))
-      document
-        .querySelectorAll(`.${nextCategory}`)
-        .forEach(language => language.classList.remove('hidden'))
+      for (const language of document.querySelectorAll(`.${currentCategory}`))
+        language.classList.add('hidden')
+      for (const language of document.querySelectorAll(`.${nextCategory}`))
+        language.classList.remove('hidden')
 
       window.scrollTo(0, 0)
     }

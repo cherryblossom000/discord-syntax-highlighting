@@ -1,0 +1,3 @@
+extends: '@cherryblossom/eslint-config/js/browser'
+globals:
+  hljs: true
