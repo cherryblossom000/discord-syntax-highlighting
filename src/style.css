@@ -116,6 +116,7 @@ input#light-theme {
   justify-content: center;
   align-items: center;
   grid-column: 2;
+  cursor: pointer;
 }
 
 #light-theme:not(:checked) + #checkbox {
