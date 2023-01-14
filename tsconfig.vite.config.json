@@ -2,10 +2,7 @@
   "include": ["vite.config.ts"],
   "extends": "./tsconfig.settings.json",
   "compilerOptions": {
-    "target": "ES2020",
     "checkJs": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "lib": ["ES2020"]
+    // "module": "CommonJS",
   }
 }

@@ -6,7 +6,7 @@
     "access": "restricted"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "scripts": {
     "check": "tsc -b",
@@ -16,25 +16,25 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@cherryblossom/eslint-config": "15.0.0-beta.14",
-    "@types/eslint": "^7.28.0",
-    "@types/node": "^14.17.14",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-compat": "^3.13.0",
+    "@cherryblossom/eslint-config": "17.0.0-beta.3",
+    "@types/eslint": "^8.4.10",
+    "@types/node": "~18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsdoc": "^36.0.8 ",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-jsdoc": "^39.6.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-unicorn": "^35.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-unicorn": "^45.0.2",
     "highlight.js": "10.6.0",
-    "prettier": "^2.3.2",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.2",
-    "vite": "^2.5.3",
-    "vite-plugin-html": "^2.1.0"
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.9.4",
+    "vite": "^4.0.4",
+    "vite-plugin-html": "^3.2.0"
   }
 }

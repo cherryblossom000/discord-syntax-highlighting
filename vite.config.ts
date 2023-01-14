@@ -2,7 +2,7 @@ import assert from 'assert'
 import {readFile} from 'fs/promises'
 import * as path from 'path'
 import hljs from 'highlight.js'
-import htmlPlugin from 'vite-plugin-html'
+import {createHtmlPlugin} from 'vite-plugin-html'
 import type * as LanguageModule from 'highlight.js/lib/languages/*'
 import type {UserConfigFn} from 'vite'
 
@@ -89,13 +89,15 @@ const configFn: UserConfigFn = async () => {
         lang,
         name,
         aliases: aliases.filter(alias => alias !== lang),
-        // https://github.com/highlightjs/highlight.js/blob/main/tools/lib/language.js#L66
         categories: [...(categories.length ? categories : ['misc']), 'all'],
         sample: hljs
           .highlight(lang, sample)
           // Vite uses Vue's HTML parser, where curly braces are special
           .value.replace(/\{/gu, '&#123;')
           .replace(/\}/gu, '&#125;')
+          // unable to parse HTML; parse5 error code control-character-in-input-stream
+          // the FIX language has these control characters for some reason
+          .replaceAll('\x01', '␁')
       }
     })
   )
@@ -103,7 +105,7 @@ const configFn: UserConfigFn = async () => {
     .filter((lang): lang is Language => lang !== undefined)
     .sort((a, b) => a.lang.localeCompare(b.lang))
 
-  // https://github.com/highlightjs/highlight.js/blob/main/tools/build_browser.js#L118-L133
+  // https://github.com/highlightjs/highlight.js/blob/bc1b06bb3ac587498d8e21a99c3ee38ce4727c1f/tools/build_browser.js#L118-L133
   const categoryCounts = languages
     .flatMap(({categories}) => categories)
     .reduce(
@@ -122,7 +124,7 @@ const configFn: UserConfigFn = async () => {
 
   return {
     root: 'src',
-    plugins: [htmlPlugin({inject: {injectData: {categories, languages}}})],
+    plugins: [createHtmlPlugin({inject: {data: {categories, languages}}})],
     build: {
       outDir: '../dist',
       emptyOutDir: true

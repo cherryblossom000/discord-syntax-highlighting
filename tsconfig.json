@@ -2,7 +2,6 @@
   "files": [],
   "references": [
     {"path": "./src"},
-    {"path": "./tsconfig.eslintrc.json"},
     {"path": "./tsconfig.vite.config.json"}
   ]
 }
