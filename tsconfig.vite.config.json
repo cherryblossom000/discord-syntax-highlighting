@@ -1,8 +1,8 @@
 {
-  "include": ["vite.config.ts"],
-  "extends": "./tsconfig.settings.json",
-  "compilerOptions": {
-    "checkJs": true,
-    // "module": "CommonJS",
-  }
+	"include": ["vite.config.ts"],
+	"extends": "./tsconfig.settings.json",
+	"compilerOptions": {
+		"checkJs": true
+		// "module": "CommonJS",
+	}
 }
