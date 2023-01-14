@@ -15,7 +15,7 @@ specifiers:
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-promise: ^6.1.1
   eslint-plugin-unicorn: ^45.0.2
-  highlight.js: 10.6.0
+  highlight.js: 11.7.0
   prettier: ^2.8.3
   ts-node: ^10.9.1
   typescript: ~4.9.4
@@ -37,7 +37,7 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_ilxq7usaoskowiuvcfaznp7pcm
   eslint-plugin-promise: 6.1.1_eslint@8.31.0
   eslint-plugin-unicorn: 45.0.2_eslint@8.31.0
-  highlight.js: 10.6.0
+  highlight.js: 11.7.0
   prettier: 2.8.3
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   typescript: 4.9.4
@@ -1757,8 +1757,9 @@ packages:
     hasBin: true
     dev: true
 
-  /highlight.js/10.6.0:
-    resolution: {integrity: sha512-8mlRcn5vk/r4+QcqerapwBYTe+iPL5ih6xrNylxrnBdHQiijDETfXX7VIxC3UiCRiINBJfANBAsPzAvRQj8RpQ==}
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
     dev: true
 
   /hosted-git-info/2.8.9:

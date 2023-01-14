@@ -1,24 +1,20 @@
-import assert from 'assert'
-import {readFile} from 'fs/promises'
-import * as path from 'path'
+import assert from 'node:assert'
+import {readFile} from 'node:fs/promises'
+import * as path from 'node:path'
 import hljs from 'highlight.js'
+import {defineConfig} from 'vite'
 import {createHtmlPlugin} from 'vite-plugin-html'
 import type * as LanguageModule from 'highlight.js/lib/languages/*'
-import type {UserConfigFn} from 'vite'
 
-// https://github.com/highlightjs/highlight.js/blob/main/tools/lib/language.js#L9-L10
+// https://github.com/highlightjs/highlight.js/blob/bc1b06bb3ac587498d8e21a99c3ee38ce4727c1f/tools/lib/language.js#L9-L10
 const categoryRegex = /\/\*.*?Category: (.*?)\r?\n/su
 const languageRegex = /\/\*.*?Language: (.*?)\r?\n/su
 
-const languagesDir10 = path.join(
-	__dirname,
-	'node_modules',
-	'highlight.js',
-	'lib',
-	'languages'
-)
-
-const hljsDir = path.join(__dirname, 'highlight.js')
+const languagesDir10 = new URL(
+	'node_modules/highlight.js/lib/languages/',
+	import.meta.url
+).pathname
+const hljsDir = new URL('highlight.js/', import.meta.url).pathname
 const samplesDir = path.join(hljsDir, 'test', 'detect')
 const languagesDir = path.join(hljsDir, 'src', 'languages')
 
@@ -28,7 +24,7 @@ interface Language {
 	 *
 	 * @example 'xml'
 	 */
-	lang: string
+	language: string
 
 	/**
 	 * The language name.
@@ -42,15 +38,15 @@ interface Language {
 	sample: string
 }
 
-const configFn: UserConfigFn = async () => {
+export default defineConfig(async () => {
 	const maybeLangs = await Promise.all(
-		hljs.listLanguages().map<Promise<Language | undefined>>(async lang => {
-			if (lang === 'plaintext') return
+		hljs.listLanguages().map<Promise<Language | undefined>>(async language => {
+			if (language === 'plaintext') return
 
 			let sample
 			try {
 				sample = await readFile(
-					path.join(samplesDir, lang, 'default.txt'),
+					path.join(samplesDir, language, 'default.txt'),
 					'utf8'
 				)
 			} catch (error: unknown) {
@@ -64,7 +60,7 @@ const configFn: UserConfigFn = async () => {
 				throw error
 			}
 
-			const langJS = `${lang}.js`
+			const langJS = `${language}.js`
 			const [mod, contents] = await Promise.all([
 				import(path.join(languagesDir10, langJS)) as Promise<
 					typeof LanguageModule
@@ -76,7 +72,7 @@ const configFn: UserConfigFn = async () => {
 					const match = languageRegex.exec(contents)
 					assert(
 						match,
-						`error: language ${lang} does not have a \`name\` property or a match for ${languageRegex}!
+						`error: language ${language} does not have a \`name\` property or a match for ${languageRegex}!
   File contents:
   ${contents}`
 					)
@@ -86,12 +82,12 @@ const configFn: UserConfigFn = async () => {
 			} = mod.default(hljs)
 			const categories = categoryRegex.exec(contents)?.[1]!.split(/,\s?/u) ?? []
 			return {
-				lang,
+				language,
 				name,
-				aliases: aliases.filter(alias => alias !== lang),
+				aliases: aliases.filter(alias => alias !== language),
 				categories: [...(categories.length ? categories : ['misc']), 'all'],
 				sample: hljs
-					.highlight(lang, sample)
+					.highlight(sample, {language})
 					// Vite uses Vue's HTML parser, where curly braces are special
 					.value.replace(/\{/gu, '&#123;')
 					.replace(/\}/gu, '&#125;')
@@ -103,7 +99,7 @@ const configFn: UserConfigFn = async () => {
 	)
 	const languages = maybeLangs
 		.filter((lang): lang is Language => lang !== undefined)
-		.sort((a, b) => a.lang.localeCompare(b.lang))
+		.sort((a, b) => a.language.localeCompare(b.language))
 
 	// https://github.com/highlightjs/highlight.js/blob/bc1b06bb3ac587498d8e21a99c3ee38ce4727c1f/tools/build_browser.js#L118-L133
 	const categoryCounts = languages
@@ -130,5 +126,4 @@ const configFn: UserConfigFn = async () => {
 			emptyOutDir: true
 		}
 	}
-}
-export default configFn
+})

@@ -22,8 +22,15 @@
 					>Light Theme
 					<input id="light-theme" type="checkbox" hidden />
 					<div id="checkbox">
-						<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
-							<path id="tick"
+						<svg
+							aria-hidden="true"
+							role="img"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+						>
+							<path
+								id="tick"
 								fill-rule="evenodd"
 								clip-rule="evenodd"
 								d="M8.99991 16.17L4.82991 12L3.40991 13.41L8.99991 19L20.9999 7.00003L19.5899 5.59003L8.99991 16.17Z"
@@ -42,10 +49,10 @@
 		</aside>
 
 		<main>
-			<% languages.forEach(({lang, name, aliases, categories, sample}) => {%>
+			<% languages.forEach(({language, name, aliases, categories, sample}) => {%>
 			<div class ="<%= [...(categories.includes('common') ? [] : ['hidden']), ...categories].join(' ') %>">
-				<h2><%= name %> <%- [lang, ...aliases].map(code => `<code>${code}</code>`).join(' ') %></h2>
-				<pre><code class="language-<%= lang %> hljs"><%-sample%></code></pre>
+				<h2><%= name %> <%- [language, ...aliases].map(code => `<code>${code}</code>`).join(' ') %></h2>
+				<pre><code class="language-<%= language %> hljs"><%-sample%></code></pre>
 			</div>
 			<% }) %>
 		</main>
