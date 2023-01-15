@@ -10,11 +10,14 @@ import type * as LanguageModule from 'highlight.js/lib/languages/*'
 const categoryRegex = /\/\*.*?Category: (.*?)\r?\n/su
 const languageRegex = /\/\*.*?Language: (.*?)\r?\n/su
 
-const languagesDir10 = new URL(
-	'node_modules/highlight.js/lib/languages/',
-	import.meta.url
-).pathname
-const hljsDir = new URL('highlight.js/', import.meta.url).pathname
+const languagesDirNodeModules = path.join(
+	__dirname,
+	'node_modules',
+	'highlight.js',
+	'lib',
+	'languages'
+)
+const hljsDir = path.join(__dirname, 'highlight.js')
 const samplesDir = path.join(hljsDir, 'test', 'detect')
 const languagesDir = path.join(hljsDir, 'src', 'languages')
 
@@ -62,7 +65,7 @@ export default defineConfig(async () => {
 
 			const langJS = `${language}.js`
 			const [mod, contents] = await Promise.all([
-				import(path.join(languagesDir10, langJS)) as Promise<
+				import(path.join(languagesDirNodeModules, langJS)) as Promise<
 					typeof LanguageModule
 				>,
 				readFile(path.join(languagesDir, langJS), 'utf8')
