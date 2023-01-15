@@ -37,11 +37,8 @@
 	--primary-light-200: hsl(216, calc(var(--saturation-factor, 1) * 9.8%), 90%);
 	--primary-light-300: hsl(210, calc(var(--saturation-factor, 1) * 9.8%), 80%);
 	--primary-light-530-rgb: 106, 116, 128;
-	--primary-light-600: hsl(
-		215,
-		calc(var(--saturation-factor, 1) * 9.7%),
-		34.3%
-	);
+	/* prettier-ignore */
+	--primary-light-600: hsl(215, calc(var(--saturation-factor, 1) * 9.7%), 34.3%);
 	--primary-light-700: hsl(210, calc(var(--saturation-factor, 1) * 9.8%), 20%);
 	--primary-light-900: hsl(240, calc(var(--saturation-factor, 1) * 7.7%), 2.5%);
 	--white-500: hsl(0, calc(var(--saturation-factor, 1) * 0%), 100%);
@@ -50,6 +47,7 @@
 }
 
 .theme-dark {
+	--github-logo-color: #fff;
 	--background-primary: var(--primary-dark-600);
 	--background-secondary: var(--primary-dark-630);
 	--background-modifier-hover: rgba(var(--primary-dark-500-rgb), 0.4);
@@ -66,6 +64,7 @@
 }
 
 .theme-light {
+	--github-logo-color: #24292f;
 	--background-primary: var(--white-500);
 	--background-secondary: var(--primary-light-130);
 	--background-modifier-hover: rgba(var(--primary-light-530-rgb), 0.16);
