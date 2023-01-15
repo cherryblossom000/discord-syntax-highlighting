@@ -5,6 +5,7 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url(../assets/fonts/gg-sans-400.woff2) format('woff2');
+	font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
 	font-style: normal;
 	font-weight: 600;
 	src: url(../assets/fonts/gg-sans-600.woff2) format('woff2');
+	font-display: swap;
 }
 
 /* Variables */
