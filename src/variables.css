@@ -1,0 +1,363 @@
+:root,
+body {
+	--font-code: 'gg mono', 'Source Code Pro', Consolas, 'Andale Mono WT',
+		'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+		'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
+		'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+	--saturation-factor: 1;
+
+	--neutral-1: hsl(var(--neutral-1-hsl) / 1);
+	--neutral-1-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 100%;
+	--neutral-2: hsl(var(--neutral-2-hsl) / 1);
+	--neutral-2-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 98.431%;
+	--neutral-4: hsl(var(--neutral-4-hsl) / 1);
+	--neutral-4-hsl: 240 calc(var(--saturation-factor, 1) * 4.348%) 95.49%;
+	--neutral-5: hsl(var(--neutral-5-hsl) / 1);
+	--neutral-5-hsl: 240 calc(var(--saturation-factor, 1) * 3.226%) 93.922%;
+	--neutral-8: hsl(var(--neutral-8-hsl) / 1);
+	--neutral-8-hsl: 240 calc(var(--saturation-factor, 1) * 5.66%) 89.608%;
+	--neutral-9: hsl(var(--neutral-9-hsl) / 1);
+	--neutral-9-hsl: 220 calc(var(--saturation-factor, 1) * 4.918%) 88.039%;
+	--neutral-10: hsl(var(--neutral-10-hsl) / 1);
+	--neutral-10-hsl: 225 calc(var(--saturation-factor, 1) * 5.882%) 86.667%;
+	--neutral-16: hsl(var(--neutral-16-hsl) / 1);
+	--neutral-16-hsl: 228 calc(var(--saturation-factor, 1) * 4.425%) 77.843%;
+	--neutral-23: hsl(var(--neutral-23-hsl) / 1);
+	--neutral-23-hsl: 240 calc(var(--saturation-factor, 1) * 4.294%) 68.039%;
+	--neutral-25: hsl(var(--neutral-25-hsl) / 1);
+	--neutral-25-hsl: 232.5 calc(var(--saturation-factor, 1) * 4.494%) 65.098%;
+	--neutral-27: hsl(var(--neutral-27-hsl) / 1);
+	--neutral-27-hsl: 232.5 calc(var(--saturation-factor, 1) * 4.167%) 62.353%;
+	--neutral-32: hsl(var(--neutral-32-hsl) / 1);
+	--neutral-32-hsl: 233.333 calc(var(--saturation-factor, 1) * 3.965%) 55.49%;
+	--neutral-36: hsl(var(--neutral-36-hsl) / 1);
+	--neutral-36-hsl: 233.333 calc(var(--saturation-factor, 1) * 3.529%) 50%;
+	--neutral-38: hsl(var(--neutral-38-hsl) / 1);
+	--neutral-38-hsl: 234 calc(var(--saturation-factor, 1) * 4.132%) 47.451%;
+	--neutral-40: hsl(var(--neutral-40-hsl) / 1);
+	--neutral-40-hsl: 234 calc(var(--saturation-factor, 1) * 4.386%) 44.706%;
+	--neutral-44: hsl(var(--neutral-44-hsl) / 1);
+	--neutral-44-hsl: 234.545 calc(var(--saturation-factor, 1) * 5.473%) 39.412%;
+	--neutral-46: hsl(var(--neutral-46-hsl) / 1);
+	--neutral-46-hsl: 234.545 calc(var(--saturation-factor, 1) * 5.82%) 37.059%;
+	--neutral-62: hsl(var(--neutral-62-hsl) / 1);
+	--neutral-62-hsl: 233.333 calc(var(--saturation-factor, 1) * 6.977%) 25.294%;
+	--neutral-66: hsl(var(--neutral-66-hsl) / 1);
+	--neutral-66-hsl: 232.5 calc(var(--saturation-factor, 1) * 6.897%) 22.745%;
+	--neutral-69: hsl(var(--neutral-69-hsl) / 1);
+	--neutral-69-hsl: 231.429 calc(var(--saturation-factor, 1) * 6.542%) 20.98%;
+	--neutral-71: hsl(var(--neutral-71-hsl) / 1);
+	--neutral-71-hsl: 230 calc(var(--saturation-factor, 1) * 6%) 19.608%;
+	--neutral-73: hsl(var(--neutral-73-hsl) / 1);
+	--neutral-73-hsl: 230 calc(var(--saturation-factor, 1) * 6.383%) 18.431%;
+	--neutral-76: hsl(var(--neutral-76-hsl) / 1);
+	--neutral-76-hsl: 240 calc(var(--saturation-factor, 1) * 5.882%) 16.667%;
+	--neutral-82: hsl(var(--neutral-82-hsl) / 1);
+	--neutral-82-hsl: 240 calc(var(--saturation-factor, 1) * 5.882%) 13.333%;
+	--neutral-87: hsl(var(--neutral-87-hsl) / 1);
+	--neutral-87-hsl: 240 calc(var(--saturation-factor, 1) * 5.66%) 10.392%;
+	--neutral-92: hsl(var(--neutral-92-hsl) / 1);
+	--neutral-92-hsl: 240 calc(var(--saturation-factor, 1) * 5.263%) 7.451%;
+	--neutral-95: hsl(var(--neutral-95-hsl) / 1);
+	--neutral-95-hsl: 240 calc(var(--saturation-factor, 1) * 7.692%) 5.098%;
+	--neutral-100: hsl(var(--neutral-100-hsl) / 1);
+	--neutral-100-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 0%;
+	--blue-new-10: hsl(var(--blue-new-10-hsl) / 1);
+	--blue-new-10-hsl: 215.625 calc(var(--saturation-factor, 1) * 96.97%) 87.059%;
+	--blue-new-15: hsl(var(--blue-new-15-hsl) / 1);
+	--blue-new-15-hsl: 213.976 calc(var(--saturation-factor, 1) * 91.209%) 82.157%;
+	--blue-new-22: hsl(var(--blue-new-22-hsl) / 1);
+	--blue-new-22-hsl: 213.889 calc(var(--saturation-factor, 1) * 87.097%) 75.686%;
+	--blue-new-26: hsl(var(--blue-new-26-hsl) / 1);
+	--blue-new-26-hsl: 213.934 calc(var(--saturation-factor, 1) * 85.915%) 72.157%;
+	--blue-new-27: hsl(var(--blue-new-27-hsl) / 1);
+	--blue-new-27-hsl: 213.6 calc(var(--saturation-factor, 1) * 85.034%) 71.176%;
+	--blue-new-28: hsl(var(--blue-new-28-hsl) / 1);
+	--blue-new-28-hsl: 213.488 calc(var(--saturation-factor, 1) * 84.314%) 70%;
+	--blue-new-32: hsl(var(--blue-new-32-hsl) / 1);
+	--blue-new-32-hsl: 213.38 calc(var(--saturation-factor, 1) * 82.558%) 66.275%;
+	--blue-new-36: hsl(var(--blue-new-36-hsl) / 1);
+	--blue-new-36-hsl: 213.077 calc(var(--saturation-factor, 1) * 81.25%) 62.353%;
+	--blue-new-42: hsl(var(--blue-new-42-hsl) / 1);
+	--blue-new-42-hsl: 212.849 calc(var(--saturation-factor, 1) * 80.269%) 56.275%;
+	--blue-new-49: hsl(var(--blue-new-49-hsl) / 1);
+	--blue-new-49-hsl: 209.339 calc(var(--saturation-factor, 1) * 100%) 44.51%;
+	--blue-new-64: hsl(var(--blue-new-64-hsl) / 1);
+	--blue-new-64-hsl: 208.28 calc(var(--saturation-factor, 1) * 98.742%) 31.176%;
+	--blue-new-68: hsl(var(--blue-new-68-hsl) / 1);
+	--blue-new-68-hsl: 208.085 calc(var(--saturation-factor, 1) * 100%) 27.647%;
+	--blurple-9: hsl(var(--blurple-9-hsl) / 1);
+	--blurple-9-hsl: 227.547 calc(var(--saturation-factor, 1) * 100%) 89.608%;
+	--blurple-21: hsl(var(--blurple-21-hsl) / 1);
+	--blurple-21-hsl: 228.791 calc(var(--saturation-factor, 1) * 97.849%) 81.765%;
+	--blurple-27: hsl(var(--blurple-27-hsl) / 1);
+	--blurple-27-hsl: 228.889 calc(var(--saturation-factor, 1) * 94.737%) 77.647%;
+	--blurple-49: hsl(var(--blurple-49-hsl) / 1);
+	--blurple-49-hsl: 234.935 calc(var(--saturation-factor, 1) * 85.556%) 64.706%;
+	--blurple-68: hsl(var(--blurple-68-hsl) / 1);
+	--blurple-68-hsl: 231.429 calc(var(--saturation-factor, 1) * 48.515%) 39.608%;
+	--green-new-12: hsl(var(--green-new-12-hsl) / 1);
+	--green-new-12-hsl: 129.524 calc(var(--saturation-factor, 1) * 53.846%)
+		77.059%;
+	--green-new-15: hsl(var(--green-new-15-hsl) / 1);
+	--green-new-15-hsl: 129.851 calc(var(--saturation-factor, 1) * 48.905%)
+		73.137%;
+	--green-new-23: hsl(var(--green-new-23-hsl) / 1);
+	--green-new-23-hsl: 130.263 calc(var(--saturation-factor, 1) * 40.86%) 63.529%;
+	--green-new-26: hsl(var(--green-new-26-hsl) / 1);
+	--green-new-26-hsl: 130.633 calc(var(--saturation-factor, 1) * 38.537%)
+		59.804%;
+	--green-new-28: hsl(var(--green-new-28-hsl) / 1);
+	--green-new-28-hsl: 131.111 calc(var(--saturation-factor, 1) * 37.327%)
+		57.451%;
+	--green-new-31: hsl(var(--green-new-31-hsl) / 1);
+	--green-new-31-hsl: 132.706 calc(var(--saturation-factor, 1) * 35.865%)
+		53.529%;
+	--green-new-67: hsl(var(--green-new-67-hsl) / 1);
+	--green-new-67-hsl: 144.944 calc(var(--saturation-factor, 1) * 100%) 17.451%;
+	--green-new-68: hsl(var(--green-new-68-hsl) / 1);
+	--green-new-68-hsl: 144.138 calc(var(--saturation-factor, 1) * 100%) 17.059%;
+	--red-new-11: hsl(var(--red-new-11-hsl) / 1);
+	--red-new-11-hsl: 3.288 calc(var(--saturation-factor, 1) * 100%) 85.686%;
+	--red-new-12: hsl(var(--red-new-12-hsl) / 1);
+	--red-new-12-hsl: 3.117 calc(var(--saturation-factor, 1) * 100%) 84.902%;
+	--red-new-22: hsl(var(--red-new-22-hsl) / 1);
+	--red-new-22-hsl: 2.679 calc(var(--saturation-factor, 1) * 96.552%) 77.255%;
+	--red-new-23: hsl(var(--red-new-23-hsl) / 1);
+	--red-new-23-hsl: 2.632 calc(var(--saturation-factor, 1) * 95%) 76.471%;
+	--red-new-24: hsl(var(--red-new-24-hsl) / 1);
+	--red-new-24-hsl: 2.069 calc(var(--saturation-factor, 1) * 93.548%) 75.686%;
+	--red-new-29: hsl(var(--red-new-29-hsl) / 1);
+	--red-new-29-hsl: 1.417 calc(var(--saturation-factor, 1) * 86.395%) 71.176%;
+	--red-new-30: hsl(var(--red-new-30-hsl) / 1);
+	--red-new-30-hsl: 1.846 calc(var(--saturation-factor, 1) * 85.526%) 70.196%;
+	--red-new-62: hsl(var(--red-new-62-hsl) / 1);
+	--red-new-62-hsl: 355.714 calc(var(--saturation-factor, 1) * 64.948%) 38.039%;
+	--red-new-66: hsl(var(--red-new-66-hsl) / 1);
+	--red-new-66-hsl: 356.348 calc(var(--saturation-factor, 1) * 65.714%) 34.314%;
+	--teal-new-16: hsl(var(--teal-new-16-hsl) / 1);
+	--teal-new-16-hsl: 185.753 calc(var(--saturation-factor, 1) * 50.345%) 71.569%;
+	--teal-new-27: hsl(var(--teal-new-27-hsl) / 1);
+	--teal-new-27-hsl: 185.06 calc(var(--saturation-factor, 1) * 39.336%) 58.627%;
+	--teal-new-33: hsl(var(--teal-new-33-hsl) / 1);
+	--teal-new-33-hsl: 185.275 calc(var(--saturation-factor, 1) * 36.842%) 51.569%;
+	--teal-new-64: hsl(var(--teal-new-64-hsl) / 1);
+	--teal-new-64-hsl: 184.752 calc(var(--saturation-factor, 1) * 100%) 19.804%;
+	--yellow-new-14: hsl(var(--yellow-new-14-hsl) / 1);
+	--yellow-new-14-hsl: 32.53 calc(var(--saturation-factor, 1) * 65.354%) 75.098%;
+	--yellow-new-25: hsl(var(--yellow-new-25-hsl) / 1);
+	--yellow-new-25-hsl: 33.333 calc(var(--saturation-factor, 1) * 55.67%) 61.961%;
+	--yellow-new-31: hsl(var(--yellow-new-31-hsl) / 1);
+	--yellow-new-31-hsl: 33.277 calc(var(--saturation-factor, 1) * 51.965%)
+		55.098%;
+	--yellow-new-63: hsl(var(--yellow-new-63-hsl) / 1);
+	--yellow-new-63-hsl: 34.634 calc(var(--saturation-factor, 1) * 100%) 24.118%;
+	--orange-new-13: hsl(var(--orange-new-13-hsl) / 1);
+	--orange-new-13-hsl: 20.667 calc(var(--saturation-factor, 1) * 86.538%)
+		79.608%;
+	--orange-new-25: hsl(var(--orange-new-25-hsl) / 1);
+	--orange-new-25-hsl: 22.031 calc(var(--saturation-factor, 1) * 74.419%)
+		66.275%;
+	--orange-new-30: hsl(var(--orange-new-30-hsl) / 1);
+	--orange-new-30-hsl: 21.857 calc(var(--saturation-factor, 1) * 70%) 60.784%;
+	--orange-new-63: hsl(var(--orange-new-63-hsl) / 1);
+	--orange-new-63-hsl: 24 calc(var(--saturation-factor, 1) * 98.592%) 27.843%;
+	--opacity-8: hsl(var(--opacity-8-hsl) / 0.0784313725490196);
+	--opacity-8-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-12: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--opacity-12-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-20: hsl(var(--opacity-20-hsl) / 0.2);
+	--opacity-20-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-24: hsl(var(--opacity-24-hsl) / 0.23921568627450981);
+	--opacity-24-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-28: hsl(var(--opacity-28-hsl) / 0.2784313725490196);
+	--opacity-28-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-32: hsl(var(--opacity-32-hsl) / 0.3215686274509804);
+	--opacity-32-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-36: hsl(var(--opacity-36-hsl) / 0.3607843137254902);
+	--opacity-36-hsl: 240 calc(var(--saturation-factor, 1) * 4%) 60.784%;
+	--opacity-blurple-4: hsl(var(--opacity-blurple-4-hsl) / 0.0392156862745098);
+	--opacity-blurple-4-hsl: 234.935 calc(var(--saturation-factor, 1) * 85.556%)
+		64.706%;
+	--opacity-blurple-8: hsl(var(--opacity-blurple-8-hsl) / 0.0784313725490196);
+	--opacity-blurple-8-hsl: 234.935 calc(var(--saturation-factor, 1) * 85.556%)
+		64.706%;
+	--opacity-green-12: hsl(var(--opacity-green-12-hsl) / 0.12156862745098039);
+	--opacity-green-12-hsl: 145.97 calc(var(--saturation-factor, 1) * 100%)
+		26.275%;
+	--opacity-red-12: hsl(var(--opacity-red-12-hsl) / 0.12156862745098039);
+	--opacity-red-12-hsl: 355.636 calc(var(--saturation-factor, 1) * 64.706%) 50%;
+	--opacity-black-8: hsl(var(--opacity-black-8-hsl) / 0.0784313725490196);
+	--opacity-black-8-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 0%;
+	--opacity-black-20: hsl(var(--opacity-black-20-hsl) / 0.2);
+	--opacity-black-20-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 0%;
+	--black: hsl(var(--black-hsl) / 1);
+	--black-hsl: 0 calc(var(--saturation-factor, 1) * 0%) 0%;
+	--primary-300: hsl(var(--primary-300-hsl) / 1);
+	--primary-300-hsl: 210 calc(var(--saturation-factor, 1) * 9.259%) 78.824%;
+	--primary-500: hsl(var(--primary-500-hsl) / 1);
+	--primary-500-hsl: 228 calc(var(--saturation-factor, 1) * 6.024%) 32.549%;
+	--plum-13: hsl(var(--plum-13-hsl) / 1);
+	--plum-13-hsl: 227.143 calc(var(--saturation-factor, 1) * 8.333%) 32.941%;
+	--brand-500: var(--blurple-49);
+	--brand-500-hsl: var(--blurple-49-hsl);
+}
+
+[data-theme='dark'] {
+	--background-base-lowest: var(--neutral-73);
+	--background-code: hsl(var(--opacity-blurple-8-hsl) / 0.0784313725490196);
+	--background-code-addition: hsl(
+		var(--opacity-green-12-hsl) / 0.12156862745098039
+	);
+	--background-code-deletion: hsl(
+		var(--opacity-red-12-hsl) / 0.12156862745098039
+	);
+	--background-mod-subtle: hsl(var(--opacity-8-hsl) / 0.0784313725490196);
+	--background-modifier-hover: hsl(var(--opacity-8-hsl) / 0.0784313725490196);
+	--background-modifier-selected: hsl(var(--opacity-20-hsl) / 0.2);
+	--background-primary: var(--neutral-66);
+	--background-surface-higher: var(--neutral-62);
+	--border-normal: hsl(var(--opacity-20-hsl) / 0.2);
+	--border-subtle: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--interactive-active: var(--neutral-1);
+	--interactive-muted: var(--primary-500);
+	--input-background: hsl(var(--opacity-black-20-hsl) / 0.2);
+	--input-border: hsl(var(--opacity-20-hsl) / 0.2);
+	--scrollbar-thin-track: hsl(var(--black-hsl) / 0);
+	--scrollbar-thin-thumb: var(--neutral-38);
+	--text-code-addition: var(--green-new-15);
+	--text-code-builtin: var(--orange-new-13);
+	--text-code-bullet: var(--yellow-new-14);
+	--text-code-comment: var(--neutral-25);
+	--text-code-default: var(--blue-new-15);
+	--text-code-deletion: var(--red-new-11);
+	--text-code-keyword: var(--red-new-12);
+	--text-code-section: var(--blue-new-15);
+	--text-code-string: var(--teal-new-16);
+	--text-code-tag: var(--green-new-12);
+	--text-code-title: var(--blurple-9);
+	--text-code-variable: var(--blue-new-10);
+	--text-link: var(--blue-new-26);
+	--text-normal: var(--neutral-9);
+	--text-secondary: var(--neutral-16);
+}
+
+[data-theme='light'] {
+	--background-base-lowest: var(--neutral-4);
+	--background-code: hsl(var(--opacity-blurple-4-hsl) / 0.0392156862745098);
+	--background-code-addition: hsl(
+		var(--opacity-green-12-hsl) / 0.12156862745098039
+	);
+	--background-code-deletion: hsl(
+		var(--opacity-red-12-hsl) / 0.12156862745098039
+	);
+	--background-mod-subtle: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--background-modifier-hover: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--background-modifier-selected: hsl(
+		var(--opacity-24-hsl) / 0.23921568627450981
+	);
+	--background-primary: var(--neutral-2);
+	--background-surface-higher: var(--neutral-1);
+	--border-normal: hsl(var(--opacity-36-hsl) / 0.3607843137254902);
+	--border-subtle: hsl(var(--opacity-28-hsl) / 0.2784313725490196);
+	--interactive-active: var(--neutral-71);
+	--interactive-muted: var(--primary-300);
+	--input-background: hsl(var(--opacity-black-8-hsl) / 0.0784313725490196);
+	--input-border: hsl(var(--opacity-36-hsl) / 0.3607843137254902);
+	--scrollbar-thin-track: hsl(var(--black-hsl) / 0);
+	--scrollbar-thin-thumb: var(--neutral-32);
+	--text-code-addition: var(--green-new-67);
+	--text-code-builtin: var(--orange-new-63);
+	--text-code-bullet: var(--yellow-new-63);
+	--text-code-comment: var(--neutral-40);
+	--text-code-default: var(--blue-new-64);
+	--text-code-deletion: var(--red-new-66);
+	--text-code-keyword: var(--red-new-62);
+	--text-code-section: var(--blue-new-64);
+	--text-code-string: var(--teal-new-64);
+	--text-code-tag: var(--green-new-68);
+	--text-code-title: var(--blurple-68);
+	--text-code-variable: var(--blue-new-68);
+	--text-link: var(--blue-new-49);
+	--text-normal: var(--neutral-69);
+	--text-secondary: var(--neutral-44);
+}
+
+[data-theme='midnight'] {
+	--background-base-lowest: var(--neutral-100);
+	--background-code: hsl(var(--opacity-blurple-8-hsl) / 0.0784313725490196);
+	--background-code-addition: hsl(
+		var(--opacity-green-12-hsl) / 0.12156862745098039
+	);
+	--background-code-deletion: hsl(
+		var(--opacity-red-12-hsl) / 0.12156862745098039
+	);
+	--background-modifier-hover: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--background-modifier-selected: hsl(
+		var(--opacity-24-hsl) / 0.23921568627450981
+	);
+	--background-primary: var(--neutral-95);
+	--background-surface-higher: var(--neutral-87);
+	--border-normal: hsl(var(--opacity-32-hsl) / 0.3215686274509804);
+	--border-subtle: hsl(var(--opacity-24-hsl) / 0.23921568627450981);
+	--interactive-active: var(--neutral-8);
+	--interactive-muted: var(--plum-13);
+	--input-background: hsl(var(--opacity-black-8-hsl) / 0.0784313725490196);
+	--input-border: hsl(var(--opacity-32-hsl) / 0.3215686274509804);
+	--scrollbar-thin-track: hsl(var(--black-hsl) / 0);
+	--scrollbar-thin-thumb: var(--neutral-46);
+	--text-code-addition: var(--green-new-31);
+	--text-code-builtin: var(--orange-new-30);
+	--text-code-bullet: var(--yellow-new-31);
+	--text-code-comment: var(--neutral-36);
+	--text-code-default: var(--blue-new-32);
+	--text-code-deletion: var(--red-new-29);
+	--text-code-keyword: var(--red-new-30);
+	--text-code-section: var(--blue-new-32);
+	--text-code-string: var(--teal-new-33);
+	--text-code-tag: var(--green-new-28);
+	--text-code-title: var(--blurple-27);
+	--text-code-variable: var(--blue-new-28);
+	--text-link: var(--blue-new-42);
+	--text-normal: var(--neutral-10);
+	--text-secondary: var(--neutral-27);
+}
+
+[data-theme='darker'] {
+	--background-base-lowest: var(--neutral-92);
+	--background-code: hsl(var(--opacity-blurple-8-hsl) / 0.0784313725490196);
+	--background-code-addition: hsl(
+		var(--opacity-green-12-hsl) / 0.12156862745098039
+	);
+	--background-code-deletion: hsl(
+		var(--opacity-red-12-hsl) / 0.12156862745098039
+	);
+	--background-mod-subtle: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--background-modifier-hover: hsl(var(--opacity-8-hsl) / 0.0784313725490196);
+	--background-modifier-selected: hsl(var(--opacity-20-hsl) / 0.2);
+	--background-primary: var(--neutral-82);
+	--background-surface-higher: var(--neutral-76);
+	--border-normal: hsl(var(--opacity-20-hsl) / 0.2);
+	--border-subtle: hsl(var(--opacity-12-hsl) / 0.12156862745098039);
+	--interactive-active: var(--neutral-2);
+	--interactive-muted: var(--plum-13);
+	--input-background: hsl(var(--opacity-black-8-hsl) / 0.0784313725490196);
+	--input-border: hsl(var(--opacity-20-hsl) / 0.2);
+	--scrollbar-thin-track: hsl(var(--black-hsl) / 0);
+	--scrollbar-thin-thumb: var(--neutral-44);
+	--text-code-addition: var(--green-new-26);
+	--text-code-builtin: var(--orange-new-25);
+	--text-code-bullet: var(--yellow-new-25);
+	--text-code-comment: var(--neutral-32);
+	--text-code-default: var(--blue-new-27);
+	--text-code-deletion: var(--red-new-23);
+	--text-code-keyword: var(--red-new-24);
+	--text-code-section: var(--blue-new-27);
+	--text-code-string: var(--teal-new-27);
+	--text-code-tag: var(--green-new-23);
+	--text-code-title: var(--blurple-21);
+	--text-code-variable: var(--blue-new-22);
+	--text-link: var(--blue-new-36);
+	--text-normal: var(--neutral-5);
+	--text-secondary: var(--neutral-23);
+}

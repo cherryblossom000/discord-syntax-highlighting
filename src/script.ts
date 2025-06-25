@@ -26,7 +26,7 @@ for (const category of document.querySelectorAll(
 	})
 }
 
-document.getElementById('light-theme')!.addEventListener('input', () => {
-	document.documentElement.classList.toggle('theme-dark')
-	document.documentElement.classList.toggle('theme-light')
+const themeSelect = document.getElementById('theme-select') as HTMLSelectElement
+themeSelect.addEventListener('input', () => {
+	document.body.dataset.theme = themeSelect.value
 })
