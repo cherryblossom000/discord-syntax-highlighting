@@ -36,6 +36,7 @@ body {
 	font-family: gg sans, Noto Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
+	scrollbar-color: var(--scrollbar-thin-thumb) var(--scrollbar-thin-track);
 }
 
 h1,
@@ -166,20 +167,6 @@ option::checkmark {
 	position: relative;
 	overflow-y: auto;
 	scrollbar-width: thin;
-}
-
-.categories::-webkit-scrollbar {
-	width: 8px;
-}
-
-.categories::-webkit-scrollbar-track {
-	background: var(--scrollbar-thin-track);
-	border-radius: 5px;
-}
-
-.categories::-webkit-scrollbar-thumb {
-	background: var(--scrollbar-thin-thumb);
-	border-radius: 5px;
 }
 
 .categories li {
