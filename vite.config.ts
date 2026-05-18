@@ -15,7 +15,7 @@ const languagesDirNodeModules = path.join(
 	'node_modules',
 	'highlight.js',
 	'lib',
-	'languages'
+	'languages',
 )
 const hljsDir = path.join(__dirname, 'highlight.js')
 const samplesDir = path.join(hljsDir, 'test', 'detect')
@@ -50,14 +50,14 @@ export default defineConfig(async () => {
 			try {
 				sample = await readFile(
 					path.join(samplesDir, language, 'default.txt'),
-					'utf8'
+					'utf8',
 				)
 			} catch (error: unknown) {
 				if (
 					typeof error == 'object' &&
 					error &&
 					'code' in error &&
-					(error as {code: unknown}).code === 'ENOENT'
+					error.code === 'ENOENT'
 				)
 					return
 				throw error
@@ -68,7 +68,7 @@ export default defineConfig(async () => {
 				import(path.join(languagesDirNodeModules, langJS)) as Promise<
 					typeof LanguageModule
 				>,
-				readFile(path.join(languagesDir, langJS), 'utf8')
+				readFile(path.join(languagesDir, langJS), 'utf8'),
 			])
 			const {
 				name = ((): string => {
@@ -77,11 +77,11 @@ export default defineConfig(async () => {
 						match,
 						`error: language ${language} does not have a \`name\` property or a match for ${languageRegex}!
   File contents:
-  ${contents}`
+  ${contents}`,
 					)
 					return match[1]!
 				})(),
-				aliases = []
+				aliases = [],
 			} = mod.default(hljs)
 			const categories = categoryRegex.exec(contents)?.[1]!.split(/,\s?/u) ?? []
 			return {
@@ -96,12 +96,12 @@ export default defineConfig(async () => {
 					.replace(/\}/gu, '&#125;')
 					// unable to parse HTML; parse5 error code control-character-in-input-stream
 					// the FIX language has these control characters for some reason
-					.replaceAll('\u0001', '␁')
+					.replaceAll('\u0001', '␁'),
 			}
-		})
+		}),
 	)
 	const languages = maybeLangs
-		.filter((lang): lang is Language => lang !== undefined)
+		.filter(lang => lang !== undefined)
 		.sort((a, b) => a.language.localeCompare(b.language))
 
 	// https://github.com/highlightjs/highlight.js/blob/bc1b06bb3ac587498d8e21a99c3ee38ce4727c1f/tools/build_browser.js#L118-L133
@@ -109,7 +109,7 @@ export default defineConfig(async () => {
 		.flatMap(({categories}) => categories)
 		.reduce(
 			(map, category) => map.set(category, (map.get(category) ?? 0) + 1),
-			new Map<string, number>()
+			new Map<string, number>(),
 		)
 	const specialCategories = new Set(['common', 'misc', 'all'])
 	const categories = [
@@ -118,7 +118,7 @@ export default defineConfig(async () => {
 			.filter(category => !specialCategories.has(category))
 			.sort(),
 		'misc',
-		'all'
+		'all',
 	].map(name => ({name, count: categoryCounts.get(name)}))
 
 	return {
@@ -126,7 +126,7 @@ export default defineConfig(async () => {
 		plugins: [createHtmlPlugin({inject: {data: {categories, languages}}})],
 		build: {
 			outDir: '../dist',
-			emptyOutDir: true
-		}
+			emptyOutDir: true,
+		},
 	}
 })

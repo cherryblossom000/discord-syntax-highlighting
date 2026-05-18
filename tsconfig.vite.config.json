@@ -3,6 +3,5 @@
 	"extends": "./tsconfig.settings.json",
 	"compilerOptions": {
 		"checkJs": true,
-		"module": "CommonJS",
 	}
 }

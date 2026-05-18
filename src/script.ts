@@ -1,13 +1,13 @@
 // NodeListOf<HTMLLIElement> is different to NodeListOf<Element>
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- ^
 for (const category of document.querySelectorAll(
-	'.categories > li'
+	'.categories > li',
 ) as NodeListOf<HTMLLIElement>) {
 	category.addEventListener('click', ev => {
 		const target = ev.target as HTMLLIElement
 		// eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style -- HTMLLIElement is different to Element
 		const current = document.querySelector(
-			'.categories .current'
+			'.categories .current',
 		) as HTMLLIElement
 		const currentCategory = current.dataset.category
 		const nextCategory = target.dataset.category
