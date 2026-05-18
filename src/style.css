@@ -33,7 +33,13 @@
 body {
 	color: var(--text-normal);
 	background: var(--background-primary);
-	font-family: gg sans, Noto Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-family:
+		gg sans,
+		Noto Sans,
+		Helvetica Neue,
+		Helvetica,
+		Arial,
+		sans-serif;
 	margin: 0;
 	padding: 0;
 	scrollbar-color: var(--scrollbar-thin-thumb) var(--scrollbar-thin-track);
@@ -242,9 +248,12 @@ pre code {
 .hljs-meta .hljs-keyword,
 .hljs-template-tag,
 .hljs-template-variable,
-.hljs-type,
 .hljs-variable.language_ {
 	color: var(--text-code-keyword);
+}
+
+.hljs-type {
+	color: var(--text-code-type);
 }
 
 .hljs-title,
@@ -254,12 +263,8 @@ pre code {
 	color: var(--text-code-title);
 }
 
-.hljs-attr,
-.hljs-attribute,
 .hljs-literal,
-.hljs-meta,
-.hljs-number,
-.hljs-operator,
+.hljs-params,
 .hljs-selector-attr,
 .hljs-selector-class,
 .hljs-selector-id,
@@ -267,13 +272,40 @@ pre code {
 	color: var(--text-code-variable);
 }
 
+.hljs-attr,
+.hljs-attribute {
+	color: var(--text-code-attribute);
+}
+
+.hljs-meta {
+	color: var(--text-code-decorator);
+}
+
+.hljs-property {
+	color: var(--text-code-property);
+}
+
+.hljs-number {
+	color: var(--text-code-number);
+}
+
+.hljs-operator {
+	color: var(--text-code-operator);
+}
+
 .hljs-meta .hljs-string,
-.hljs-regexp,
 .hljs-string {
 	color: var(--text-code-string);
 }
 
-.hljs-built_in,
+.hljs-regexp {
+	color: var(--text-code-regexp);
+}
+
+.hljs-built_in {
+	color: var(--text-code-type);
+}
+
 .hljs-symbol {
 	color: var(--text-code-builtin);
 }
@@ -292,7 +324,7 @@ pre code {
 }
 
 .hljs-subst {
-	color: var(--text-code-default);
+	color: var(--text-code);
 }
 
 .hljs-section {
@@ -305,13 +337,18 @@ pre code {
 }
 
 .hljs-emphasis {
-	color: var(--text-code-default);
+	color: var(--text-code);
 	font-style: italic;
 }
 
 .hljs-strong {
-	color: var(--text-code-default);
+	color: var(--text-code);
 	font-weight: 700;
+}
+
+.hljs-link {
+	color: var(--text-code-link);
+	text-decoration: underline;
 }
 
 .hljs-addition {
@@ -322,102 +359,4 @@ pre code {
 .hljs-deletion {
 	background-color: var(--background-code-deletion);
 	color: var(--text-code-deletion);
-}
-
-.hljs-ansi-control-sequence {
-	display: none;
-}
-
-.hljs-ansi-style-bold {
-	font-weight: 700;
-}
-
-.hljs-ansi-style-underline {
-	text-decoration: underline;
-}
-
-.hljs-ansi-foreground-black {
-	color: var(--interactive-muted);
-}
-
-.hljs-ansi-foreground-black .hljs-ansi-background-black,
-.hljs-ansi-foreground-black .hljs-ansi-background-blue,
-.hljs-ansi-foreground-black .hljs-ansi-background-cyan,
-.hljs-ansi-foreground-black .hljs-ansi-background-green,
-.hljs-ansi-foreground-black .hljs-ansi-background-magenta,
-.hljs-ansi-foreground-black .hljs-ansi-background-red,
-.hljs-ansi-foreground-black .hljs-ansi-background-white,
-.hljs-ansi-foreground-black .hljs-ansi-background-yellow {
-	color: #073642;
-}
-
-.hljs-ansi-foreground-red {
-	color: #dc322f;
-}
-
-.hljs-ansi-foreground-green {
-	color: #859900;
-}
-
-.hljs-ansi-foreground-yellow {
-	color: #b58900;
-}
-
-.hljs-ansi-foreground-blue {
-	color: #268bd2;
-}
-
-.hljs-ansi-foreground-magenta {
-	color: #d33682;
-}
-
-.hljs-ansi-foreground-cyan {
-	color: #2aa198;
-}
-
-.hljs-ansi-foreground-white {
-	color: var(--interactive-active);
-}
-
-.hljs-ansi-foreground-white .hljs-ansi-background-black,
-.hljs-ansi-foreground-white .hljs-ansi-background-blue,
-.hljs-ansi-foreground-white .hljs-ansi-background-cyan,
-.hljs-ansi-foreground-white .hljs-ansi-background-green,
-.hljs-ansi-foreground-white .hljs-ansi-background-magenta,
-.hljs-ansi-foreground-white .hljs-ansi-background-red,
-.hljs-ansi-foreground-white .hljs-ansi-background-white,
-.hljs-ansi-foreground-white .hljs-ansi-background-yellow {
-	color: #eee8d5;
-}
-
-.hljs-ansi-background-black {
-	background-color: #002b36;
-}
-
-.hljs-ansi-background-red {
-	background-color: #cb4b16;
-}
-
-.hljs-ansi-background-green {
-	background-color: #586e75;
-}
-
-.hljs-ansi-background-yellow {
-	background-color: #657b83;
-}
-
-.hljs-ansi-background-blue {
-	background-color: #839496;
-}
-
-.hljs-ansi-background-magenta {
-	background-color: #6c71c4;
-}
-
-.hljs-ansi-background-cyan {
-	background-color: #93a1a1;
-}
-
-.hljs-ansi-background-white {
-	background-color: #fdf6e3;
 }
