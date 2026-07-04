@@ -278,6 +278,31 @@ main > div {
 	display: none;
 }
 
+.no-results {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+	padding: 6em 2em;
+	color: var(--text-secondary);
+	text-align: center;
+}
+
+.no-results.hidden {
+	display: none;
+}
+
+.no-results svg {
+	margin-bottom: 2em;
+}
+
+.no-results p {
+	font-size: 1rem;
+	margin: 0.15em 0;
+	line-height: 1.4;
+}
+
 code {
 	overflow-x: auto;
 	padding: 0.5em;
