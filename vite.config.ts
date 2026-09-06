@@ -11,13 +11,13 @@ const categoryRegex = /\/\*.*?Category: (.*?)\r?\n/su
 const languageRegex = /\/\*.*?Language: (.*?)\r?\n/su
 
 const languagesDirNodeModules = path.join(
-	__dirname,
+	import.meta.dirname,
 	'node_modules',
 	'highlight.js',
 	'lib',
 	'languages',
 )
-const hljsDir = path.join(__dirname, 'highlight.js')
+const hljsDir = path.join(import.meta.dirname, 'highlight.js')
 const samplesDir = path.join(hljsDir, 'test', 'detect')
 const languagesDir = path.join(hljsDir, 'src', 'languages')
 
